@@ -22,11 +22,17 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 
+		<jcaptcha.version>1.0</jcaptcha.version>
 		<redisson.version>3.5.5</redisson.version>
 	</properties>
 
 	<dependencies>
 
+		<dependency>
+			<groupId>com.github.penggle</groupId>
+			<artifactId>kaptcha</artifactId>
+			<version>2.3.2</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.redisson</groupId>
