@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>fast.family</groupId>
+	<groupId>com.github.fast-family</groupId>
 	<artifactId>fast-family</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<version>${revision}</version>
+	<packaging>pom</packaging>
 
 	<name>fast-family</name>
 	<description>Demo project for Spring Boot</description>
@@ -23,133 +23,211 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 
+		<spring.boot.version>1.5.16.RELEASE</spring.boot.version>
 
-		<io.jsonwebtoken.version>0.7.0</io.jsonwebtoken.version>
-		<problem-spring-web.version>0.22.5</problem-spring-web.version>
+		<revision>0.1.0</revision>
 		<commons.io.version>2.5</commons.io.version>
 		<commons.lang.version>3.4</commons.lang.version>
 		<commons.collections.version>4.1</commons.collections.version>
 		<orika.version>1.4.6</orika.version>
 		<guava.version>23.0</guava.version>
-		<springfox.swagger2.verion>2.7.0</springfox.swagger2.verion>
-		<springfox.swagger.ui.version>2.7.0</springfox.swagger.ui.version>
 		<gson.version>2.8.0</gson.version>
-		<mybatis.version>1.3.2</mybatis.version>
-		<tk.mapper.version>2.0.4</tk.mapper.version>
-		<redisson.version>3.5.5</redisson.version>
+		<lombok.version>1.16.20</lombok.version>
 	</properties>
 
-	<dependencies>
+	<modules>
+		<module>fast-family-commons</module>
+		<module>fast-family-mvc</module>
+		<module>fast-family-security</module>
+		<module>fast-family-swagger</module>
+		<module>fast-family-tomcat</module>
+		<module>fast-family-utils</module>
+	</modules>
 
-		<dependency>
-			<groupId>org.redisson</groupId>
-			<artifactId>redisson</artifactId>
-			<version>${redisson.version}</version>
-		</dependency>
 
-		<dependency>
-			<groupId>org.mybatis.spring.boot</groupId>
-			<artifactId>mybatis-spring-boot-starter</artifactId>
-			<version>${mybatis.version}</version>
-		</dependency>
+	<dependencyManagement>
 
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<optional>true</optional>
-		</dependency>
+		<dependencies>
 
-		<dependency>
-			<groupId>com.google.code.gson</groupId>
-			<artifactId>gson</artifactId>
-			<version>${gson.version}</version>
-		</dependency>
+			<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<version>${lombok.version}</version>
+				<optional>true</optional>
+			</dependency>
 
-		<dependency>
-			<groupId>org.zalando</groupId>
-			<artifactId>problem-spring-web</artifactId>
-			<version>${problem-spring-web.version}</version>
-		</dependency>
+			<dependency>
+				<groupId>com.google.code.gson</groupId>
+				<artifactId>gson</artifactId>
+				<version>${gson.version}</version>
+			</dependency>
 
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-collections4</artifactId>
-			<version>${commons.collections.version}</version>
-		</dependency>
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-collections4</artifactId>
+				<version>${commons.collections.version}</version>
+			</dependency>
 
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-lang3</artifactId>
-			<version>${commons.lang.version}</version>
-		</dependency>
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-lang3</artifactId>
+				<version>${commons.lang.version}</version>
+			</dependency>
 
-		<dependency>
-			<groupId>commons-io</groupId>
-			<artifactId>commons-io</artifactId>
-			<version>${commons.io.version}</version>
-		</dependency>
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>${commons.io.version}</version>
+			</dependency>
 
-		<dependency>
-			<groupId>ma.glasnost.orika</groupId>
-			<artifactId>orika-core</artifactId>
-			<version>${orika.version}</version>
-		</dependency>
+			<dependency>
+				<groupId>ma.glasnost.orika</groupId>
+				<artifactId>orika-core</artifactId>
+				<version>${orika.version}</version>
+			</dependency>
 
-		<dependency>
-			<groupId>tk.mybatis</groupId>
-			<artifactId>mapper-spring-boot-starter</artifactId>
-			<version>${tk.mapper.version}</version>
-		</dependency>
 
-		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
-			<version>${guava.version}</version>
-		</dependency>
+			<dependency>
+				<groupId>com.google.guava</groupId>
+				<artifactId>guava</artifactId>
+				<version>${guava.version}</version>
+			</dependency>
 
-		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger2</artifactId>
-			<version>${springfox.swagger2.verion}</version>
-		</dependency>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-test</artifactId>
+				<scope>test</scope>
+			</dependency>
 
-		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger-ui</artifactId>
-			<version>${springfox.swagger.ui.version}</version>
-		</dependency>
+		</dependencies>
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
+	</dependencyManagement>
 
-		<dependency>
-			<groupId>io.jsonwebtoken</groupId>
-			<artifactId>jjwt</artifactId>
-			<version>${io.jsonwebtoken.version}</version>
-		</dependency>
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
 
-	</dependencies>
 
 	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.7.0</version>
+					<configuration>
+						<compilerVersion>${java.version}</compilerVersion>
+						<source>${java.version}</source>
+						<target>${java.version}</target>
+					</configuration>
+				</plugin>
+
+				<!--<plugin>-->
+					<!--<groupId>org.apache.maven.plugins</groupId>-->
+					<!--<artifactId>maven-javadoc-plugin</artifactId>-->
+					<!--<version>2.10.1</version>-->
+					<!--<executions>-->
+						<!--<execution>-->
+							<!--<goals>-->
+								<!--<goal>jar</goal>-->
+								<!--<goal>javadoc</goal>-->
+							<!--</goals>-->
+							<!--<phase>package</phase>-->
+						<!--</execution>-->
+					<!--</executions>-->
+					<!--<configuration>-->
+						<!--<additionalparam>-Xdoclint:none</additionalparam>-->
+					<!--</configuration>-->
+				<!--</plugin>-->
+
+
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<executions>
+						<execution>
+							<id>attach-sources</id>
+							<goals>
+								<goal>jar-no-fork</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-maven-plugin</artifactId>
+					<version>${spring.boot.version}</version>
+					<executions>
+						<execution>
+							<goals>
+								<goal>repackage</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>flatten-maven-plugin</artifactId>
+					<inherited>true</inherited>
+					<version>2.7</version>
+					<executions>
+						<execution>
+							<id>flatten</id>
+							<phase>process-resources</phase>
+							<goals>
+								<goal>flatten</goal>
+							</goals>
+							<configuration>
+								<updatePomFile>true</updatePomFile>
+								<flattenMode>oss</flattenMode>
+								<pomElements>
+									<parent>expand</parent>
+									<distributionManagement>remove</distributionManagement>
+									<repositories>remove</repositories>
+								</pomElements>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-checkstyle-plugin</artifactId>
+					<version>3.0.0</version>
+					<dependencies>
+						<dependency>
+							<groupId>com.puppycrawl.tools</groupId>
+							<artifactId>checkstyle</artifactId>
+							<version>8.7</version>
+						</dependency>
+					</dependencies>
+					<configuration>
+						<configLocation>google_checks.xml</configLocation>
+						<includeTestSourceDirectory>true</includeTestSourceDirectory>
+						<consoleOutput>true</consoleOutput>
+						<failsOnError>true</failsOnError>
+					</configuration>
+					<executions>
+						<execution>
+							<phase>verify</phase>
+							<goals>
+								<goal>check</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>cobertura-maven-plugin</artifactId>
+					<configuration>
+						<formats>
+							<format>html</format>
+							<format>xml</format>
+						</formats>
+						<check/>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 	</build>
 
 
