@@ -1,4 +1,4 @@
-package com.fast.family.commons.validate.code;
+package com.fast.family.security.validate.code;
 
 import lombok.extern.slf4j.Slf4j;
 import org.redisson.api.RMap;
@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @created 2018/9/23-23:26
  */
 @Slf4j
-public class RedisValidateCodeRepository implements ValidateCodeRepository{
+public class RedisValidateCodeRepository implements ValidateCodeRepository {
 
     private static final String VALIDATE_CODE = "validateCode";
 
@@ -19,7 +19,7 @@ public class RedisValidateCodeRepository implements ValidateCodeRepository{
     private RedissonClient redissonClient;
 
     @Override
-    public void save(String key,ValidateCode validateCode, ValidateCodeType validateCodeType) {
+    public void save(String key, ValidateCode validateCode, ValidateCodeType validateCodeType) {
         RMap<String,ValidateCode> rMap = redissonClient.getMap(VALIDATE_CODE);
         rMap.put(key,validateCode);
     }

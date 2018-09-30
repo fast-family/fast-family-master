@@ -15,6 +15,11 @@ public class SmsCodeAuthenticationToken extends AbstractAuthenticationToken{
 
     private final Object principal;
 
+    public SmsCodeAuthenticationToken(Object principal) {
+        super(null);
+        this.principal = principal;
+    }
+
     public SmsCodeAuthenticationToken(Collection<? extends GrantedAuthority> authorities, Object principal) {
         super(authorities);
         this.principal = principal;
@@ -27,6 +32,6 @@ public class SmsCodeAuthenticationToken extends AbstractAuthenticationToken{
 
     @Override
     public Object getPrincipal() {
-        return null;
+        return this.principal;
     }
 }

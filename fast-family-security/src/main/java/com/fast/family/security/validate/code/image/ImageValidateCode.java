@@ -1,6 +1,6 @@
-package com.fast.family.commons.validate.code.image;
+package com.fast.family.security.validate.code.image;
 
-import com.fast.family.commons.validate.code.ValidateCode;
+import com.fast.family.security.validate.code.ValidateCode;
 import lombok.Data;
 
 import java.awt.image.BufferedImage;
@@ -11,12 +11,12 @@ import java.awt.image.BufferedImage;
  * @created 2018/9/27-22:36
  */
 @Data
-public class ImageCode extends ValidateCode{
+public class ImageValidateCode extends ValidateCode {
 
     private BufferedImage bufferedImage;
 
 
-    public ImageCode(BufferedImage bufferedImage) {
+    public ImageValidateCode(BufferedImage bufferedImage) {
         this.bufferedImage = bufferedImage;
     }
 }

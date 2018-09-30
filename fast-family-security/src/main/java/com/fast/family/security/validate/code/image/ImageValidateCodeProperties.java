@@ -1,6 +1,5 @@
-package com.fast.family.commons.validate.code.image;
+package com.fast.family.security.validate.code.image;
 
-import com.fast.family.commons.validate.code.ValidateCodeProperties;
 import lombok.Data;
 import lombok.Getter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -12,7 +11,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  */
 @Data
 @ConfigurationProperties(prefix = "fast.family.validate.code.image")
-public class ImageCodeProperties extends ValidateCodeProperties{
+public class ImageValidateCodeProperties {
 
 
     @Getter

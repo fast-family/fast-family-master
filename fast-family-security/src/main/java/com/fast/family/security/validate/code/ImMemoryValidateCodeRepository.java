@@ -1,4 +1,4 @@
-package com.fast.family.commons.validate.code;
+package com.fast.family.security.validate.code;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -12,12 +12,12 @@ import java.util.concurrent.ConcurrentHashMap;
  * @created 2018/9/23-23:26
  */
 @Slf4j
-public class ImMemoryValidateCodeRepository implements ValidateCodeRepository{
+public class ImMemoryValidateCodeRepository implements ValidateCodeRepository {
 
     private static Map<String,ValidateCode> codeMap = new ConcurrentHashMap<>();
 
     @Override
-    public void save(String key,ValidateCode validateCode, ValidateCodeType validateCodeType) {
+    public void save(String key, ValidateCode validateCode, ValidateCodeType validateCodeType) {
         codeMap.put(key,validateCode);
     }
 

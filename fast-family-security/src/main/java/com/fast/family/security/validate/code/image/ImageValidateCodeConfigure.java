@@ -1,7 +1,9 @@
-package com.fast.family.commons.validate.code.image;
+package com.fast.family.security.validate.code.image;
 
 import com.google.code.kaptcha.impl.DefaultKaptcha;
 import com.google.code.kaptcha.util.Config;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,11 +16,12 @@ import java.util.Properties;
  * @created 2018/9/27-23:30
  */
 @Configuration
-@EnableConfigurationProperties({ImageCodeProperties.class})
-public class ImageCodeConfigure {
+@ConditionalOnProperty(name = "fast.family.validate.code.image.enabled",havingValue = "true")
+@EnableConfigurationProperties({ImageValidateCodeProperties.class})
+public class ImageValidateCodeConfigure {
 
     @Bean
-    public DefaultKaptcha defaultKaptcha(ImageCodeProperties codeProperties){
+    public DefaultKaptcha defaultKaptcha(ImageValidateCodeProperties codeProperties){
         DefaultKaptcha defaultKaptcha = new DefaultKaptcha();
         Properties properties = new Properties();
         properties.setProperty("kaptcha.border",codeProperties.getBorder().getBorder());
