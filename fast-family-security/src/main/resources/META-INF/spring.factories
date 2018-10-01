@@ -1,0 +1,4 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.fast.family.security.SecurityAutoConfiguration,\
+  com.fast.family.security.validate.code.image.ImageValidateCodeAutoConfiguration,\
+  com.fast.family.security.validate.code.sms.SmsValidateCodeAutoConfiguration

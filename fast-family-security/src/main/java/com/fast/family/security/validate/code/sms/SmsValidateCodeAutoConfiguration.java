@@ -12,5 +12,5 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ConditionalOnProperty(name = "fast.family.validate.code.sms.enabled",havingValue = "true")
 @EnableConfigurationProperties({SmsValidateCodeProperties.class})
-public class SmsValidateCodeConfigure {
+public class SmsValidateCodeAutoConfiguration {
 }

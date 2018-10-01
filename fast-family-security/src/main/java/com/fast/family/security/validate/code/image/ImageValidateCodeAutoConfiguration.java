@@ -18,7 +18,7 @@ import java.util.Properties;
 @Configuration
 @ConditionalOnProperty(name = "fast.family.validate.code.image.enabled",havingValue = "true")
 @EnableConfigurationProperties({ImageValidateCodeProperties.class})
-public class ImageValidateCodeConfigure {
+public class ImageValidateCodeAutoConfiguration {
 
     @Bean
     public DefaultKaptcha defaultKaptcha(ImageValidateCodeProperties codeProperties){
