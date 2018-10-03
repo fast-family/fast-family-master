@@ -1,14 +1,17 @@
 # fast-family-master
 
-fast-family-master是一个快速开发框架,减少业务开发人员工作量.砍掉常规代码生成器.
+fast-family-master是一个快速开发框架,在框架内部提供大量基类，从而为了减少开发人员工作量，以及降低开发难度，让开发人员更关注与业务。
+绝对是接私活以及中小型项目的福音。
 
 
 
 # 模块
 
-fast-family-security (认证模块提供jwt生成,验证功能)
+fast-family-security (认证模块)
 
-fast-family-mvc (mvc模块提供单表api功能及应答响应日志打印,集成swagger,tomcat优雅停机)
+fast-family-mvc (mvc模块)
+
+fast-family-datasource(多数据源模块)
 
 fast-family-commons (通用模块)
 
