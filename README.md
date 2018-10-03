@@ -13,6 +13,8 @@ fast-family-mvc (mvc模块)
 
 fast-family-datasource(多数据源模块)
 
+fast-family-generator(代码生成器模块)
+
 fast-family-commons (通用模块)
 
 fast-family-utils (工具类模块)
