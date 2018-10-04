@@ -1,2 +1,4 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.fast.family.mvc.SpringMvcAutoConfigre
+  com.fast.family.mvc.SpringMvcAutoConfigre,\
+  com.fast.family.mvc.swagger.Swagger2AutoConfigre,\
+  com.fast.family.mvc.tomcat.TomcatGracefulShutdownAutoConfiguration

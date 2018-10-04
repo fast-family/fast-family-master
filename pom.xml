@@ -40,8 +40,7 @@
 		<module>fast-family-commons</module>
 		<module>fast-family-mvc</module>
 		<module>fast-family-security</module>
-		<module>fast-family-swagger</module>
-		<module>fast-family-tomcat</module>
+		<module>fast-family-datasource</module>
 		<module>fast-family-utils</module>
 	</modules>
 
