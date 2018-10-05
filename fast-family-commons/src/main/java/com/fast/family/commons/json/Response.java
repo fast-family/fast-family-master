@@ -1,5 +1,7 @@
 package com.fast.family.commons.json;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonView;
 import lombok.Data;
 
 /**
@@ -8,20 +10,32 @@ import lombok.Data;
  * @created 2018/9/20-23:47
  */
 @Data
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Response<T> {
 
+    @JsonView(ResponseView.class)
     private int code = 200;
-    private String message;
+
+    @JsonView(ResponseView.class)
+    private String message;//用于给用户展示
+
+    @JsonView(ResponseView.class)
     private T data;
-    private String detailMessage;
+
+    @JsonView(ResponseView.class)
+    private String detailMessage;//用于内部定位错误
+
+    interface ResponseView{
+
+    }
 
 
     public static <T> Response<T> ok(){
-        return new Response<>();
+        return ok(null);
     }
 
     public static <T> Response<T> ok(T t){
-        return ok(t,200,"success");
+        return ok(t,ResponseCode.SUCCESS.getCode(),ResponseCode.SUCCESS.getMsg());
     }
 
     public static <T> Response<T> ok(T t,int code, String message){
