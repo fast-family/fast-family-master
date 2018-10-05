@@ -9,6 +9,5 @@ import org.springframework.context.annotation.Configuration;
  * @created 2018/10/4-12:40
  */
 @Configuration
-@EnableConfigurationProperties({HikariCPProperties.class})
 public class HikariCPPropertiesAutoConfigure {
 }

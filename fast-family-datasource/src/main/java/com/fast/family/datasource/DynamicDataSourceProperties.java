@@ -17,10 +17,10 @@ import java.util.Map;
 @ConfigurationProperties(prefix = "fast.family")
 public class DynamicDataSourceProperties {
 
-    private final HikariCPProperties hikaricp = new HikariCPProperties();
+    private  HikariCPProperties hikaricp = new HikariCPProperties();
 
-    private final DruidDataSourceProperties druid = new DruidDataSourceProperties();
+    private  DruidDataSourceProperties druid = new DruidDataSourceProperties();
 
-    private final Map<String,DynamicDataSourceProperties> datasource = new HashMap<>();
+    private  Map<String,DynamicDataSourceProperties> datasource = new HashMap<>();
 
 }

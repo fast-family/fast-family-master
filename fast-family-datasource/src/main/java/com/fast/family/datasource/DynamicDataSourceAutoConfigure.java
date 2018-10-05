@@ -1,6 +1,7 @@
 package com.fast.family.datasource;
 
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -10,6 +11,8 @@ import org.springframework.context.annotation.Configuration;
  * @created 2018/10/1-21:06
  */
 @Configuration
+@ConditionalOnClass(DynamicDataSourceProperties.class)
+@EnableConfigurationProperties({DynamicDataSourceProperties.class})
 public class DynamicDataSourceAutoConfigure {
 
     @Bean

@@ -9,6 +9,5 @@ import org.springframework.context.annotation.Configuration;
  * @created 2018/10/2-18:41
  */
 @Configuration
-@EnableConfigurationProperties({DruidDataSourceProperties.class})
 public class DruidDynamicDataSourceAutoConfigure {
 }
