@@ -25,20 +25,7 @@ fast-family-utils (工具类模块)
 
 # 详细文档
 
-我特么还在写......
-
-
-
-# 效果
-
-单表crud:
-
-![1537952488426](C:\Users\ADMINI~1\AppData\Local\Temp\1537952488426.png)
-
-应答访问日志打印:
-
-​	![1537952577399](C:\Users\ADMINI~1\AppData\Local\Temp\1537952577399.png)
-
+https://github.com/fast-family/fast-family-master/wiki
 
 
 
