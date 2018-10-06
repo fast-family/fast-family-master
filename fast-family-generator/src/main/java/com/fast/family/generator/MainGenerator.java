@@ -15,10 +15,16 @@ public class MainGenerator {
 
     public static void main(String[] args) throws IOException {
 
-        generatorCode( "SysUser",
-                "用户信息", "user", "sys_user",
-                generatorConfig());
-
+        /**
+         * 1.类名称
+         * 2.类描述
+         * 3.类路径
+         * 4.表名
+         * 5.全局配置信息
+         */
+        MainGenerator.generatorCode( "SysUser",
+                "用户信息", "user",
+                "sys_user", generatorConfig());
     }
 
     private static GeneratorConfig generatorConfig(){
@@ -28,7 +34,8 @@ public class MainGenerator {
         generatorConfig.setDbPassword("root");
         generatorConfig.setDbUser("root");
         generatorConfig.setPort(3306);
-        generatorConfig.setSrcBasePath("src//main//java//com//fast//family//example//");
+        generatorConfig.setPackageName("com.fast.family.mvc.example");
+        generatorConfig.setSrcBasePath("F://github//fast-family-example//fast-family-mvc-example//src//main//java//com//fast//family//mvc//example//");
         return generatorConfig;
     }
 
