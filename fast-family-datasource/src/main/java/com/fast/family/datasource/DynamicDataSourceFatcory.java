@@ -28,22 +28,22 @@ public class DynamicDataSourceFatcory {
 
     private static DataSource createHikariCPDataSource(HikariCPProperties properties){
         HikariDataSource hikariDataSource = new HikariDataSource();
-        properties.setUsername(properties.getUsername());
-        properties.setPassword(properties.getPassword());
-        properties.setDriverClassName(properties.getDriverClassName());
-        properties.setUrl(properties.getUrl());
-        properties.setConnectionTimeout(properties.getConnectionTimeout());
-        properties.setIdleTimeout(properties.getIdleTimeout());
-        properties.setMaximumPoolSize(properties.getMaximumPoolSize());
-        properties.setMaxLifetime(properties.getMaxLifetime());
-        properties.setMinimumIdle(properties.getMinimumIdle());
-        properties.setInitializationFailTimeout(properties.getInitializationFailTimeout());
-        properties.setIsolateInternalQueries(properties.isIsolateInternalQueries());
-        properties.setAllowPoolSuspension(properties.isAllowPoolSuspension());
-        properties.setReadOnly(properties.isReadOnly());
-        properties.setRegisterMbeans(properties.isRegisterMbeans());
-        properties.setValidationTimeout(properties.getValidationTimeout());
-        properties.setLeakDetectionThreshold(properties.getLeakDetectionThreshold());
+        hikariDataSource.setUsername(properties.getUsername());
+        hikariDataSource.setPassword(properties.getPassword());
+        hikariDataSource.setDriverClassName(properties.getDriverClassName());
+        hikariDataSource.setJdbcUrl(properties.getUrl());
+        hikariDataSource.setConnectionTimeout(properties.getConnectionTimeout());
+        hikariDataSource.setIdleTimeout(properties.getIdleTimeout());
+        hikariDataSource.setMaximumPoolSize(properties.getMaximumPoolSize());
+        hikariDataSource.setMaxLifetime(properties.getMaxLifetime());
+        hikariDataSource.setMinimumIdle(properties.getMinimumIdle());
+        hikariDataSource.setInitializationFailTimeout(properties.getInitializationFailTimeout());
+        hikariDataSource.setIsolateInternalQueries(properties.isIsolateInternalQueries());
+        hikariDataSource.setAllowPoolSuspension(properties.isAllowPoolSuspension());
+        hikariDataSource.setReadOnly(properties.isReadOnly());
+        hikariDataSource.setRegisterMbeans(properties.isRegisterMbeans());
+        hikariDataSource.setValidationTimeout(properties.getValidationTimeout());
+        hikariDataSource.setLeakDetectionThreshold(properties.getLeakDetectionThreshold());
         return hikariDataSource;
     }
 

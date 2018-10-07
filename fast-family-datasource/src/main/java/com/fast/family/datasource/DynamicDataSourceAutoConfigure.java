@@ -15,8 +15,10 @@ import org.springframework.context.annotation.Configuration;
 @EnableConfigurationProperties({DynamicDataSourceProperties.class})
 public class DynamicDataSourceAutoConfigure {
 
+
+
     @Bean
-    public DynamicDataSource dynamicDataSource(){
-        return new SimpleDynamicDataSource();
+    public DynamicRoutingDataSource routingDataSource(){
+        return new DynamicRoutingDataSource();
     }
 }
