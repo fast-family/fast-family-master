@@ -1,7 +1,9 @@
 package com.fast.family.mvc.generic.controller;
 
 import com.fast.family.commons.json.Response;
+import com.fast.family.commons.page.Pageble;
 import com.fast.family.mvc.generic.entity.GenericEntity;
+import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,6 +18,12 @@ import java.util.List;
  */
 public interface SelectController<T extends GenericEntity,PK extends Serializable>
         extends Controller<T,PK>{
+
+    @ApiOperation("分页查询")
+    @GetMapping("/search")
+    default Response<PageInfo<T>> search(T t, Pageble pageble){
+        return Response.ok(this.getService().search(t,pageble));
+    }
 
     @ApiOperation("查询(主键)")
     @GetMapping("/select")
@@ -52,4 +60,5 @@ public interface SelectController<T extends GenericEntity,PK extends Serializabl
     default Response existsWithPrimaryKey(@RequestParam PK id){
         return Response.ok(this.getService().existsWithPrimaryKey(id));
     }
+
 }

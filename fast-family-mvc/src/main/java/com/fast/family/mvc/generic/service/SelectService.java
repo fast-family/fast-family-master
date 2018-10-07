@@ -1,6 +1,10 @@
 package com.fast.family.mvc.generic.service;
 
+import com.fast.family.commons.page.Pageble;
 import com.fast.family.mvc.generic.entity.GenericEntity;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.github.pagehelper.PageRowBounds;
 
 import java.io.Serializable;
 import java.util.List;
@@ -15,6 +19,12 @@ import java.util.stream.Stream;
 public interface SelectService<T extends GenericEntity,PK extends Serializable>
         extends Service<T,PK>{
 
+    default PageInfo<T> search(T t, Pageble pageble){
+        PageHelper.startPage(pageble.getPage(),pageble.getSize());
+        List<T> list = this.getMapper().selectByExample(t);
+        PageInfo<T> pageInfo = new PageInfo<>(list);
+        return pageInfo;
+    }
 
     default Optional<T> selectById(PK id){
         return Optional.ofNullable(this.getMapper().selectByPrimaryKey(id));

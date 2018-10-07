@@ -24,11 +24,11 @@ import org.springframework.stereotype.Service;
 public class ${className}ServiceImpl extends GenericServiceImpl<${className},Long> implements ${className}Service{
 
     @Autowired
-    private ${className}Mapper ${className?lower_case}Mapper;
+    private ${className}Mapper ${className?uncap_first}Mapper;
 
 
     @Override
     public GenericMapper<${className}, Long> getMapper() {
-        return ${className?lower_case}Mapper;
+        return ${className?uncap_first}Mapper;
     }
 }

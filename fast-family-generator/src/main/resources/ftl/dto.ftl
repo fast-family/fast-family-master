@@ -21,12 +21,12 @@ public class ${className}DTO extends AbstractPersistableBusinessObjectAdapter<${
     }
 
     @Override
-    protected void customizeConvert(${className} ${className?lower_case}) {
+    protected void customizeConvert(${className} ${className?uncap_first}) {
 
     }
 
     @Override
-    protected void customizeFill(${className} ${className?lower_case}) {
+    protected void customizeFill(${className} ${className?uncap_first}) {
 
     }
 }

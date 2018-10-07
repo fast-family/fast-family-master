@@ -46,7 +46,7 @@ public class MainGenerator {
         ServiceGenerator.genServiceCode(className, classComment, generatorConfig);
         EntityGenerator.generatorSingleEntity(tableName, className, classComment,generatorConfig);
         MapperGenerator.genMapperInterface(className, classComment, generatorConfig);
-//        MapperGenerator.genResourceXML(moduleName, className, classComment, tableName, versionNo, packageName);
+        MapperGenerator.genMapperXML(tableName,className,classComment,generatorConfig);
         DTOGenerator.genResourceCode(className, classComment,generatorConfig);
     }
 }

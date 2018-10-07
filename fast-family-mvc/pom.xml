@@ -22,12 +22,14 @@
 		<java.version>1.8</java.version>
 
 		<mybatis.version>1.3.2</mybatis.version>
+		<pagehelper.version>1.2.7</pagehelper.version>
 		<tk.mapper.version>2.0.4</tk.mapper.version>
 		<springfox.swagger2.verion>2.7.0</springfox.swagger2.verion>
 		<springfox.swagger.ui.version>2.7.0</springfox.swagger.ui.version>
 	</properties>
 
 	<dependencies>
+
 
 		<dependency>
 			<groupId>io.springfox</groupId>
@@ -39,6 +41,12 @@
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger-ui</artifactId>
 			<version>${springfox.swagger.ui.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.pagehelper</groupId>
+			<artifactId>pagehelper-spring-boot-starter</artifactId>
+			<version>${pagehelper.version}</version>
 		</dependency>
 
 		<dependency>
