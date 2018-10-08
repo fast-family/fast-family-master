@@ -9,7 +9,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @created 2018/9/25-20:53
  */
 @Data
-@ConfigurationProperties(prefix = "fast.family.commons")
+@ConfigurationProperties(prefix = "fast.family.mvc")
 public class SpringMvcProperties {
 
     private boolean isIncludeRequest = true;

@@ -21,7 +21,7 @@ import java.util.Optional;
 @ConditionalOnClass(Docket.class)
 @ConditionalOnProperty(value = "fast.family.swagger2.enabled",matchIfMissing = true)
 @EnableConfigurationProperties({Swagger2ApiInfoProperties.class,Swagger2RestApiProperties.class})
-public class Swagger2AutoConfigre {
+public class Swagger2AutoConfigure {
 
 
     @Bean
