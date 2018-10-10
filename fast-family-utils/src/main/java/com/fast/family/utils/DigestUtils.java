@@ -11,16 +11,8 @@ public class DigestUtils {
 
 
 
-//    /**
-//     * 根据摘要算法计算文件摘要值
-//     * @param alg
-//     * @param file
-//     * @return
-//     */
-//    public static String digest(String alg,String file){
-//        byte[] digest = digestCommonAlg(alg,file);
-//        return new String(digest);
-//    }
+
+
 
     private static byte[] digestCommonAlg(String alg,String file){
         FileInputStream fis = null;
