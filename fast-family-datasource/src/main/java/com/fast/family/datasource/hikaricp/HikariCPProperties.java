@@ -1,5 +1,6 @@
 package com.fast.family.datasource.hikaricp;
 
+import com.fast.family.datasource.DataSourceProperties;
 import lombok.Data;
 
 /**
@@ -8,14 +9,10 @@ import lombok.Data;
  * @created 2018/10/2-18:36
  */
 @Data
-public class HikariCPProperties {
+public class HikariCPProperties extends DataSourceProperties {
 
 
     //配置根据  https://github.com/brettwooldridge/HikariCP  文档来的
-    private String username;
-    private String password;
-    private String url;
-    private String driverClassName = null;
     private boolean autoCommit = true;
     private int connectionTimeout = 30000;
     private int idleTimeout = 600000;

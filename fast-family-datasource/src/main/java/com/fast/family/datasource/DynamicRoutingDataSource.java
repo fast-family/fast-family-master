@@ -18,10 +18,13 @@ import java.util.Map;
  */
 @Slf4j
 public class DynamicRoutingDataSource extends AbstractRoutingDataSource
-        implements DynamicDataSource,InitializingBean {
+        implements InitializingBean {
 
     @Autowired
     private DynamicDataSourceProperties properties;
+
+    @Autowired
+    private DynamicDataSource dynamicDataSource;
 
     @Override
     protected DataSource determineTargetDataSource() {
@@ -42,21 +45,8 @@ public class DynamicRoutingDataSource extends AbstractRoutingDataSource
 
     @Override
     public void afterPropertiesSet() {
-       this.setTargetDataSources(this.loadDataSource());
+       this.setTargetDataSources(dynamicDataSource.loadDataSource());
     }
 
-    @Override
-    public Map<Object,Object> loadDataSource() {
-        Map<String,DynamicDataSourceProperties> map = properties.getDatasource();
-        Iterator<Map.Entry<String, DynamicDataSourceProperties>> iterator = map.entrySet().iterator();
 
-        Map<Object,Object> dataSourceMap = new HashMap<>();
-        while (iterator.hasNext()){
-            Map.Entry<String,DynamicDataSourceProperties> entry = iterator.next();
-            DataSource dataSource = DynamicDataSourceFatcory.createDateSource(entry.getValue());
-            dataSourceMap.put(entry.getKey(),dataSource);
-            DynamicDataSourceCacheUtils.put(entry.getKey(),dataSource);
-        }
-        return dataSourceMap;
-    }
 }

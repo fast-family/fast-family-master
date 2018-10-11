@@ -1,5 +1,6 @@
 package com.fast.family.datasource.druid;
 
+import com.fast.family.datasource.DataSourceProperties;
 import lombok.Data;
 
 import java.util.Properties;
@@ -10,11 +11,8 @@ import java.util.Properties;
  * @created 2018/10/2-18:39
  */
 @Data
-public class DruidDataSourceProperties {
-    private String username;
-    private String password;
-    private String url;
-    private String driverClassName;
+public class DruidDataSourceProperties extends DataSourceProperties {
+
     private int initialSize = 0;
     private int maxActive = 8;
     private int minIdle = 0;

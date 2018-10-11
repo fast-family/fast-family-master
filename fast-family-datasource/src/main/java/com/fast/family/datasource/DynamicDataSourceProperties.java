@@ -2,6 +2,7 @@ package com.fast.family.datasource;
 
 import com.fast.family.datasource.druid.DruidDataSourceProperties;
 import com.fast.family.datasource.hikaricp.HikariCPProperties;
+import com.fast.family.datasource.xa.AtomikosDataSouceProperties;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
@@ -20,6 +21,8 @@ public class DynamicDataSourceProperties {
     private HikariCPProperties hikaricp;
 
     private DruidDataSourceProperties druid;
+
+    private AtomikosDataSouceProperties atomikos;
 
     private Map<String,DynamicDataSourceProperties> datasource = new HashMap<>();
 

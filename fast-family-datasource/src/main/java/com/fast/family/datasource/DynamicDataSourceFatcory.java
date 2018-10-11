@@ -1,10 +1,13 @@
 package com.fast.family.datasource;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import com.atomikos.jdbc.AtomikosDataSourceBean;
 import com.fast.family.datasource.druid.DruidDataSourceProperties;
 import com.fast.family.datasource.exception.DynamicDataSourceException;
 import com.fast.family.datasource.hikaricp.HikariCPProperties;
+import com.fast.family.datasource.xa.AtomikosDataSouceProperties;
 import com.zaxxer.hikari.HikariDataSource;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.sql.DataSource;
 import java.sql.SQLException;
@@ -14,6 +17,7 @@ import java.sql.SQLException;
  * @version 1.0
  * @created 2018/10/3-11:28
  */
+@Slf4j
 public class DynamicDataSourceFatcory {
 
     public static DataSource createDateSource(DynamicDataSourceProperties properties){
@@ -21,10 +25,34 @@ public class DynamicDataSourceFatcory {
             return createDruidDataSource(properties.getDruid());
         } else if (properties.getHikaricp() != null){
             return createHikariCPDataSource(properties.getHikaricp());
+        } else if (properties.getAtomikos() != null){
+            return createAtomikosDataSouce(properties.getAtomikos());
         }
         throw new DynamicDataSourceException("数据源创建失败");
     }
 
+    private static DataSource createAtomikosDataSouce(AtomikosDataSouceProperties properties){
+        AtomikosDataSourceBean dataSourceBean = new AtomikosDataSourceBean();
+        dataSourceBean.setXaDataSourceClassName(properties.getXaDataSourceClassName());
+        dataSourceBean.setBorrowConnectionTimeout(properties.getBorrowConnectionTimeout());
+        dataSourceBean.setDefaultIsolationLevel(properties.getDefaultIsolationLevel());
+        try {
+            dataSourceBean.setLoginTimeout(properties.getLoginTimeout());
+        } catch (SQLException e) {
+            log.warn("init atomikos datasource param loginTimeout",e);
+        }
+        dataSourceBean.setUniqueResourceName(properties.getUniqueResourceName());
+        dataSourceBean.setMaintenanceInterval(properties.getMaintenanceInterval());
+        dataSourceBean.setMaxIdleTime(properties.getMaxIdleTime());
+        dataSourceBean.setMaxLifetime(properties.getMaxLifetime());
+        dataSourceBean.setMaxPoolSize(properties.getMaxPoolSize());
+        dataSourceBean.setMinPoolSize(properties.getMinPoolSize());
+        dataSourceBean.setReapTimeout(properties.getReapTimeout());
+        dataSourceBean.setTestQuery(properties.getTestQuery());
+        dataSourceBean.setXaProperties(properties.getXaProperties());
+        dataSourceBean.setXaDataSourceClassName("com.mysql.jdbc.jdbc2.optional.MysqlXADataSource");
+        return dataSourceBean;
+    }
 
     private static DataSource createHikariCPDataSource(HikariCPProperties properties){
         HikariDataSource hikariDataSource = new HikariDataSource();
