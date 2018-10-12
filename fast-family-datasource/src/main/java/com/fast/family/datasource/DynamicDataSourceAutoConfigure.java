@@ -16,11 +16,6 @@ import org.springframework.context.annotation.Configuration;
 public class DynamicDataSourceAutoConfigure {
 
 
-//    @Bean
-//    public DynamicDataSource defaultDynamicDataSource(){
-//        return new DefaultDynamicDataSouce();
-//    }
-
     @Bean
     public DynamicRoutingDataSource routingDataSource(){
         return new DynamicRoutingDataSource();

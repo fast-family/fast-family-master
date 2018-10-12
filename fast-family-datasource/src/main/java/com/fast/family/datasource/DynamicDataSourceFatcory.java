@@ -1,12 +1,10 @@
 package com.fast.family.datasource;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import com.alibaba.druid.pool.xa.DruidXADataSource;
 import com.atomikos.jdbc.AtomikosDataSourceBean;
 import com.fast.family.datasource.druid.DruidDataSourceProperties;
 import com.fast.family.datasource.exception.DynamicDataSourceException;
-import com.fast.family.datasource.hikaricp.HikariCPProperties;
-import com.fast.family.datasource.xa.AtomikosDataSouceProperties;
-import com.zaxxer.hikari.HikariDataSource;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.sql.DataSource;
@@ -21,58 +19,68 @@ import java.sql.SQLException;
 public class DynamicDataSourceFatcory {
 
     public static DataSource createDateSource(DynamicDataSourceProperties properties){
-        if (properties.getDruid() != null){
+        if (properties.getAtomikos() != null && properties.getDatasource() instanceof DruidXADataSource){
+            return createAtomikosDataSouce(properties);
+        } else if (properties.getDruid() != null && properties.getDatasource() instanceof DruidDataSource){
             return createDruidDataSource(properties.getDruid());
-        } else if (properties.getHikaricp() != null){
-            return createHikariCPDataSource(properties.getHikaricp());
-        } else if (properties.getAtomikos() != null){
-            return createAtomikosDataSouce(properties.getAtomikos());
         }
         throw new DynamicDataSourceException("数据源创建失败");
     }
 
-    private static DataSource createAtomikosDataSouce(AtomikosDataSouceProperties properties){
+    private static DataSource createAtomikosDataSouce(DynamicDataSourceProperties properties){
         AtomikosDataSourceBean dataSourceBean = new AtomikosDataSourceBean();
-        dataSourceBean.setXaDataSourceClassName(properties.getXaDataSourceClassName());
-        dataSourceBean.setBorrowConnectionTimeout(properties.getBorrowConnectionTimeout());
-        dataSourceBean.setDefaultIsolationLevel(properties.getDefaultIsolationLevel());
+        dataSourceBean.setXaDataSourceClassName(properties.getAtomikos().getXaDataSourceClassName());
+        dataSourceBean.setBorrowConnectionTimeout(properties.getAtomikos().getBorrowConnectionTimeout());
+        dataSourceBean.setDefaultIsolationLevel(properties.getAtomikos().getDefaultIsolationLevel());
         try {
-            dataSourceBean.setLoginTimeout(properties.getLoginTimeout());
+            dataSourceBean.setLoginTimeout(properties.getAtomikos().getLoginTimeout());
         } catch (SQLException e) {
             log.warn("init atomikos datasource param loginTimeout",e);
         }
-        dataSourceBean.setUniqueResourceName(properties.getUniqueResourceName());
-        dataSourceBean.setMaintenanceInterval(properties.getMaintenanceInterval());
-        dataSourceBean.setMaxIdleTime(properties.getMaxIdleTime());
-        dataSourceBean.setMaxLifetime(properties.getMaxLifetime());
-        dataSourceBean.setMaxPoolSize(properties.getMaxPoolSize());
-        dataSourceBean.setMinPoolSize(properties.getMinPoolSize());
-        dataSourceBean.setReapTimeout(properties.getReapTimeout());
-        dataSourceBean.setTestQuery(properties.getTestQuery());
-        dataSourceBean.setXaProperties(properties.getXaProperties());
+        dataSourceBean.setUniqueResourceName(properties.getAtomikos().getUniqueResourceName());
+        dataSourceBean.setMaintenanceInterval(properties.getAtomikos().getMaintenanceInterval());
+        dataSourceBean.setMaxIdleTime(properties.getAtomikos().getMaxIdleTime());
+        dataSourceBean.setMaxLifetime(properties.getAtomikos().getMaxLifetime());
+        dataSourceBean.setMaxPoolSize(properties.getAtomikos().getMaxPoolSize());
+        dataSourceBean.setMinPoolSize(properties.getAtomikos().getMinPoolSize());
+        dataSourceBean.setReapTimeout(properties.getAtomikos().getReapTimeout());
+        dataSourceBean.setTestQuery(properties.getAtomikos().getTestQuery());
+        dataSourceBean.setXaDataSource(createXADruidDataSource());
+        dataSourceBean.setXaProperties(properties.getAtomikos().getXaProperties());
         dataSourceBean.setXaDataSourceClassName("com.mysql.jdbc.jdbc2.optional.MysqlXADataSource");
         return dataSourceBean;
     }
 
-    private static DataSource createHikariCPDataSource(HikariCPProperties properties){
-        HikariDataSource hikariDataSource = new HikariDataSource();
-        hikariDataSource.setUsername(properties.getUsername());
-        hikariDataSource.setPassword(properties.getPassword());
-        hikariDataSource.setDriverClassName(properties.getDriverClassName());
-        hikariDataSource.setJdbcUrl(properties.getUrl());
-        hikariDataSource.setConnectionTimeout(properties.getConnectionTimeout());
-        hikariDataSource.setIdleTimeout(properties.getIdleTimeout());
-        hikariDataSource.setMaximumPoolSize(properties.getMaximumPoolSize());
-        hikariDataSource.setMaxLifetime(properties.getMaxLifetime());
-        hikariDataSource.setMinimumIdle(properties.getMinimumIdle());
-        hikariDataSource.setInitializationFailTimeout(properties.getInitializationFailTimeout());
-        hikariDataSource.setIsolateInternalQueries(properties.isIsolateInternalQueries());
-        hikariDataSource.setAllowPoolSuspension(properties.isAllowPoolSuspension());
-        hikariDataSource.setReadOnly(properties.isReadOnly());
-        hikariDataSource.setRegisterMbeans(properties.isRegisterMbeans());
-        hikariDataSource.setValidationTimeout(properties.getValidationTimeout());
-        hikariDataSource.setLeakDetectionThreshold(properties.getLeakDetectionThreshold());
-        return hikariDataSource;
+
+    private static DataSource createXADruidDataSource(DruidDataSourceProperties properties){
+        DruidXADataSource druidXADataSource = new DruidXADataSource();
+        druidXADataSource.setUrl(properties.getUrl());
+        druidXADataSource.setUsername(properties.getUsername());
+        druidXADataSource.setPassword(properties.getPassword());
+        druidXADataSource.setDriverClassName(properties.getDriverClassName());
+        druidXADataSource.setInitialSize(properties.getInitialSize());
+        druidXADataSource.setMaxActive(properties.getMaxActive());
+        druidXADataSource.setMinIdle(properties.getMinIdle());
+        druidXADataSource.setMaxWait(properties.getMaxWait());
+        druidXADataSource.setTimeBetweenEvictionRunsMillis(properties.getTimeBetweenEvictionRunsMillis());
+        druidXADataSource.setMinEvictableIdleTimeMillis(properties.getMinEvictableIdleTimeMillis());
+        druidXADataSource.setMaxEvictableIdleTimeMillis(properties.getMaxEvictableIdleTimeMillis());
+        druidXADataSource.setValidationQuery(properties.getValidationQuery());
+        druidXADataSource.setValidationQueryTimeout(properties.getValidationQueryTimeout());
+        druidXADataSource.setTestOnBorrow(properties.isTestOnBorrow());
+        druidXADataSource.setTestOnReturn(properties.isTestOnReturn());
+        druidXADataSource.setTestWhileIdle(properties.isTestWhileIdle());
+        druidXADataSource.setPoolPreparedStatements(properties.isPoolPreparedStatements());
+        druidXADataSource.setMaxOpenPreparedStatements(properties.getMaxOpenPreparedStatements());
+        druidXADataSource.setSharePreparedStatements(properties.isSharePreparedStatements());
+        druidXADataSource.setConnectProperties(properties.getConnectionProperties());
+        try {
+            druidXADataSource.setFilters(properties.getFilters());
+            druidXADataSource.init();
+        } catch (SQLException e) {
+            throw new DynamicDataSourceException("创建数据源失败",e);
+        }
+        return druidXADataSource;
     }
 
     private static DataSource createDruidDataSource(DruidDataSourceProperties properties){
