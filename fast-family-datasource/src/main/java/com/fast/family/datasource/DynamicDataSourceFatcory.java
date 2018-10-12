@@ -8,6 +8,7 @@ import com.fast.family.datasource.exception.DynamicDataSourceException;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.sql.DataSource;
+import javax.sql.XADataSource;
 import java.sql.SQLException;
 
 /**
@@ -45,14 +46,14 @@ public class DynamicDataSourceFatcory {
         dataSourceBean.setMinPoolSize(properties.getAtomikos().getMinPoolSize());
         dataSourceBean.setReapTimeout(properties.getAtomikos().getReapTimeout());
         dataSourceBean.setTestQuery(properties.getAtomikos().getTestQuery());
-        dataSourceBean.setXaDataSource(createXADruidDataSource());
+        dataSourceBean.setXaDataSource(createXADruidDataSource(properties.getDruid()));
         dataSourceBean.setXaProperties(properties.getAtomikos().getXaProperties());
-        dataSourceBean.setXaDataSourceClassName("com.mysql.jdbc.jdbc2.optional.MysqlXADataSource");
+        dataSourceBean.setXaDataSourceClassName("com.alibaba.druid.pool.xa.DruidXADataSource");
         return dataSourceBean;
     }
 
 
-    private static DataSource createXADruidDataSource(DruidDataSourceProperties properties){
+    private static XADataSource createXADruidDataSource(DruidDataSourceProperties properties){
         DruidXADataSource druidXADataSource = new DruidXADataSource();
         druidXADataSource.setUrl(properties.getUrl());
         druidXADataSource.setUsername(properties.getUsername());
