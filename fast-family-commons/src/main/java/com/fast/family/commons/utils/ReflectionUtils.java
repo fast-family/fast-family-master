@@ -1,9 +1,13 @@
-package com.fast.family.utils;
+package com.fast.family.commons.utils;
 
 import java.lang.reflect.Method;
 
+/**
+ * @author 张顺
+ * @version 1.0
+ * @created 2018/10/13-10:10
+ */
 public class ReflectionUtils {
-
 
     public static void makeAccessible(Method method){
         org.springframework.util.ReflectionUtils.makeAccessible(method);

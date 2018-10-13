@@ -1,8 +1,9 @@
 package com.fast.family.mvc.generic.service.domain;
 
+import com.fast.family.commons.utils.BeanUtils;
+import com.fast.family.commons.utils.ReflectionUtils;
 import com.fast.family.mvc.generic.entity.GenericEntity;
-import com.fast.family.utils.BeanUtils;
-import com.fast.family.utils.ReflectionUtils;
+
 
 public abstract class AbstractPersistableBusinessObject<T extends GenericEntity>
         implements BusinessObject{
@@ -22,7 +23,7 @@ public abstract class AbstractPersistableBusinessObject<T extends GenericEntity>
     }
 
     public final void fillFrom(final T persistableEntity){
-        BeanUtils.copyPropertiesIgnoreNull(persistableEntity,this);
+        BeanUtils.copy(persistableEntity,this);
         customizeFill(persistableEntity);
     }
 

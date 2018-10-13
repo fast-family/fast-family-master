@@ -2,7 +2,6 @@ package com.fast.family.datasource;
 
 
 import com.fast.family.datasource.druid.DruidDataSourceProperties;
-import com.fast.family.datasource.hikaricp.HikariCPProperties;
 import com.fast.family.datasource.xa.AtomikosDataSouceProperties;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

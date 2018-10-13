@@ -1,7 +1,7 @@
 package com.fast.family.mvc.filter;
 
+import com.fast.family.commons.utils.GsonUtils;
 import com.fast.family.mvc.SpringMvcProperties;
-import com.fast.family.utils.GsonUtils;
 import com.fast.family.utils.StringUtils;
 import com.fast.family.utils.WebUtils;
 import lombok.extern.slf4j.Slf4j;

@@ -1,4 +1,4 @@
-package com.fast.family.utils;
+package com.fast.family.commons.utils;
 
 import java.time.Instant;
 import java.time.LocalDate;
@@ -8,7 +8,11 @@ import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAdjusters;
 import java.util.Date;
 
-
+/**
+ * @author 张顺
+ * @version 1.0
+ * @created 2018/10/13-10:17
+ */
 public class DateTimeUtils {
 
     private static final DateTimeFormatter DATE_TIME_FORMAT = TimeFormat.YYYY_MM_DD_HH_MM_SS.formatter;
@@ -367,9 +371,4 @@ public class DateTimeUtils {
         }
 
     }
-
-    public static void main(String[] args) {
-        System.out.println();
-    }
-
 }

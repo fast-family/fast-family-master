@@ -1,4 +1,4 @@
-package com.fast.family.utils;
+package com.fast.family.commons.utils;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -8,11 +8,11 @@ import java.lang.reflect.Type;
 /**
  * @author 张顺
  * @version 1.0
- * @created 2018/9/22-15:15
+ * @created 2018/10/13-10:12
  */
 public class GsonUtils {
 
-    private static  Gson gson = new GsonBuilder()
+    private static Gson gson = new GsonBuilder()
             .enableComplexMapKeySerialization() //当Map的key为复杂对象时,需要开启该方法
             .serializeNulls() //当字段值为空或null时，依然对该字段进行转换
             .setDateFormat("yyyy-MM-dd HH:mm:ss:SSS") //时间转化为特定格式
@@ -28,5 +28,4 @@ public class GsonUtils {
     public static <T>T fromJson(String str,Type type){
         return gson.fromJson(str,type);
     }
-
 }
