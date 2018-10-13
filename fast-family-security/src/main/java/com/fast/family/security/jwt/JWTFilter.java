@@ -2,11 +2,11 @@ package com.fast.family.security.jwt;
 
 import com.fast.family.commons.web.ContentCachingRequestWrapper;
 import com.fast.family.security.SecurityProperties;
-import com.fast.family.utils.StringUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.servlet.FilterChain;

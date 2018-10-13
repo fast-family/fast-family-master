@@ -1,6 +1,5 @@
 package com.fast.family.security.mobile;
 
-import com.fast.family.utils.WebUtils;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;

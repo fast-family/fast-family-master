@@ -1,9 +1,9 @@
 package com.fast.family.security.validate.code.sms;
 
 import com.fast.family.commons.utils.DateTimeUtils;
+import com.fast.family.commons.utils.RandomUtils;
 import com.fast.family.security.validate.code.ValidateCode;
 import com.fast.family.security.validate.code.ValidateCodeGenerator;
-import com.fast.family.utils.RandomUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

@@ -2,7 +2,7 @@ package com.fast.family.security.handler;
 
 import com.fast.family.commons.json.Response;
 import com.fast.family.commons.utils.GsonUtils;
-import com.fast.family.utils.WebUtils;
+import com.fast.family.commons.utils.WebUtils;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 import org.springframework.stereotype.Component;
