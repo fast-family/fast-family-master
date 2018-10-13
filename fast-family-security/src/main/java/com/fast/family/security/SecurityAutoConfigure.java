@@ -1,5 +1,6 @@
 package com.fast.family.security;
 
+import com.fast.family.security.jwt.JWTHelper;
 import com.fast.family.security.validate.code.ImMemoryValidateCodeRepository;
 import com.fast.family.security.validate.code.RedisValidateCodeRepository;
 import com.fast.family.security.validate.code.ValidateCodeGenerator;
@@ -25,11 +26,16 @@ import java.util.Properties;
  */
 @Configuration
 @EnableConfigurationProperties({SecurityProperties.class})
+@ConditionalOnProperty(prefix = "fast.family.security",name = "enabled",havingValue = "true")
 public class SecurityAutoConfigure {
 
+    public static final String PREFIX = "fast.family.security.validate.code";
 
-    private static final String PREFIX = "fast.family.validate.code";
 
+    @Bean
+    public JWTHelper jwtHelper(){
+        return new JWTHelper();
+    }
 
     @Configuration
     @ConditionalOnClass(SecurityProperties.class)
@@ -38,6 +44,7 @@ public class SecurityAutoConfigure {
 
         @Bean
         public ValidateCodeRepository imMemoryValidateCodeRepository(){
+            System.out.println("初始化验证码存储方式为内存存储");
             return new ImMemoryValidateCodeRepository();
         }
 
@@ -56,7 +63,7 @@ public class SecurityAutoConfigure {
 
     @Configuration
     @ConditionalOnClass(ImageValidateCodeProperties.class)
-    @ConditionalOnProperty(prefix = PREFIX,name = "validateCode",havingValue = "image")
+    @ConditionalOnProperty(prefix = PREFIX,name = "image",havingValue = "true")
     @EnableConfigurationProperties({ImageValidateCodeProperties.class})
     public static class ImageValidateCodeGeneratorAutoConfigure{
 
@@ -91,6 +98,7 @@ public class SecurityAutoConfigure {
 
         @Bean
         public ValidateCodeGenerator imageValidateCodeGenerator(){
+            System.out.println("初始化图片验证码");
             return new ImageValidateCodeGenerator();
         }
 
@@ -98,12 +106,13 @@ public class SecurityAutoConfigure {
 
     @Configuration
     @ConditionalOnClass(SmsValidateCodeProperties.class)
-    @ConditionalOnProperty(prefix = PREFIX,name = "validateCode",havingValue = "sms",matchIfMissing = true)
+    @ConditionalOnProperty(prefix = PREFIX,name = "sms",havingValue = "true",matchIfMissing = true)
     @EnableConfigurationProperties({SmsValidateCodeProperties.class})
     public static class SmsValidateCodeGeneratorAutoConfigure{
 
         @Bean
         public ValidateCodeGenerator smsValidateCodeGenerator(){
+            System.out.println("初始化短信验证码");
             return new SmsValidateCodeGenerator();
         }
 
