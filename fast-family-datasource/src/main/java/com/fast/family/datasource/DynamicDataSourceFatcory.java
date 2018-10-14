@@ -19,10 +19,10 @@ import java.sql.SQLException;
 @Slf4j
 public class DynamicDataSourceFatcory {
 
-    public static DataSource createDateSource(DynamicDataSourceProperties properties){
-        if (properties.getAtomikos() != null && properties.getDatasource() instanceof DruidXADataSource){
+    public static DataSource createDateSource(DynamicDataSourceProperties properties,DataSource dataSource){
+        if (properties.getDruid() != null && dataSource instanceof DruidXADataSource){
             return createAtomikosDataSouce(properties);
-        } else if (properties.getDruid() != null && properties.getDatasource() instanceof DruidDataSource){
+        } else if (properties.getDruid() != null && dataSource instanceof DruidDataSource){
             return createDruidDataSource(properties.getDruid());
         }
         throw new DynamicDataSourceException("数据源创建失败");
@@ -30,7 +30,6 @@ public class DynamicDataSourceFatcory {
 
     private static DataSource createAtomikosDataSouce(DynamicDataSourceProperties properties){
         AtomikosDataSourceBean dataSourceBean = new AtomikosDataSourceBean();
-        dataSourceBean.setXaDataSourceClassName(properties.getAtomikos().getXaDataSourceClassName());
         dataSourceBean.setBorrowConnectionTimeout(properties.getAtomikos().getBorrowConnectionTimeout());
         dataSourceBean.setDefaultIsolationLevel(properties.getAtomikos().getDefaultIsolationLevel());
         try {

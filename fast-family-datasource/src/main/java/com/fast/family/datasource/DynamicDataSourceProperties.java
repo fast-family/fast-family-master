@@ -21,10 +21,9 @@ public class DynamicDataSourceProperties {
 
     private Class<? extends DataSource> type;
 
-
     private DruidDataSourceProperties druid;
 
-    private AtomikosDataSouceProperties atomikos;
+    private AtomikosDataSouceProperties atomikos = new AtomikosDataSouceProperties();
 
     private Map<String,DynamicDataSourceProperties> datasource = new HashMap<>();
 
