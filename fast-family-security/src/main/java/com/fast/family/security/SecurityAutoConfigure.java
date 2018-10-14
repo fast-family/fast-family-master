@@ -44,7 +44,6 @@ public class SecurityAutoConfigure {
 
         @Bean
         public ValidateCodeRepository imMemoryValidateCodeRepository(){
-            System.out.println("初始化验证码存储方式为内存存储");
             return new ImMemoryValidateCodeRepository();
         }
 
@@ -98,7 +97,6 @@ public class SecurityAutoConfigure {
 
         @Bean
         public ValidateCodeGenerator imageValidateCodeGenerator(){
-            System.out.println("初始化图片验证码");
             return new ImageValidateCodeGenerator();
         }
 
@@ -112,7 +110,6 @@ public class SecurityAutoConfigure {
 
         @Bean
         public ValidateCodeGenerator smsValidateCodeGenerator(){
-            System.out.println("初始化短信验证码");
             return new SmsValidateCodeGenerator();
         }
 

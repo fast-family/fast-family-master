@@ -17,17 +17,17 @@ public class ImMemoryValidateCodeRepository implements ValidateCodeRepository {
     private static Map<String,ValidateCode> codeMap = new ConcurrentHashMap<>();
 
     @Override
-    public void save(String key, ValidateCode validateCode, ValidateCodeType validateCodeType) {
+    public void save(String key, ValidateCode validateCode) {
         codeMap.put(key,validateCode);
     }
 
     @Override
-    public ValidateCode get(String key, ValidateCodeType validateCodeType) {
+    public ValidateCode get(String key) {
         return codeMap.get(key);
     }
 
     @Override
-    public void remove(String key, ValidateCodeType validateCodeType) {
+    public void remove(String key) {
         Iterator<Map.Entry<String,ValidateCode>> codeIterator = codeMap.entrySet().iterator();
         while (codeIterator.hasNext()){
             Map.Entry<String,ValidateCode> codeEntry = codeIterator.next();

@@ -7,9 +7,9 @@ package com.fast.family.security.validate.code;
  */
 public interface ValidateCodeRepository {
 
-    void save(String key, ValidateCode validateCode, ValidateCodeType validateCodeType);
+    void save(String key, ValidateCode validateCode);
 
-    ValidateCode get(String key, ValidateCodeType validateCodeType);
+    ValidateCode get(String key);
 
-    void remove(String key, ValidateCodeType validateCodeType);
+    void remove(String key);
 }

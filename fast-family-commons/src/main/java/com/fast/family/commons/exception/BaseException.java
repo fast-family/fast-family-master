@@ -11,9 +11,19 @@ public class BaseException extends RuntimeException{
 
     private String errMessage;
 
+    public BaseException(String message) {
+        super(message);
+        this.errMessage = message;
+    }
 
     public BaseException(int errCode, String errMessage) {
         super(errMessage);
+        this.errCode = errCode;
+        this.errMessage = errMessage;
+    }
+
+    public BaseException(String message, int errCode, String errMessage) {
+        super(message);
         this.errCode = errCode;
         this.errMessage = errMessage;
     }

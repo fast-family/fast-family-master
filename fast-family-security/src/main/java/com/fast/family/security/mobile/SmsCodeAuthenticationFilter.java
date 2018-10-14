@@ -1,6 +1,5 @@
 package com.fast.family.security.mobile;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.security.authentication.AuthenticationServiceException;
@@ -8,7 +7,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
-import org.springframework.security.web.util.matcher.AndRequestMatcher;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.web.util.matcher.RequestMatcher;
 
@@ -29,8 +27,13 @@ public class SmsCodeAuthenticationFilter extends AbstractAuthenticationProcessin
     @Getter
     private UserDetailsService userDetailsService;
 
+//    protected SmsCodeAuthenticationFilter(){
+//        super(new AntPathRequestMatcher("/authentication/mobile","POST"));
+//    }
+
+
     protected SmsCodeAuthenticationFilter(){
-        super(new AntPathRequestMatcher("/authentication/mobile","POST"));
+        super(new AntPathRequestMatcher("/system/index","POST"));
     }
 
     protected SmsCodeAuthenticationFilter(String defaultFilterProcessesUrl) {
@@ -44,9 +47,6 @@ public class SmsCodeAuthenticationFilter extends AbstractAuthenticationProcessin
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
             throws AuthenticationException, IOException, ServletException {
-        if (!request.getMethod().equals("POST")){
-            throw new AuthenticationServiceException("Authentication method not supported:" + request.getMethod());
-        }
         String mobile = getMobile(request);
         SmsCodeAuthenticationToken token =
                 new SmsCodeAuthenticationToken(mobile);

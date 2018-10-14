@@ -8,9 +8,14 @@ package com.fast.family.commons.exception;
 public class ValidateCodeException extends BaseException{
 
 
+    public ValidateCodeException(String message) {
+        super(message);
+    }
+
     public ValidateCodeException(int errCode, String errMessage) {
         super(errCode, errMessage);
     }
+
 
     public ValidateCodeException(String message, Throwable cause) {
         super(message, cause);
