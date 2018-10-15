@@ -1,11 +1,15 @@
 package com.fast.family.security.jwt;
 
 import com.fast.family.security.SecurityProperties;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.config.annotation.SecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.DefaultSecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.stereotype.Component;
 
+@Component
+@Slf4j
 public class JWTConfigurer extends
         SecurityConfigurerAdapter<DefaultSecurityFilterChain,HttpSecurity> {
 

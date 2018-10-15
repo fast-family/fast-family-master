@@ -2,6 +2,7 @@ package com.fast.family.security.ip;
 
 import com.fast.family.commons.exception.NoAuthException;
 import com.fast.family.security.SecurityProperties;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -11,6 +12,7 @@ import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.stereotype.Component;
 
 @Component
+@Slf4j
 public class CustomIpAuthencationProvider implements AuthenticationProvider{
 
     @Autowired
