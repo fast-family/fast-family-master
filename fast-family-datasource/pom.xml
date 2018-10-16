@@ -4,6 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<artifactId>fast-family-datasource</artifactId>
+	<version>${revision}</version>
 	<packaging>jar</packaging>
 
 	<name>fast-family-datasource</name>
@@ -13,7 +14,6 @@
 		<groupId>com.github.fast-family</groupId>
 		<artifactId>fast-family</artifactId>
 		<version>${revision}</version>
-		<!--<relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;-->
 	</parent>
 
 	<properties>
