@@ -19,7 +19,7 @@ import java.util.Map;
 @Data
 public class AccessLogInfo implements Serializable {
 
-    private Map<String,Object> requestParams;
+    private Map<String,String> requestParams;
 
     private Map<String,String> headerParams;
 
@@ -41,6 +41,7 @@ public class AccessLogInfo implements Serializable {
 
     private long responseTime;
 
-    private Throwable exception;
+
+    private Exception exception;
 
 }

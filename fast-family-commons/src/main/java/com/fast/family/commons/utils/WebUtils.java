@@ -13,6 +13,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.InetAddress;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.net.UnknownHostException;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
@@ -151,7 +152,11 @@ public class WebUtils {
             ipAddress = request.getRemoteAddr();
             if (ipAddress.equals("127.0.0.1") || ipAddress.equals("0:0:0:0:0:0:0:1")) {
                 InetAddress inetaddress = null;
-                inetaddress = InetAddress.getLocalHost();
+                try {
+                    inetaddress = InetAddress.getLocalHost();
+                } catch (UnknownHostException e) {
+                    return "";
+                }
                 ipAddress = inetaddress.getHostAddress();
             }
         }
