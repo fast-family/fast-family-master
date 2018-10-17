@@ -42,6 +42,7 @@
 		<module>fast-family-mvc</module>
 		<module>fast-family-security</module>
 		<module>fast-family-datasource</module>
+		<module>fast-family-log</module>
 	</modules>
 
 

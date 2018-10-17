@@ -137,7 +137,7 @@ public class WebUtils {
      * @throws Exception
      */
     public static String getClientIP(HttpServletRequest request)
-            throws Exception {
+            {
         String ipAddress = null;
         ipAddress = request.getHeader("x-forwarded-for");
         if (ipAddress == null || ipAddress.length() == 0
