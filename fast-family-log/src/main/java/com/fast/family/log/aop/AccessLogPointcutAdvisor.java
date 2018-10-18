@@ -24,13 +24,6 @@ import java.lang.reflect.Method;
 @Slf4j
 public class AccessLogPointcutAdvisor extends StaticMethodMatcherPointcutAdvisor {
 
-
-
-    @Autowired
-    private ApplicationEventPublisher applicationEventPublisher;
-
-
-
     @Override
     public boolean matches(Method method, Class<?> aClass) {
         LogAnnotation log = method.getAnnotation(LogAnnotation.class);
