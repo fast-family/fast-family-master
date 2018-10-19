@@ -354,6 +354,8 @@ public List<User> selectAlldb2() {
 
 此模块利用spring aop来扫描操作日志，只需在方法上加入一个注解即可，支持个性化扩展.
 
+注意：一定要设置spring.application.name(因为有可能是多系统搜集)
+
 **示例**：
 
 ```
