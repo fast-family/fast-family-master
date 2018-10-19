@@ -22,7 +22,7 @@ fast-family-generator(代码生成器模块)
 
 fast-family-commons (通用模块)
 
-fast-family-utils (工具类模块)
+fast-family-log (日志模块)
 
 
 
