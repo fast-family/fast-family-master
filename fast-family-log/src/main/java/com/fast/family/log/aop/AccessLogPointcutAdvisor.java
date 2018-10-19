@@ -33,10 +33,6 @@ public class AccessLogPointcutAdvisor extends StaticMethodMatcherPointcutAdvisor
         return false;
     }
 
-    @Override
-    public int getOrder() {
-        return Ordered.HIGHEST_PRECEDENCE;
-    }
 
 
 
