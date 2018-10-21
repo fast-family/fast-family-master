@@ -22,17 +22,10 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 
-		<problem-spring-web.version>0.22.5</problem-spring-web.version>
 		<io.jsonwebtoken.version>0.7.0</io.jsonwebtoken.version>
 	</properties>
 
 	<dependencies>
-
-		<dependency>
-			<groupId>org.zalando</groupId>
-			<artifactId>problem-spring-web</artifactId>
-			<version>${problem-spring-web.version}</version>
-		</dependency>
 
 		<dependency>
 			<groupId>io.jsonwebtoken</groupId>
