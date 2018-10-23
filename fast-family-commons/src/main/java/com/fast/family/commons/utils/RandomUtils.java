@@ -5,7 +5,6 @@ import java.util.Random;
 /**
  * @author 张顺
  * @version 1.0
- * @created 2018/10/13-14:52
  */
 public class RandomUtils {
 

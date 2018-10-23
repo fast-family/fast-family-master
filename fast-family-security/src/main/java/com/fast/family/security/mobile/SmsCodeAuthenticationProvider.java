@@ -12,7 +12,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 /**
  * @author 张顺
  * @version 1.0
- * @created 2018/9/27-21:22
  */
 public class SmsCodeAuthenticationProvider implements AuthenticationProvider{
 

@@ -19,7 +19,6 @@ import java.lang.reflect.Method;
 /**
  * @author 张顺
  * @version 1.0
- * @created 2018/10/17-9:53
  */
 @Slf4j
 public class AccessLogPointcutAdvisor extends StaticMethodMatcherPointcutAdvisor {

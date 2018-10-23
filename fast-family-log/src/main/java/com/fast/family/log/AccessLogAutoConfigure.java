@@ -12,7 +12,6 @@ import org.springframework.core.annotation.Order;
 /**
  * @author 张顺
  * @version 1.0
- * @created 2018/10/17-21:59
  */
 @ConditionalOnBean(AccessLogMethodInterceptor.class)
 @Configuration

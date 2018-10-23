@@ -8,7 +8,6 @@ import java.util.Collection;
 /**
  * @author 张顺
  * @version 1.0
- * @created 2018/9/27-21:23
  */
 public class SmsCodeAuthenticationToken extends AbstractAuthenticationToken{
 

@@ -18,7 +18,6 @@ import java.io.IOException;
 /**
  * @author 张顺
  * @version 1.0
- * @created 2018/9/27-21:22
  */
 public class SmsCodeAuthenticationFilter extends AbstractAuthenticationProcessingFilter{
 
@@ -27,9 +26,6 @@ public class SmsCodeAuthenticationFilter extends AbstractAuthenticationProcessin
     @Getter
     private UserDetailsService userDetailsService;
 
-//    protected SmsCodeAuthenticationFilter(){
-//        super(new AntPathRequestMatcher("/authentication/mobile","POST"));
-//    }
 
 
     protected SmsCodeAuthenticationFilter(){

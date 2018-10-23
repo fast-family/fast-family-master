@@ -22,7 +22,6 @@ import java.util.regex.Pattern;
 /**
  * @author 张顺
  * @version 1.0
- * @created 2018/10/13-14:52
  */
 public class WebUtils {
 
@@ -92,13 +91,6 @@ public class WebUtils {
         return buffer;
     }
 
-    /***
-     * Get request query string, form method : post
-     *
-     * @param request
-     * @return
-     * @throws IOException
-     */
     public static String getRequestPostStr(HttpServletRequest request)
             throws IOException {
         byte buffer[] = getRequestPostByteArray(request);
@@ -130,13 +122,7 @@ public class WebUtils {
         return org.springframework.web.util.WebUtils.getCookie(request, name);
     }
 
-    /**
-     * 获取请求IP
-     *
-     * @param request
-     * @return
-     * @throws Exception
-     */
+
     public static String getClientIP(HttpServletRequest request)
             {
         String ipAddress = null;
@@ -168,55 +154,29 @@ public class WebUtils {
     }
 
 
-    /**
-     * 获取应用绝对路径
-     *
-     * @param request
-     * @return
-     */
+
     public static String getBasePath(HttpServletRequest request) {
         String path = request.getContextPath();
         String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
         return basePath;
     }
 
-    /**
-     * 获取当前请求request实例
-     *
-     * @return HttpServletRequest
-     */
+
     public static HttpServletRequest getHttpServletRequest() {
         return ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
     }
 
-    /**
-     * 获取当前请求参数
-     *
-     * @param request
-     * @return Map<String   ,   String>
-     */
+
     public static Map<String, String> getRequestParameters(HttpServletRequest request) {
         return buildRequestParams(request.getParameterNames(), request);
     }
 
-    /**
-     * 获取当前请求header参数
-     *
-     * @param request
-     * @return Map<String   ,   String>
-     */
     public static Map<String, String> getRequestHeaders(HttpServletRequest request) {
         return buildRequestParams(request.getHeaderNames(), request);
     }
 
 
-    /**
-     * 构建request请求参数
-     *
-     * @param enumeration
-     * @param request
-     * @return
-     */
+
     private static Map<String, String> buildRequestParams(Enumeration enumeration, HttpServletRequest request) {
         Map<String, String> param = new HashMap<>();
         while (enumeration.hasMoreElements()) {

@@ -8,7 +8,6 @@ import java.io.IOException;
 /**
  * @author 张顺
  * @version 1.0
- * @created 2018/9/29-0:07
  */
 public class MainGenerator {
 

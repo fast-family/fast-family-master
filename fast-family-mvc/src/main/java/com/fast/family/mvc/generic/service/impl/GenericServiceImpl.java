@@ -9,7 +9,6 @@ import java.io.Serializable;
 /**
  * @author 张顺
  * @version 1.0
- * @created 2018/9/20-23:53
  */
 @Service
 public abstract class GenericServiceImpl<T extends GenericEntity,PK extends Serializable>

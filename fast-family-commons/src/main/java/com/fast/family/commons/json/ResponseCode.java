@@ -5,7 +5,6 @@ import lombok.Getter;
 /**
  * @author 张顺
  * @version 1.0
- * @created 2018/10/5-13:15
  */
 @Getter
 public enum  ResponseCode {

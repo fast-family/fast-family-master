@@ -10,7 +10,6 @@ import java.security.SecureRandom;
 /**
  * @author 张顺
  * @version 1.0
- * @created 2018/10/10-17:32
  */
 public class PasswordUtils {
 

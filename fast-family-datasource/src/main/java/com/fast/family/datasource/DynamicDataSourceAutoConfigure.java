@@ -7,8 +7,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * @author 张顺
- * @version 1.0
- * @created 2018/10/1-21:06
+ * @version 1.06
  */
 @Configuration
 @ConditionalOnClass(DynamicDataSourceProperties.class)

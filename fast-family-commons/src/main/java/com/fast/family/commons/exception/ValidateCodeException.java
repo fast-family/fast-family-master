@@ -1,10 +1,6 @@
 package com.fast.family.commons.exception;
 
-/**
- * @author 张顺
- * @version 1.0
- * @created 2018/9/23-23:30
- */
+
 public class ValidateCodeException extends BaseException{
 
 

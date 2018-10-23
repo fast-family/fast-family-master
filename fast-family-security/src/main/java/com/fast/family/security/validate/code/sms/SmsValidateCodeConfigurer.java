@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
 /**
  * @author 张顺
  * @version 1.0
- * @created 2018/10/14-17:24
  */
 @Component
 @Slf4j

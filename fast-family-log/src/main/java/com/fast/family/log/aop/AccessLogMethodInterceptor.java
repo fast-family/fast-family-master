@@ -20,7 +20,6 @@ import java.util.List;
 /**
  * @author 张顺
  * @version 1.0
- * @created 2018/10/17-21:44
  */
 @Slf4j
 public class AccessLogMethodInterceptor implements MethodInterceptor {

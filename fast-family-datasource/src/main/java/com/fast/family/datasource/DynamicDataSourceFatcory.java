@@ -14,7 +14,6 @@ import java.sql.SQLException;
 /**
  * @author 张顺
  * @version 1.0
- * @created 2018/10/3-11:28
  */
 @Slf4j
 public class DynamicDataSourceFatcory {

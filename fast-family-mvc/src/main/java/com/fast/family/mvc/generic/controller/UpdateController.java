@@ -12,7 +12,6 @@ import java.util.List;
 /**
  * @author 张顺
  * @version 1.0
- * @created 2018/9/20-23:46
  */
 public interface UpdateController<T extends GenericEntity,PK extends Serializable>
         extends Controller<T,PK>{

@@ -6,7 +6,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 /**
  * @author 张顺
  * @version 1.0
- * @created 2018/9/25-20:53
  */
 @Data
 @ConfigurationProperties(prefix = "fast.family.mvc")

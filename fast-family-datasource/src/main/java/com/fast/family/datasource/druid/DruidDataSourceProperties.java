@@ -8,7 +8,6 @@ import java.util.Properties;
 /**
  * @author 张顺
  * @version 1.0
- * @created 2018/10/2-18:39
  */
 @Data
 public class DruidDataSourceProperties extends DataSourceProperties {
