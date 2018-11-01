@@ -5,8 +5,9 @@ import org.apache.catalina.startup.Tomcat;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
+import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -16,7 +17,6 @@ import javax.servlet.Servlet;
 @Configuration
 @ConditionalOnProperty(value = "fast.family.tomcat.shutdown.enabled",matchIfMissing = true)
 @EnableConfigurationProperties(TomcatGracefulShutdownProperties.class)
-@ConditionalOnBean(TomcatEmbeddedServletContainerFactory.class)
 @ConditionalOnClass({Servlet.class, Tomcat.class})
 public class TomcatGracefulShutdownAutoConfiguration {
 
@@ -32,10 +32,10 @@ public class TomcatGracefulShutdownAutoConfiguration {
     }
 
     @Bean
-    public TomcatEmbeddedServletContainerFactory tomcatEmbeddedServletContainerFactory(){
-        TomcatEmbeddedServletContainerFactory tomcatEmbeddedServletContainerFactory = new TomcatEmbeddedServletContainerFactory();
-        tomcatEmbeddedServletContainerFactory.addConnectorCustomizers(tomcatGracefulShutdown());
-        return tomcatEmbeddedServletContainerFactory;
+    public ServletWebServerFactory servletWebServerFactory(){
+        TomcatServletWebServerFactory servletWebServerFactory = new TomcatServletWebServerFactory();
+        servletWebServerFactory.addConnectorCustomizers(tomcatGracefulShutdown());
+        return servletWebServerFactory;
     }
 
 }
