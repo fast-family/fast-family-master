@@ -4,6 +4,7 @@ import com.fast.family.commons.json.Response;
 import com.fast.family.mvc.generic.entity.GenericEntity;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.io.Serializable;
 import java.util.List;
@@ -18,14 +19,14 @@ public interface InsertController<T extends GenericEntity,PK extends Serializabl
 
     @ApiOperation("新增")
     @PostMapping("/insert")
-    default Response insert(T t){
+    default Response insert(@RequestBody T t){
         this.getService().insert(t);
         return Response.ok();
     }
 
     @ApiOperation("批量新增")
     @PostMapping("/insert/batch")
-    default Response<T> insertBatch(List<T> list){
+    default Response<T> insertBatch(@RequestBody List<T> list){
         this.getService().insertBatch(list);
         return Response.ok();
     }
