@@ -43,6 +43,7 @@
 		<module>fast-family-security</module>
 		<module>fast-family-datasource</module>
 		<module>fast-family-log</module>
+		<module>fast-family-retrofit</module>
 	</modules>
 
 
