@@ -23,6 +23,10 @@ fast-family-commons (通用模块)
 
 fast-family-log (日志模块)
 
+fast-family-third-poarty(第三方模块)
+
+fast-family-retrofit(http组件模块)
+
 
 
 # 使用文档
