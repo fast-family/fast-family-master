@@ -26,10 +26,17 @@
 		<tk.mapper.version>2.0.4</tk.mapper.version>
 		<springfox.swagger2.verion>2.7.0</springfox.swagger2.verion>
 		<springfox.swagger.ui.version>2.7.0</springfox.swagger.ui.version>
+		<problem-spring-web.version>0.24.0-RC.0</problem-spring-web.version>
 	</properties>
 
 	<dependencies>
 
+
+		<dependency>
+			<groupId>org.zalando</groupId>
+			<artifactId>problem-spring-web</artifactId>
+			<version>${problem-spring-web.version}</version>
+		</dependency>
 
 		<dependency>
 			<groupId>io.springfox</groupId>

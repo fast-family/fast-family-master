@@ -26,22 +26,10 @@ public class SnowflakeIdGenerator {
 
     private long lastTimestamp = -1L;
 
-    private static final SnowflakeIdGenerator generator;
 
 
 
-    static {
-        Random random = new Random();
-        long workerId = Long.getLong("id-worker", random.nextInt(31));
-        long dataCenterId = Long.getLong("id-datacenter", random.nextInt(31));
-        generator = new SnowflakeIdGenerator(workerId, dataCenterId);
-    }
-
-    public static SnowflakeIdGenerator getInstance() {
-        return generator;
-    }
-
-    public SnowflakeIdGenerator(long workerId, long dataCenterId) {
+    public SnowflakeIdGenerator(IDProperties idProperties) {
         // sanity check for workerId
         if (workerId > maxWorkerId || workerId < 0) {
             throw new IllegalArgumentException(String.format("worker Id can't be greater than %d or less than 0", maxWorkerId));
@@ -49,8 +37,8 @@ public class SnowflakeIdGenerator {
         if (dataCenterId > maxDataCenterId || dataCenterId < 0) {
             throw new IllegalArgumentException(String.format("datacenter Id can't be greater than %d or less than 0", maxDataCenterId));
         }
-        this.workerId = workerId;
-        this.dataCenterId = dataCenterId;
+        this.workerId = idProperties.getSnowflakeId().getWorkId();
+        this.dataCenterId = idProperties.getSnowflakeId().getDataCenterId();
         log.info("worker starting. timestamp left shift {}, datacenter id bits {}, worker id bits {}, sequence bits {}, workerid {}", timestampLeftShift, datacenterIdBits, workerIdBits, sequenceBits, workerId);
     }
 
