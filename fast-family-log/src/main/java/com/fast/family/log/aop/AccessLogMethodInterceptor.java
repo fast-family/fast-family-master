@@ -4,9 +4,11 @@ import com.fast.family.commons.utils.WebUtils;
 import com.fast.family.log.AccessLogInfo;
 import com.fast.family.log.AccessLogInterceptor;
 import com.fast.family.log.annotation.LogAnnotation;
+import com.fast.family.log.disruptor.LogEventPublisher;
 import lombok.extern.slf4j.Slf4j;
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
@@ -26,6 +28,9 @@ public class AccessLogMethodInterceptor implements MethodInterceptor {
 
     @Value("${spring.application.name}")
     private String applicationName;
+
+    @Autowired
+    private LogEventPublisher logEventPublisher;
 
     private final List<AccessLogInterceptor> logInterceptors = new LinkedList<>();
 
@@ -52,6 +57,7 @@ public class AccessLogMethodInterceptor implements MethodInterceptor {
         } finally {
             accessLogInfo.setResponseTime(System.currentTimeMillis());
             logInterceptors.forEach(logInterceptor -> logInterceptor.after(accessLogInfo));
+            logEventPublisher.publishEvent(accessLogInfo);
         }
         return result;
     }
