@@ -1,5 +1,6 @@
 package com.fast.family.mvc.validate;
 
+import com.google.common.collect.Lists;
 import lombok.Data;
 
 import java.util.List;
@@ -11,5 +12,9 @@ import java.util.List;
 @Data
 public class ValidateResponse {
 
-    private List<ValidateErrorMsg> errorMsgList;
+    private List<ValidateErrorMsg> errorMsgList = Lists.newArrayList();
+
+    public void addErrorMsg(ValidateErrorMsg validateErrorMsg){
+        errorMsgList.add(validateErrorMsg);
+    }
 }

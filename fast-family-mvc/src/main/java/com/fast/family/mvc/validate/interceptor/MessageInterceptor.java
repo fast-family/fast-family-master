@@ -5,4 +5,12 @@ package com.fast.family.mvc.validate.interceptor;
  * @version 1.0
  */
 public interface MessageInterceptor {
+
+    default void before(){
+
+    }
+
+    default void after(){
+
+    }
 }

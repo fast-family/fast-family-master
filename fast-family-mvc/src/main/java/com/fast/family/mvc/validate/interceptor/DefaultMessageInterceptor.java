@@ -7,4 +7,5 @@ package com.fast.family.mvc.validate.interceptor;
 public class DefaultMessageInterceptor implements MessageInterceptor{
 
 
+
 }

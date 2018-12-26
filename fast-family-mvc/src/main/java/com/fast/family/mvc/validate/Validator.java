@@ -8,7 +8,7 @@ import java.lang.annotation.Annotation;
  */
 public interface Validator<T extends Annotation,K> {
 
-    default boolean isValid(T t,K k){
-        return false;
-    }
+
+    ValidateResponse validate(Annotation[] annotations);
+
 }
