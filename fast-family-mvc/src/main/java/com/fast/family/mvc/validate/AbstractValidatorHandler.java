@@ -16,7 +16,7 @@ import java.util.List;
  * @version 1.0
  */
 @Valid
-public abstract class AbstractValidatorHandler<T extends Annotation,K> implements Validator<T,K>{
+public  class AbstractValidatorHandler<T extends Annotation,K> implements Validator<T,K>{
 
     private List<MessageInterceptor> messageInterceptorList = Lists.newArrayList();
 
@@ -29,17 +29,24 @@ public abstract class AbstractValidatorHandler<T extends Annotation,K> implement
     @Override
     public ValidateResponse validate(Annotation[] annotations){
         ValidateResponse validateResponse = new ValidateResponse();
-        messageInterceptorList.forEach(r -> r.before());
-        constraintList.forEach(c -> {
-            try {
-                c.restrict(null,null);
-            } catch (ValidateException e){
-                validateResponse.addErrorMsg(ValidateErrorMsg.builder()
-                        .errorMsg(e.getErrMsg())
-                        .name(e.getName()).build());
-            }
-        });
-        messageInterceptorList.forEach(r -> r.after());
+
+        for (Annotation annotation : annotations){
+            messageInterceptorList.forEach(r -> r.before());
+            Constraint constraint = ConstraintHelper.getConstraint(annotation);
+//            constraint.restrict(annotation.getClass().getFields(),);
+            messageInterceptorList.forEach(r -> r.after());
+        }
+
+//        constraintList.forEach(c -> {
+//            try {
+//                c.restrict(null,null);
+//            } catch (ValidateException e){
+//                validateResponse.addErrorMsg(ValidateErrorMsg.builder()
+//                        .errorMsg(e.getErrMsg())
+//                        .name(e.getName()).build());
+//            }
+//        });
+
         return validateResponse;
     }
 

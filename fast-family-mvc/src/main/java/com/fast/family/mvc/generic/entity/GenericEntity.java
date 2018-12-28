@@ -15,7 +15,7 @@ import java.io.Serializable;
 public abstract class GenericEntity<PK extends Serializable> {
 
     @Id
-    @KeySql(genId = GlobalIDGenerator.class)
+//    @KeySql(genId = GlobalIDGenerator.class)
     @Column(name = "id")
     private PK id;
 
