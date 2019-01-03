@@ -2,15 +2,15 @@ package com.fast.family.log;
 
 import com.fast.family.log.aop.AccessLogMethodInterceptor;
 import com.fast.family.log.aop.AccessLogPointcutAdvisor;
-import com.fast.family.log.repository.DefaultLogRepository;
+import com.fast.family.log.repository.MongodbLogRepository;
 import com.fast.family.log.repository.LogRepository;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.Ordered;
-import org.springframework.core.annotation.Order;
+import org.springframework.data.mongodb.core.MongoTemplate;
 
 /**
  * @author 张顺
@@ -32,14 +32,15 @@ public class AccessLogAutoConfigure {
 
 
     @Configuration
-    @ConditionalOnProperty(prefix = "fast.family.log.storage",name = "storage",havingValue = "InMemory")
-    public static class DefaultLogRepositoryAutoConfiguration{
+    @ConditionalOnClass(MongoTemplate.class)
+    public static class MongodbLogRepositoryAutoConfiguration{
+
 
         @Bean
-        public LogRepository defalutRepository(){
-            return new DefaultLogRepository();
+        @ConditionalOnMissingBean
+        public LogRepository mongodbLogRepository(){
+            return new MongodbLogRepository();
         }
-
     }
 
 

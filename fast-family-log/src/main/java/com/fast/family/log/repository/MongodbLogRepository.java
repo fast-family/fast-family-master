@@ -1,6 +1,8 @@
 package com.fast.family.log.repository;
 
 import com.fast.family.log.AccessLogInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
@@ -12,12 +14,13 @@ import java.util.concurrent.ConcurrentHashMap;
  * @version 1.0
  */
 @Component
-public class DefaultLogRepository implements LogRepository{
+public class MongodbLogRepository implements LogRepository{
 
-    private static Map<String,AccessLogInfo> params = new ConcurrentHashMap<>();
+    @Autowired
+    private MongoTemplate mongoTemplate;
 
     @Override
     public void save(AccessLogInfo accessLogInfo) {
-        params.put(UUID.randomUUID().toString().replace("-",""),accessLogInfo);
+        mongoTemplate.save(accessLogInfo);
     }
 }
