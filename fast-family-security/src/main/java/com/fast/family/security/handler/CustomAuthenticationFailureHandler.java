@@ -1,8 +1,9 @@
 package com.fast.family.security.handler;
 
-import com.fast.family.commons.json.Response;
 import com.fast.family.commons.utils.GsonUtils;
 import com.fast.family.commons.utils.WebUtils;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 import org.springframework.stereotype.Component;
@@ -18,9 +19,7 @@ public class CustomAuthenticationFailureHandler extends SimpleUrlAuthenticationF
 
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
-        Response logoutSuccess = new Response();
-        logoutSuccess.setCode(401);
-        logoutSuccess.setMessage("认证失败请重新登录");
-        WebUtils.writeJson(response, GsonUtils.toJson(logoutSuccess,Response.class).getBytes());
+        WebUtils.writeJson(response, GsonUtils.toJson(
+                ResponseEntity.status(HttpStatus.UNAUTHORIZED).build(),ResponseEntity.class).getBytes());
     }
 }
