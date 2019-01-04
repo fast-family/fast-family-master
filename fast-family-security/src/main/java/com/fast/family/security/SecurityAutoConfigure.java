@@ -1,6 +1,5 @@
 package com.fast.family.security;
 
-import com.fast.family.security.jwt.JWTHelper;
 import com.fast.family.security.validate.code.ImMemoryValidateCodeRepository;
 import com.fast.family.security.validate.code.RedisValidateCodeRepository;
 import com.fast.family.security.validate.code.ValidateCodeGenerator;
@@ -12,8 +11,6 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import java.util.Properties;
 
 /**
  * @author 张顺
@@ -27,10 +24,6 @@ public class SecurityAutoConfigure {
     public static final String PREFIX = "fast.family.security.validate.code";
 
 
-    @Bean
-    public JWTHelper jwtHelper(){
-        return new JWTHelper();
-    }
 
     @Configuration
     @ConditionalOnClass(SecurityProperties.class)

@@ -1,7 +1,6 @@
 package com.fast.family.security.validate.code.sms;
 
 import com.fast.family.commons.exception.ValidateCodeException;
-import com.fast.family.commons.json.Response;
 import com.fast.family.commons.utils.GsonUtils;
 import com.fast.family.commons.utils.WebUtils;
 import com.fast.family.security.SecurityConstants;
@@ -9,6 +8,8 @@ import com.fast.family.security.validate.code.ValidateCode;
 import com.fast.family.security.validate.code.ValidateCodeRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.servlet.FilterChain;
@@ -37,8 +38,8 @@ public class SmsValidateCodeFilter extends OncePerRequestFilter {
             validate(request);
         } catch (ValidateCodeException e){
             log.error(e.getErrMessage(),e);
-            WebUtils.writeJson(response,GsonUtils.toJson(
-                    Response.fail(e.getErrMessage()),Response.class).getBytes());
+            WebUtils.writeJson(response, GsonUtils.toJson(
+                    ResponseEntity.status(HttpStatus.UNAUTHORIZED).build(),ResponseEntity.class).getBytes());
             return;
         }
         filterChain.doFilter(request,response);
@@ -50,7 +51,7 @@ public class SmsValidateCodeFilter extends OncePerRequestFilter {
         if (loginType != null && loginType.equals(SecurityConstants.LOGIN_TYPE_SMS)){
             String smsValidateCode = Optional.ofNullable(request.getParameter("smsValidateCode"))
                     .orElseThrow(() -> new ValidateCodeException("验证码不存在"));
-            ValidateCode validateCode = Optional.ofNullable(validateCodeRepository.get(""))
+            ValidateCode validateCode = Optional.ofNullable(validateCodeRepository.get(smsValidateCode))
                     .orElseThrow(() -> new ValidateCodeException("验证码不存在"));
             if (System.currentTimeMillis() > validateCode.getExpireTime()){
                 throw new ValidateCodeException("验证码已过期");

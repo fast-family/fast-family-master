@@ -29,7 +29,7 @@ public class SmsCodeAuthenticationFilter extends AbstractAuthenticationProcessin
 
 
     protected SmsCodeAuthenticationFilter(){
-        super(new AntPathRequestMatcher("/system/index","POST"));
+        super(new AntPathRequestMatcher("/auth/mobile","POST"));
     }
 
     protected SmsCodeAuthenticationFilter(String defaultFilterProcessesUrl) {
