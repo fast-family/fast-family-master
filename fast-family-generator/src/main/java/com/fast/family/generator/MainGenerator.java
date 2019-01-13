@@ -41,11 +41,20 @@ public class MainGenerator {
     public static void generatorCode(String className,
                                       String classComment,
                                       String url, String tableName, GeneratorConfig generatorConfig) {
-        ControllerGenerator.genResourceCode( className, classComment, url, generatorConfig);
-        ServiceGenerator.genServiceCode(className, classComment, generatorConfig);
-        EntityGenerator.generatorSingleEntity(tableName, className, classComment,generatorConfig);
-        MapperGenerator.genMapperInterface(className, classComment, generatorConfig);
-        MapperGenerator.genMapperXML(tableName,className,classComment,generatorConfig);
-        DTOGenerator.genResourceCode(className, classComment,generatorConfig);
+        generatorCode(className,classComment,url,tableName,1,generatorConfig);
+    }
+
+    public static void generatorCode(String className,
+                                     String classComment,
+                                     String url,
+                                     String tableName,
+                                     Integer type,
+                                     GeneratorConfig generatorConfig) {
+//        ControllerGenerator.genResourceCode( className, classComment, url,type, generatorConfig);
+//        ServiceGenerator.genServiceCode(className, classComment,type, generatorConfig);
+//        EntityGenerator.generatorSingleEntity(tableName, className, classComment,generatorConfig);
+        MapperGenerator.genMapperInterface(className, classComment,type, generatorConfig);
+//        MapperGenerator.genMapperXML(tableName,className,classComment,type,generatorConfig);
+//        DTOGenerator.genResourceCode(className, classComment,type,generatorConfig);
     }
 }

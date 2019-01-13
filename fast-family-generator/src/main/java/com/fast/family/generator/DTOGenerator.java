@@ -19,7 +19,40 @@ import java.util.Map;
  */
 public class DTOGenerator {
 
-    public static void genResourceCode(String className,String classComment,GeneratorConfig generatorConfig){
+
+
+
+    public static void genResourceCode(String className,
+                                        String classComment,
+                                        GeneratorConfig generatorConfig){
+        genDTO(className,classComment,"ftl",generatorConfig);
+    }
+
+
+    public static void genOneToOneResourceCode(String className,
+                                                String classComment,
+                                                GeneratorConfig generatorConfig){
+        genDTO(className,classComment,"ftl/onetoone",generatorConfig);
+    }
+
+
+    public static void genOneToManyResourceCode(String className,
+                                                 String classComment,
+                                                 GeneratorConfig generatorConfig){
+        genDTO(className,classComment,"ftl/onetomany",generatorConfig);
+    }
+
+
+    public static void genManyToOneResourceCode(String className,
+                                                 String classComment,
+                                                 GeneratorConfig generatorConfig){
+        genDTO(className,classComment,"ftl/manytoone",generatorConfig);
+    }
+
+    private static void genDTO(String className,
+                               String classComment,
+                               String reousrcePath,
+                               GeneratorConfig generatorConfig){
         Map<String,Object> paramMap = new HashMap<>();
 
         paramMap.put("className",className);
@@ -30,7 +63,7 @@ public class DTOGenerator {
         Version version = new Version("2.3.27");
         Configuration configuration = new Configuration(version);
         try {
-            URL url = ControllerGenerator.class.getClassLoader().getResource("ftl");
+            URL url = ControllerGenerator.class.getClassLoader().getResource(reousrcePath);
             configuration.setDirectoryForTemplateLoading(new File(url.getPath()));
             configuration.setObjectWrapper(new DefaultObjectWrapper(version));
             String filePath = generatorConfig.getSrcBasePath() + "dto//";
@@ -46,6 +79,5 @@ public class DTOGenerator {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 }

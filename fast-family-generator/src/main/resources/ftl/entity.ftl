@@ -38,19 +38,11 @@ public class ${className} extends GenericEntity<Long> {
         * ${column.columnComment}
         */
     </#if>
-    <#--<#if column.columnKey == "PRI">-->
-        <#--@Id-->
-    <#--</#if>-->
 
     <#if  column.columnKey != "PRI">
     @Column(name = "${column.columnName}")
         <#if column.isNullable == "NO">
     @ApiModelProperty(required = true, dataType = "${column.dataType}", name = "${column.columnComment}")
-            <#--<#if column.dataType =="String">-->
-    <#--@Size(max = ${column.length},min = 1,message = "${column.columnComment}需在1~${column.length}长度之间")-->
-            <#--<#else>-->
-            <#--&lt;#&ndash;@Length(max =  ${column.length},min = 1,message = "${column.columnComment}需在1~${column.length}长度之间")&ndash;&gt;-->
-            <#--</#if>-->
         <#else>
     @ApiModelProperty(required = false, dataType = "${column.dataType}", name = "${column.columnComment}")
         </#if>

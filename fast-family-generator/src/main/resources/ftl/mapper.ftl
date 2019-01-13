@@ -2,6 +2,11 @@ package ${packageName}.mapper;
 
 import com.fast.family.mvc.generic.mapper.GenericMapper;
 import ${packageName}.entity.${className};
+import ${packageName}.dto.${className}DTO;
+
+<#if (type) > 1>
+import java.util.List;
+</#if>
 
 /**
 * <p>
@@ -11,5 +16,9 @@ import ${packageName}.entity.${className};
 * @created ${sysTime?string("yyyy-MM-dd HH:mm:ss")}
 */
 public interface ${className}Mapper extends GenericMapper<${className},Long> {
+
+<#if (type > 1)>
+    List<${className}DTO> custom();
+</#if>
 
 }

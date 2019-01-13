@@ -29,4 +29,5 @@ public class ${className}DTO extends AbstractPersistableBusinessObjectAdapter<${
     protected void customizeFill(${className} ${className?uncap_first}) {
 
     }
+
 }

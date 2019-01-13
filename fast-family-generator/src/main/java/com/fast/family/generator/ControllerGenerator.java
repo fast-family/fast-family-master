@@ -20,8 +20,70 @@ import java.util.Map;
  */
 public class ControllerGenerator {
 
-    public static void genResourceCode(String className,
-                                       String classComment,String urlStr,GeneratorConfig generatorConfig){
+
+    /**
+     *
+     * @param className 类名
+     * @param classComment 类描述
+     * @param urlStr 类路径
+     * @param generatorConfig
+     */
+    public static void genSingleController(String className,
+                                           String classComment,
+                                           String urlStr,
+                                           GeneratorConfig generatorConfig){
+        genController(className,classComment,urlStr,"ftl",generatorConfig);
+    }
+
+
+    /**
+     *
+     * @param className 类名
+     * @param classComment 类描述
+     * @param urlStr 类路径
+     * @param generatorConfig
+     */
+    public static void genOneToOneController(String className,
+                                             String classComment,
+                                             String urlStr,
+                                             GeneratorConfig generatorConfig){
+        genController(className,classComment,urlStr,"ftl/onetoone",generatorConfig);
+    }
+
+    /**
+     *
+     * @param className 类名
+     * @param classComment 类描述
+     * @param urlStr 类路径
+     * @param generatorConfig
+     */
+    public static void genOneToManyControllerCode(String className,
+                                                  String classComment,
+                                                  String urlStr,
+                                                  GeneratorConfig generatorConfig){
+        genController(className,classComment,urlStr,"ftl/onetomany",generatorConfig);
+    }
+
+
+    /**
+     *
+     * @param className 类名
+     * @param classComment 类描述
+     * @param urlStr 类路径
+     * @param generatorConfig
+     */
+    public static void genManyToOneController(String className,
+                                              String classComment,
+                                              String urlStr,
+                                              GeneratorConfig generatorConfig){
+        genController(className,classComment,urlStr,"ftl/manytoone",generatorConfig);
+    }
+
+    private static void genController(String className,
+                                     String classComment,
+                                     String urlStr,
+                                     String resourcePath,
+                                     GeneratorConfig generatorConfig){
         Map<String,Object> paramMap = new HashMap<>();
         paramMap.put("className",className);
         paramMap.put("classComment",classComment);
@@ -31,7 +93,7 @@ public class ControllerGenerator {
         Version version = new Version("2.3.27");
         Configuration configuration = new Configuration(version);
         try {
-            URL url = ControllerGenerator.class.getClassLoader().getResource("ftl");
+            URL url = ControllerGenerator.class.getClassLoader().getResource(resourcePath);
             configuration.setDirectoryForTemplateLoading(new File(url.getPath()));
             configuration.setObjectWrapper(new DefaultObjectWrapper(version));
             String filePath =  generatorConfig.getSrcBasePath() + "controller//";
@@ -47,6 +109,7 @@ public class ControllerGenerator {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
+
+
 }

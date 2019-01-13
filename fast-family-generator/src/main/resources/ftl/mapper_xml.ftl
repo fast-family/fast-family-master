@@ -15,4 +15,10 @@
     </#list>
     </sql>
 
+    <#if (type > 1)>
+        <select id="custom" resultType="${packageName}.dto.${className}DTO">
+
+        </select>
+    </#if>
+
 </mapper>
