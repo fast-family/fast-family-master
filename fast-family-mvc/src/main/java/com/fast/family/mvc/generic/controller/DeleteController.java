@@ -2,7 +2,6 @@ package com.fast.family.mvc.generic.controller;
 
 import com.fast.family.mvc.generic.entity.GenericEntity;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
