@@ -17,6 +17,6 @@ import java.util.List;
 */
 public interface ${className}Mapper extends GenericMapper<${className},Long> {
 
-    List<${className}DTO> custom();
+    ${className}DTO custom();
 
 }

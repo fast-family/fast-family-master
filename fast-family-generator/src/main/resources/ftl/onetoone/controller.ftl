@@ -3,9 +3,12 @@ package ${packageName}.controller;
 import com.fast.family.mvc.generic.controller.GenericController;
 import com.fast.family.mvc.generic.service.GenericService;
 import ${packageName}.entity.${className};
+import ${packageName}.dto.${className}DTO;
 import ${packageName}.service.${className}Service;
+import com.fast.family.commons.json.Response;
 
 
+import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +31,12 @@ public class ${className}Controller extends GenericController<${className},Long>
     @Autowired
     private ${className}Service ${className?uncap_first}Service;
 
+
+    @ApiOperation("自定义查询")
+    @GetMapping("/custom")
+    public Response<${className}DTO> custom(${className}DTO ${className?uncap_first}DTO){
+        return Response.ok(this.${className?uncap_first}Service.custom(${className?uncap_first}DTO));
+    }
 
     @Override
     public GenericService<${className}, Long> getService() {

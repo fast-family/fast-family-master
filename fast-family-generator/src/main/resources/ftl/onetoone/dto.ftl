@@ -4,7 +4,7 @@ package ${packageName}.dto;
 import ${packageName}.entity.${className};
 import com.fast.family.mvc.generic.service.domain.AbstractPersistableBusinessObjectAdapter;
 
-;
+import lombok.Data;
 
 /**
 * <p>
@@ -13,7 +13,27 @@ import com.fast.family.mvc.generic.service.domain.AbstractPersistableBusinessObj
 *
 * @created ${sysTime?string("yyyy-MM-dd HH:mm:ss")}
 */
+@Data
 public class ${className}DTO extends AbstractPersistableBusinessObjectAdapter<${className}>{
+
+
+    <#list masterTableInfo.columnInfoList as column>
+        <#if column.columnComment?length gt 0>
+    /**
+    * ${column.columnComment}
+    */
+        </#if>
+    private ${column.dataType} ${column.columnJavaName};
+    </#list>
+
+    <#list slaveTableInfo.columnInfoList as column>
+        <#if column.columnComment?length gt 0>
+    /**
+    * ${column.columnComment}
+    */
+        </#if>
+    private ${column.dataType} ${column.columnJavaName};
+    </#list>
 
 
     public ${className}DTO(Class<${className}> persistableEntityClass) {

@@ -4,6 +4,7 @@ package ${packageName}.service.impl;
 import com.fast.family.mvc.generic.mapper.GenericMapper;
 import com.fast.family.mvc.generic.service.impl.GenericServiceImpl;
 import ${packageName}.entity.${className};
+import ${packageName}.dto.${className}DTO;
 import ${packageName}.mapper.${className}Mapper;
 import ${packageName}.service.${className}Service;
 
@@ -26,6 +27,10 @@ public class ${className}ServiceImpl extends GenericServiceImpl<${className},Lon
     @Autowired
     private ${className}Mapper ${className?uncap_first}Mapper;
 
+    @Override
+    public ${className}DTO custom(${className}DTO ${className?uncap_first}DTO){
+        return this.${className?uncap_first}Mapper.custom(${className?uncap_first}DTO);
+    }
 
     @Override
     public GenericMapper<${className}, Long> getMapper() {

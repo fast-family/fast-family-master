@@ -1,6 +1,8 @@
 package com.fast.family.generator;
 
 import com.fast.family.generator.config.GeneratorConfig;
+import com.fast.family.generator.db.AnalysisDB;
+import com.fast.family.generator.model.TableInfo;
 import freemarker.template.Configuration;
 import freemarker.template.DefaultObjectWrapper;
 import freemarker.template.Template;
@@ -25,40 +27,72 @@ public class DTOGenerator {
     public static void genResourceCode(String className,
                                         String classComment,
                                         GeneratorConfig generatorConfig){
-        genDTO(className,classComment,"ftl",generatorConfig);
-    }
-
-
-    public static void genOneToOneResourceCode(String className,
-                                                String classComment,
-                                                GeneratorConfig generatorConfig){
-        genDTO(className,classComment,"ftl/onetoone",generatorConfig);
-    }
-
-
-    public static void genOneToManyResourceCode(String className,
-                                                 String classComment,
-                                                 GeneratorConfig generatorConfig){
-        genDTO(className,classComment,"ftl/onetomany",generatorConfig);
-    }
-
-
-    public static void genManyToOneResourceCode(String className,
-                                                 String classComment,
-                                                 GeneratorConfig generatorConfig){
-        genDTO(className,classComment,"ftl/manytoone",generatorConfig);
-    }
-
-    private static void genDTO(String className,
-                               String classComment,
-                               String reousrcePath,
-                               GeneratorConfig generatorConfig){
         Map<String,Object> paramMap = new HashMap<>();
-
         paramMap.put("className",className);
         paramMap.put("classComment",classComment);
         paramMap.put("sysTime",new Date());
         paramMap.put("packageName",generatorConfig.getPackageName());
+        genDTO(paramMap,"ftl",generatorConfig);
+    }
+
+
+    public static void genOneToOneResourceCode(String className,
+                                               String classComment,
+                                               String masterTableName,
+                                               String slaveTableName,
+                                               GeneratorConfig generatorConfig){
+        TableInfo masterTableInfo = AnalysisDB.getTableInfoByName(masterTableName,generatorConfig);
+        TableInfo slaveTableInfo = AnalysisDB.getTableInfoByName(slaveTableName,generatorConfig);
+        Map<String,Object> paramMap = new HashMap<>();
+        paramMap.put("className",className);
+        paramMap.put("classComment",classComment);
+        paramMap.put("sysTime",new Date());
+        paramMap.put("packageName",generatorConfig.getPackageName());
+        paramMap.put("masterTableInfo",masterTableInfo);
+        paramMap.put("slaveTableInfo",slaveTableInfo);
+        genDTO(paramMap,"ftl/onetoone",generatorConfig);
+    }
+
+
+    public static void genOneToManyResourceCode(String className,
+                                                String classComment,
+                                                String masterTableName,
+                                                String slaveTableName,
+                                                GeneratorConfig generatorConfig){
+        TableInfo masterTableInfo = AnalysisDB.getTableInfoByName(masterTableName,generatorConfig);
+        TableInfo slaveTableInfo = AnalysisDB.getTableInfoByName(slaveTableName,generatorConfig);
+        Map<String,Object> paramMap = new HashMap<>();
+        paramMap.put("className",className);
+        paramMap.put("classComment",classComment);
+        paramMap.put("sysTime",new Date());
+        paramMap.put("packageName",generatorConfig.getPackageName());
+        paramMap.put("masterTableInfo",masterTableInfo);
+        paramMap.put("slaveTableInfo",slaveTableInfo);
+        genDTO(paramMap,"ftl/onetomany",generatorConfig);
+    }
+
+
+    public static void genManyToOneResourceCode(String className,
+                                                String classComment,
+                                                String masterTableName,
+                                                String slaveTableName,
+                                                GeneratorConfig generatorConfig){
+        TableInfo masterTableInfo = AnalysisDB.getTableInfoByName(masterTableName,generatorConfig);
+        TableInfo slaveTableInfo = AnalysisDB.getTableInfoByName(slaveTableName,generatorConfig);
+        Map<String,Object> paramMap = new HashMap<>();
+        paramMap.put("className",className);
+        paramMap.put("classComment",classComment);
+        paramMap.put("sysTime",new Date());
+        paramMap.put("packageName",generatorConfig.getPackageName());
+        paramMap.put("masterTableInfo",masterTableInfo);
+        paramMap.put("slaveTableInfo",slaveTableInfo);
+        genDTO(paramMap,"ftl/manytoone",generatorConfig);
+    }
+
+    private static void genDTO(Map<String,Object> paramMap,
+                               String reousrcePath,
+                               GeneratorConfig generatorConfig){
+
 
         Version version = new Version("2.3.27");
         Configuration configuration = new Configuration(version);
@@ -67,7 +101,7 @@ public class DTOGenerator {
             configuration.setDirectoryForTemplateLoading(new File(url.getPath()));
             configuration.setObjectWrapper(new DefaultObjectWrapper(version));
             String filePath = generatorConfig.getSrcBasePath() + "dto//";
-            String savePath = filePath +className + "DTO.java";
+            String savePath = filePath + paramMap.get("className") + "DTO.java";
             File dirPath = new File(filePath);
             if (!dirPath.exists()) {
                 dirPath.mkdirs();

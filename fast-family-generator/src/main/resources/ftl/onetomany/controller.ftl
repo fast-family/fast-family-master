@@ -28,6 +28,11 @@ public class ${className}Controller extends GenericController<${className},Long>
     @Autowired
     private ${className}Service ${className?uncap_first}Service;
 
+    @ApiOperation("自定义查询")
+    @GetMapping("/custom")
+    public Response<${className}DTO> custom(${className}DTO ${className?uncap_first}DTO){
+        return Response.ok(this.${className?uncap_first}Service.custom(${className?uncap_first}DTO));
+    }
 
     @Override
     public GenericService<${className}, Long> getService() {

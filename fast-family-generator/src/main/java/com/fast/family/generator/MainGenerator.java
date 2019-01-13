@@ -1,6 +1,10 @@
 package com.fast.family.generator;
 
 import com.fast.family.generator.config.GeneratorConfig;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,9 +25,12 @@ public class MainGenerator {
          * 4.表名
          * 5.全局配置信息
          */
-        MainGenerator.generatorCode( "SysUser",
-                "用户信息", "user",
-                "sys_user", generatorConfig());
+        GeneratorCodeEntity codeEntity = new GeneratorCodeEntity();
+        codeEntity.setClassComment("用户信息");
+        codeEntity.setClassName("SysUser");
+        codeEntity.setTableName("sys_user");
+        codeEntity.setUrl("user");
+        MainGenerator.generatorCode(codeEntity, generatorConfig());
     }
 
     private static GeneratorConfig generatorConfig(){
@@ -38,23 +45,42 @@ public class MainGenerator {
         return generatorConfig;
     }
 
-    public static void generatorCode(String className,
-                                      String classComment,
-                                      String url, String tableName, GeneratorConfig generatorConfig) {
-        generatorCode(className,classComment,url,tableName,1,generatorConfig);
+
+    public static void generatorCode(GeneratorCodeEntity masterTable,
+                                     GeneratorConfig generatorConfig) {
+        ControllerGenerator.genSingleController(masterTable.getClassName(),masterTable.getClassComment(),masterTable.getUrl(), generatorConfig);
+        ServiceGenerator.genServiceCode(masterTable.getClassName(), masterTable.getClassComment(), generatorConfig);
+        EntityGenerator.generatorSingleEntity(masterTable.getTableName(), masterTable.getClassName(),masterTable.getClassComment(),generatorConfig);
+        MapperGenerator.genMapperInterface(masterTable.getClassName(),masterTable.getClassComment(), generatorConfig);
+        MapperGenerator.genMapperXML(masterTable.getTableName(),masterTable.getClassName(),masterTable.getClassComment(),generatorConfig);
+        DTOGenerator.genResourceCode(masterTable.getClassName(),masterTable.getClassComment(),generatorConfig);
     }
 
-    public static void generatorCode(String className,
-                                     String classComment,
-                                     String url,
-                                     String tableName,
-                                     Integer type,
+    public static void generatorOneToOneCode(GeneratorCodeEntity masterTable,String slaveTableName,
                                      GeneratorConfig generatorConfig) {
-//        ControllerGenerator.genResourceCode( className, classComment, url,type, generatorConfig);
-//        ServiceGenerator.genServiceCode(className, classComment,type, generatorConfig);
-//        EntityGenerator.generatorSingleEntity(tableName, className, classComment,generatorConfig);
-        MapperGenerator.genMapperInterface(className, classComment,type, generatorConfig);
-//        MapperGenerator.genMapperXML(tableName,className,classComment,type,generatorConfig);
-//        DTOGenerator.genResourceCode(className, classComment,type,generatorConfig);
+        ControllerGenerator.genOneToOneController(masterTable.getClassName(),masterTable.getClassComment(),masterTable.getUrl(),generatorConfig);
+        ServiceGenerator.genOneToOneServiceInterface(masterTable.getClassName(), masterTable.getClassComment(), generatorConfig);
+        ServiceGenerator.genOneToOneServiceImpl(masterTable.getClassName(), masterTable.getClassComment(), generatorConfig);
+        EntityGenerator.generatorSingleEntity(masterTable.getTableName(), masterTable.getClassName(), masterTable.getClassComment(),generatorConfig);
+        MapperGenerator.genOneToOneMapperInterface(masterTable.getClassName(), masterTable.getClassComment(), generatorConfig);
+        MapperGenerator.genOneToOneMapperXML(masterTable.getTableName(),masterTable.getClassName(),masterTable.getClassComment(),generatorConfig);
+        DTOGenerator.genOneToOneResourceCode(masterTable.getClassName(), masterTable.getClassComment(),masterTable.getTableName()
+                ,slaveTableName,generatorConfig);
+    }
+
+    @Builder
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class GeneratorCodeEntity{
+        
+        private String className;
+        
+        private String classComment;
+        
+        private String url;
+        
+        private String tableName;
+        
     }
 }
