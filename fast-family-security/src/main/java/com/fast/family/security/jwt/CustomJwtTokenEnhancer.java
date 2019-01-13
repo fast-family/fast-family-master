@@ -1,5 +1,6 @@
 package com.fast.family.security.jwt;
 
+import com.fast.family.security.SecurityConstants;
 import com.fast.family.security.SecurityProperties;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -49,7 +50,7 @@ public class CustomJwtTokenEnhancer implements TokenEnhancer {
     private String createToken(String clientId, Date expiration){
         return Jwts.builder()
                 .setSubject(clientId)
-                .claim("Authorization",clientId)
+                .claim(SecurityConstants.AUTHORIZATION_HEADER,clientId)
                 .signWith(SignatureAlgorithm.HS256,properties.getJwt().getAuthoritiesKey())
                 .setExpiration(expiration)
                 .compact();
