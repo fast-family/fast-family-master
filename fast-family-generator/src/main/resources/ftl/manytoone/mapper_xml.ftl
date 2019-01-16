@@ -15,10 +15,21 @@
     </#list>
     </sql>
 
-    <#if (type > 1)>
-        <select id="custom" resultType="${packageName}.dto.${className}DTO">
+    <select id="custom" resultType="${packageName}.dto.${className}DTO">
+        SELECT
+            *
+        FROM
+            ${masterTableInfo.tableName},
+            ${slaveTableInfo.tableName}
 
-        </select>
-    </#if>
+            <#list masterTableInfo.columnInfoList as masterColumn>
+                <#list slaveTableInfo.columnInfoList as slaveColumn>
+                    <#if masterColumn.columnName == slaveColumn>
+        WHERE
+                        ${masterTableInfo.tableName}.${masterColumn.columnName} == ${slaveTableInfo.tableName}.${slaveColumn.columnName}
+                    </#if>
+                </#list>
+            </#list>
+    </select>
 
 </mapper>

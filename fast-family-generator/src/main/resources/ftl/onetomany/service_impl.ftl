@@ -7,6 +7,8 @@ import ${packageName}.entity.${className};
 import ${packageName}.mapper.${className}Mapper;
 import ${packageName}.service.${className}Service;
 
+import java.util.List;
+
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,6 +28,10 @@ public class ${className}ServiceImpl extends GenericServiceImpl<${className},Lon
     @Autowired
     private ${className}Mapper ${className?uncap_first}Mapper;
 
+    @Override
+    public List<${className}DTO> custom(${className}DTO ${className?uncap_first}DTO){
+        return this.${className?uncap_first}Mapper.custom(${className?uncap_first}DTO);
+    }
 
     @Override
     public GenericMapper<${className}, Long> getMapper() {

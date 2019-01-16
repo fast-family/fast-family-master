@@ -16,7 +16,20 @@
     </sql>
 
     <select id="custom" resultType="${packageName}.dto.${className}DTO">
+        SELECT
+            *
+        FROM
+            ${masterTableInfo.tableName},
+            ${slaveTableInfo.tableName}
 
+            <#list masterTableInfo.columnInfoList as masterColumn>
+                <#list slaveTableInfo.columnInfoList as slaveColumn>
+                    <#if masterColumn.columnName == slaveColumn>
+        WHERE
+        ${masterTableInfo.tableName}.${masterColumn.columnName} == ${slaveTableInfo.tableName}.${slaveColumn.columnName}
+                    </#if>
+                </#list>
+            </#list>
     </select>
 
 </mapper>

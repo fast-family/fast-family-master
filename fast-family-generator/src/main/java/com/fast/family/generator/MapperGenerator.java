@@ -58,14 +58,17 @@ public class MapperGenerator {
     public static void genOneToOneMapperXML(String tableName,
                                     String className,
                                     String classComment,
+                                    String slaveTableName,
                                     GeneratorConfig generatorConfig){
-        TableInfo tableInfo = AnalysisDB.getTableInfoByName(tableName,generatorConfig);
+        TableInfo masterTableInfo = AnalysisDB.getTableInfoByName(tableName,generatorConfig);
+        TableInfo slaveTableInfo = AnalysisDB.getTableInfoByName(tableName,generatorConfig);
         Map<String,Object> paramMap = new HashMap<>();
         paramMap.put("className",className);
         paramMap.put("classComment",classComment);
         paramMap.put("sysTime",new Date());
         paramMap.put("packageName",generatorConfig.getPackageName());
-        paramMap.put("tableInfo",tableInfo);
+        paramMap.put("masterTableInfo",masterTableInfo);
+        paramMap.put("slaveTableInfo",slaveTableInfo);
         genMapperXml(paramMap,className,"ftl/onetoone",generatorConfig);
 
     }
@@ -81,14 +84,17 @@ public class MapperGenerator {
     public static void genOneToManyMapperXML(String tableName,
                                     String className,
                                     String classComment,
+                                    String slaveTableName,
                                     GeneratorConfig generatorConfig){
-        TableInfo tableInfo = AnalysisDB.getTableInfoByName(tableName,generatorConfig);
+        TableInfo masterTableInfo = AnalysisDB.getTableInfoByName(tableName,generatorConfig);
+        TableInfo slaveTableInfo = AnalysisDB.getTableInfoByName(tableName,generatorConfig);
         Map<String,Object> paramMap = new HashMap<>();
         paramMap.put("className",className);
         paramMap.put("classComment",classComment);
         paramMap.put("sysTime",new Date());
         paramMap.put("packageName",generatorConfig.getPackageName());
-        paramMap.put("tableInfo",tableInfo);
+        paramMap.put("masterTableInfo",masterTableInfo);
+        paramMap.put("slaveTableInfo",slaveTableInfo);
 
 
         genMapperXml(paramMap,className,"ftl/onetomany",generatorConfig);
@@ -107,14 +113,18 @@ public class MapperGenerator {
     public static void genManyToOneMapperXML(String tableName,
                                     String className,
                                     String classComment,
+                                    String slaveTableName,
                                     GeneratorConfig generatorConfig){
-        TableInfo tableInfo = AnalysisDB.getTableInfoByName(tableName,generatorConfig);
+
+        TableInfo masterTableInfo = AnalysisDB.getTableInfoByName(tableName,generatorConfig);
+        TableInfo slaveTableInfo = AnalysisDB.getTableInfoByName(tableName,generatorConfig);
         Map<String,Object> paramMap = new HashMap<>();
         paramMap.put("className",className);
         paramMap.put("classComment",classComment);
         paramMap.put("sysTime",new Date());
         paramMap.put("packageName",generatorConfig.getPackageName());
-        paramMap.put("tableInfo",tableInfo);
+        paramMap.put("masterTableInfo",masterTableInfo);
+        paramMap.put("slaveTableInfo",slaveTableInfo);
 
         genMapperXml(paramMap,className,"ftl/manytoone",generatorConfig);
     }
