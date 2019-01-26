@@ -22,11 +22,72 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
 
+        <weixin-java-open.version>3.3.0</weixin-java-open.version>
+        <weixin-java-mp.version>3.2.0</weixin-java-mp.version>
+        <weixin-java-miniapp.version>3.3.0</weixin-java-miniapp.version>
+        <weixin-java-pay.version>3.2.0</weixin-java-pay.version>
+        <fastjson.version>1.2.54</fastjson.version>
+        <aliyun-oss-version>2.5.0</aliyun-oss-version>
+        <ali.pay.version>3.4.49.ALL</ali.pay.version>
         <aliyun.java.sdk.core.version>3.5.0</aliyun.java.sdk.core.version>
         <aliyun.java.sdk.dysmsapi.version>1.0.0</aliyun.java.sdk.dysmsapi.version>
     </properties>
 
     <dependencies>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.aliyun.oss</groupId>
+            <artifactId>aliyun-sdk-oss</artifactId>
+            <version>${aliyun-oss-version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-lang</artifactId>
+                    <groupId>commons-lang</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alipay.sdk</groupId>
+            <artifactId>alipay-sdk-java</artifactId>
+            <version>${ali.pay.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.binarywang</groupId>
+            <artifactId>weixin-java-miniapp</artifactId>
+            <version>${weixin-java-miniapp.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.binarywang</groupId>
+            <artifactId>weixin-java-pay</artifactId>
+            <version>${weixin-java-pay.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>weixin-java-common</artifactId>
+                    <groupId>com.github.binarywang</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.binarywang</groupId>
+            <artifactId>weixin-java-open</artifactId>
+            <version>${weixin-java-open.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.binarywang</groupId>
+            <artifactId>weixin-java-mp</artifactId>
+            <version>${weixin-java-mp.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>com.github.1991wangliang</groupId>
