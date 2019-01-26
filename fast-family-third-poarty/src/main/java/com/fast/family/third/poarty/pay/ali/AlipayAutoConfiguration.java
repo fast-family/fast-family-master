@@ -2,6 +2,12 @@ package com.fast.family.third.poarty.pay.ali;
 
 import com.alipay.api.AlipayClient;
 import com.alipay.api.DefaultAlipayClient;
+import com.fast.family.third.poarty.pay.ali.service.AlipayAppService;
+import com.fast.family.third.poarty.pay.ali.service.AlipayService;
+import com.fast.family.third.poarty.pay.ali.service.AlipayWapService;
+import com.fast.family.third.poarty.pay.ali.service.impl.AlipayAppServiceImpl;
+import com.fast.family.third.poarty.pay.ali.service.impl.AlipayServiceImpl;
+import com.fast.family.third.poarty.pay.ali.service.impl.AlipayWapServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
