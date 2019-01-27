@@ -70,6 +70,13 @@ public class DTOGenerator {
                                                 GeneratorConfig generatorConfig){
         TableInfo masterTableInfo = AnalysisDB.getTableInfoByName(masterTableName,generatorConfig);
         TableInfo slaveTableInfo = AnalysisDB.getTableInfoByName(slaveTableName,generatorConfig);
+        for (ColumnInfo masterColumnInfo : masterTableInfo.getColumnInfoList()){
+            for (ColumnInfo slaveColumnInfo : slaveTableInfo.getColumnInfoList()){
+                if (masterColumnInfo.getColumnJavaName().equals(slaveColumnInfo.getColumnJavaName())){
+                    slaveTableInfo.getColumnInfoList().remove(slaveColumnInfo);
+                }
+            }
+        }
         Map<String,Object> paramMap = new HashMap<>();
         paramMap.put("className",className);
         paramMap.put("classComment",classComment);
@@ -88,6 +95,13 @@ public class DTOGenerator {
                                                 GeneratorConfig generatorConfig){
         TableInfo masterTableInfo = AnalysisDB.getTableInfoByName(masterTableName,generatorConfig);
         TableInfo slaveTableInfo = AnalysisDB.getTableInfoByName(slaveTableName,generatorConfig);
+        for (ColumnInfo masterColumnInfo : masterTableInfo.getColumnInfoList()){
+            for (ColumnInfo slaveColumnInfo : slaveTableInfo.getColumnInfoList()){
+                if (masterColumnInfo.getColumnJavaName().equals(slaveColumnInfo.getColumnJavaName())){
+                    slaveTableInfo.getColumnInfoList().remove(slaveColumnInfo);
+                }
+            }
+        }
         Map<String,Object> paramMap = new HashMap<>();
         paramMap.put("className",className);
         paramMap.put("classComment",classComment);

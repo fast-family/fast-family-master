@@ -69,6 +69,30 @@ public class MainGenerator {
                 ,slaveTableName,generatorConfig);
     }
 
+    public static void generatorOneToManyCode(GeneratorCodeEntity masterTable,String slaveTableName,
+                                              GeneratorConfig generatorConfig){
+        ControllerGenerator.genOneToManyControllerCode(masterTable.getClassName(),masterTable.getClassComment(),masterTable.getUrl(),generatorConfig);
+        ServiceGenerator.genOneToManyServiceInterface(masterTable.getClassName(), masterTable.getClassComment(), generatorConfig);
+        ServiceGenerator.genOneToManyServiceImpl(masterTable.getClassName(), masterTable.getClassComment(), generatorConfig);
+        EntityGenerator.generatorSingleEntity(masterTable.getTableName(), masterTable.getClassName(), masterTable.getClassComment(),generatorConfig);
+        MapperGenerator.genOneToOneMapperInterface(masterTable.getClassName(), masterTable.getClassComment(), generatorConfig);
+        MapperGenerator.genOneToManyMapperXML(masterTable.getTableName(),masterTable.getClassName(),masterTable.getClassComment(),slaveTableName,generatorConfig);
+        DTOGenerator.genOneToManyResourceCode(masterTable.getClassName(), masterTable.getClassComment(),masterTable.getTableName()
+                ,slaveTableName,generatorConfig);
+    }
+
+    public static void generatorManyToOneCode(GeneratorCodeEntity masterTable,String slaveTableName,
+                                              GeneratorConfig generatorConfig){
+        ControllerGenerator.genManyToOneController(masterTable.getClassName(),masterTable.getClassComment(),masterTable.getUrl(),generatorConfig);
+        ServiceGenerator.genManyToOneServiceInterface(masterTable.getClassName(), masterTable.getClassComment(), generatorConfig);
+        ServiceGenerator.genManyToOneServiceImpl(masterTable.getClassName(), masterTable.getClassComment(), generatorConfig);
+        EntityGenerator.generatorSingleEntity(masterTable.getTableName(), masterTable.getClassName(), masterTable.getClassComment(),generatorConfig);
+        MapperGenerator.genManyToOneMapperInterface(masterTable.getClassName(), masterTable.getClassComment(), generatorConfig);
+        MapperGenerator.genManyToOneMapperXML(masterTable.getTableName(),masterTable.getClassName(),masterTable.getClassComment(),slaveTableName,generatorConfig);
+        DTOGenerator.genManyToOneResourceCode(masterTable.getClassName(), masterTable.getClassComment(),masterTable.getTableName()
+                ,slaveTableName,generatorConfig);
+    }
+
     @Builder
     @Data
     @NoArgsConstructor

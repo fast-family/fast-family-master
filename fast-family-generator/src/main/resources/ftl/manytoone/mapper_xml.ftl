@@ -11,7 +11,7 @@
     <!-- 通用查询结果列 -->
     <sql id="${className?uncap_first}Column">
     <#list tableInfo.columnInfoList as column>
-    ${column.columnName} AS ${column.columnJavaName}<#if column_has_next>,</#if>
+        ${column.columnName} AS ${column.columnJavaName}<#if column_has_next>,</#if>
     </#list>
     </sql>
 
@@ -24,9 +24,9 @@
 
             <#list masterTableInfo.columnInfoList as masterColumn>
                 <#list slaveTableInfo.columnInfoList as slaveColumn>
-                    <#if masterColumn.columnName == slaveColumn>
+                    <#if masterColumn.columnName == slaveColumn.columnName>
         WHERE
-                        ${masterTableInfo.tableName}.${masterColumn.columnName} == ${slaveTableInfo.tableName}.${slaveColumn.columnName}
+                        ${masterTableInfo.tableName}.${masterColumn.columnName} = ${slaveTableInfo.tableName}.${slaveColumn.columnName}
                     </#if>
                 </#list>
             </#list>
