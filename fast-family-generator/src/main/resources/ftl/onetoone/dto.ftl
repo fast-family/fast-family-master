@@ -26,13 +26,13 @@ public class ${className}DTO extends AbstractPersistableBusinessObjectAdapter<${
     private ${column.dataType} ${column.columnJavaName};
     </#list>
 
-    <#list slaveTableInfo.columnInfoList as column>
-        <#if column.columnComment?length gt 0>
+    <#list slaveTableInfo.columnInfoList as slaveColumn>
+        <#if slaveColumn.columnComment?length gt 0>
     /**
-    * ${column.columnComment}
+    * ${slaveColumn.columnComment}
     */
         </#if>
-    private ${column.dataType} ${column.columnJavaName};
+    private ${slaveColumn.dataType} ${slaveColumn.columnJavaName};
     </#list>
 
 

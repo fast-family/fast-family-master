@@ -2,6 +2,7 @@ package com.fast.family.generator;
 
 import com.fast.family.generator.config.GeneratorConfig;
 import com.fast.family.generator.db.AnalysisDB;
+import com.fast.family.generator.model.ColumnInfo;
 import com.fast.family.generator.model.TableInfo;
 import freemarker.template.Configuration;
 import freemarker.template.DefaultObjectWrapper;
@@ -13,6 +14,7 @@ import java.io.FileWriter;
 import java.net.URL;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -43,6 +45,13 @@ public class DTOGenerator {
                                                GeneratorConfig generatorConfig){
         TableInfo masterTableInfo = AnalysisDB.getTableInfoByName(masterTableName,generatorConfig);
         TableInfo slaveTableInfo = AnalysisDB.getTableInfoByName(slaveTableName,generatorConfig);
+        for (ColumnInfo masterColumnInfo : masterTableInfo.getColumnInfoList()){
+            for (ColumnInfo slaveColumnInfo : slaveTableInfo.getColumnInfoList()){
+                if (masterColumnInfo.getColumnJavaName().equals(slaveColumnInfo.getColumnJavaName())){
+                    slaveTableInfo.getColumnInfoList().remove(slaveColumnInfo);
+                }
+            }
+        }
         Map<String,Object> paramMap = new HashMap<>();
         paramMap.put("className",className);
         paramMap.put("classComment",classComment);

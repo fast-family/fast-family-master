@@ -3,15 +3,15 @@
 <mapper namespace="${packageName}.dao.mapper.${className}Mapper">
 
     <resultMap id="${className?uncap_first}MapperMap" type="${packageName}.entity.${className}">
-    <#list tableInfo.columnInfoList as column>
+    <#list masterTableInfo.columnInfoList as column>
         <result column="${column.columnName}" property="${column.columnJavaName}"/>
     </#list>
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="${className?uncap_first}Column">
-    <#list tableInfo.columnInfoList as column>
-    ${column.columnName} AS ${column.columnJavaName}<#if column_has_next>,</#if>
+    <#list masterTableInfo.columnInfoList as column>
+        ${column.columnName} AS ${column.columnJavaName}<#if column_has_next>,</#if>
     </#list>
     </sql>
 
@@ -24,9 +24,9 @@
 
             <#list masterTableInfo.columnInfoList as masterColumn>
                 <#list slaveTableInfo.columnInfoList as slaveColumn>
-                    <#if masterColumn.columnName == slaveColumn>
+                    <#if masterColumn.columnName == slaveColumn.columnName>
         WHERE
-        ${masterTableInfo.tableName}.${masterColumn.columnName} == ${slaveTableInfo.tableName}.${slaveColumn.columnName}
+        ${masterTableInfo.tableName}.${masterColumn.columnName} = ${slaveTableInfo.tableName}.${slaveColumn.columnName}
                     </#if>
                 </#list>
             </#list>

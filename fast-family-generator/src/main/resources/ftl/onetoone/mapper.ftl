@@ -4,9 +4,9 @@ import com.fast.family.mvc.generic.mapper.GenericMapper;
 import ${packageName}.entity.${className};
 import ${packageName}.dto.${className}DTO;
 
-<#if (type) > 1>
+
 import java.util.List;
-</#if>
+
 
 /**
 * <p>
