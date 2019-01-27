@@ -50,6 +50,6 @@ public class AlipayAutoConfiguration {
 
     @Bean
     public AlipayAppService alipayAppService(){
-        return new AlipayAppServiceImpl(alipayClient());
+        return new AlipayAppServiceImpl(aliPayProperties,alipayClient());
     }
 }

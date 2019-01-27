@@ -28,7 +28,6 @@ import org.springframework.context.annotation.Configuration;
 public class WechatMpAutoConfiguration {
 
     @Configuration
-//    @ConditionalOnMissingClass("org.redisson.api.RedissonClient")
     public class MemoryWechatMqAutoConfiguration{
 
         @Autowired

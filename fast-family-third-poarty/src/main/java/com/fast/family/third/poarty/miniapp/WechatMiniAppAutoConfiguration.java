@@ -27,7 +27,6 @@ import java.util.Optional;
 public class WechatMiniAppAutoConfiguration {
 
     @Configuration
-//    @ConditionalOnMissingClass("org.redisson.api.RedissonClient")
     public class MemoryWechatMiniAppAutoConfiguration{
 
         @Autowired
