@@ -31,7 +31,7 @@ public class MainGenerator {
         codeEntity.setTableName("sys_user");
         codeEntity.setUrl("user");
 //        MainGenerator.generatorCode(codeEntity, generatorConfig());
-        MainGenerator.generatorOneToOneCode(codeEntity,"sys_role",generatorConfig());
+        MainGenerator.generatorManyToOneCode(codeEntity,"sys_role",generatorConfig());
     }
 
     private static GeneratorConfig generatorConfig(){
@@ -75,7 +75,7 @@ public class MainGenerator {
         ServiceGenerator.genOneToManyServiceInterface(masterTable.getClassName(), masterTable.getClassComment(), generatorConfig);
         ServiceGenerator.genOneToManyServiceImpl(masterTable.getClassName(), masterTable.getClassComment(), generatorConfig);
         EntityGenerator.generatorSingleEntity(masterTable.getTableName(), masterTable.getClassName(), masterTable.getClassComment(),generatorConfig);
-        MapperGenerator.genOneToOneMapperInterface(masterTable.getClassName(), masterTable.getClassComment(), generatorConfig);
+        MapperGenerator.genOneToManyMapperInterface(masterTable.getClassName(), masterTable.getClassComment(), generatorConfig);
         MapperGenerator.genOneToManyMapperXML(masterTable.getTableName(),masterTable.getClassName(),masterTable.getClassComment(),slaveTableName,generatorConfig);
         DTOGenerator.genOneToManyResourceCode(masterTable.getClassName(), masterTable.getClassComment(),masterTable.getTableName()
                 ,slaveTableName,generatorConfig);

@@ -87,7 +87,7 @@ public class MapperGenerator {
                                     String slaveTableName,
                                     GeneratorConfig generatorConfig){
         TableInfo masterTableInfo = AnalysisDB.getTableInfoByName(tableName,generatorConfig);
-        TableInfo slaveTableInfo = AnalysisDB.getTableInfoByName(tableName,generatorConfig);
+        TableInfo slaveTableInfo = AnalysisDB.getTableInfoByName(slaveTableName,generatorConfig);
         Map<String,Object> paramMap = new HashMap<>();
         paramMap.put("className",className);
         paramMap.put("classComment",classComment);
@@ -117,7 +117,7 @@ public class MapperGenerator {
                                     GeneratorConfig generatorConfig){
 
         TableInfo masterTableInfo = AnalysisDB.getTableInfoByName(tableName,generatorConfig);
-        TableInfo slaveTableInfo = AnalysisDB.getTableInfoByName(tableName,generatorConfig);
+        TableInfo slaveTableInfo = AnalysisDB.getTableInfoByName(slaveTableName,generatorConfig);
         Map<String,Object> paramMap = new HashMap<>();
         paramMap.put("className",className);
         paramMap.put("classComment",classComment);

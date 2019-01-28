@@ -2,8 +2,10 @@ package ${packageName}.service;
 
 import com.fast.family.mvc.generic.service.GenericService;
 import ${packageName}.entity.${className};
+import ${packageName}.dto.${className}DTO;
 
 import java.util.List;
+
 
 /**
 * <p>
@@ -15,5 +17,4 @@ import java.util.List;
 public interface ${className}Service extends GenericService<${className},Long>{
 
     List<${className}DTO> custom(${className}DTO ${className?uncap_first}DTO);
-
 }

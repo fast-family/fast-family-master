@@ -2,6 +2,7 @@ package ${packageName}.service;
 
 import com.fast.family.mvc.generic.service.GenericService;
 import ${packageName}.entity.${className};
+import ${packageName}.dto.${className}DTO;
 
 import java.util.List;
 

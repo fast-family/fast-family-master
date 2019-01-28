@@ -45,10 +45,12 @@ public class DTOGenerator {
                                                GeneratorConfig generatorConfig){
         TableInfo masterTableInfo = AnalysisDB.getTableInfoByName(masterTableName,generatorConfig);
         TableInfo slaveTableInfo = AnalysisDB.getTableInfoByName(slaveTableName,generatorConfig);
-        for (ColumnInfo masterColumnInfo : masterTableInfo.getColumnInfoList()){
-            for (ColumnInfo slaveColumnInfo : slaveTableInfo.getColumnInfoList()){
+        for (int i = 0;i < masterTableInfo.getColumnInfoList().size();i++){
+            ColumnInfo masterColumnInfo = masterTableInfo.getColumnInfoList().get(i);
+            for (int j = 0;j < slaveTableInfo.getColumnInfoList().size();j++){
+                ColumnInfo slaveColumnInfo = slaveTableInfo.getColumnInfoList().get(j);
                 if (masterColumnInfo.getColumnJavaName().equals(slaveColumnInfo.getColumnJavaName())){
-                    slaveTableInfo.getColumnInfoList().remove(slaveColumnInfo);
+                    masterTableInfo.getColumnInfoList().remove(i);
                 }
             }
         }
@@ -70,10 +72,12 @@ public class DTOGenerator {
                                                 GeneratorConfig generatorConfig){
         TableInfo masterTableInfo = AnalysisDB.getTableInfoByName(masterTableName,generatorConfig);
         TableInfo slaveTableInfo = AnalysisDB.getTableInfoByName(slaveTableName,generatorConfig);
-        for (ColumnInfo masterColumnInfo : masterTableInfo.getColumnInfoList()){
-            for (ColumnInfo slaveColumnInfo : slaveTableInfo.getColumnInfoList()){
+        for (int i = 0;i < masterTableInfo.getColumnInfoList().size();i++){
+            ColumnInfo masterColumnInfo = masterTableInfo.getColumnInfoList().get(i);
+            for (int j = 0;j < slaveTableInfo.getColumnInfoList().size();j++){
+                ColumnInfo slaveColumnInfo = slaveTableInfo.getColumnInfoList().get(j);
                 if (masterColumnInfo.getColumnJavaName().equals(slaveColumnInfo.getColumnJavaName())){
-                    slaveTableInfo.getColumnInfoList().remove(slaveColumnInfo);
+                    masterTableInfo.getColumnInfoList().remove(i);
                 }
             }
         }
@@ -95,10 +99,12 @@ public class DTOGenerator {
                                                 GeneratorConfig generatorConfig){
         TableInfo masterTableInfo = AnalysisDB.getTableInfoByName(masterTableName,generatorConfig);
         TableInfo slaveTableInfo = AnalysisDB.getTableInfoByName(slaveTableName,generatorConfig);
-        for (ColumnInfo masterColumnInfo : masterTableInfo.getColumnInfoList()){
-            for (ColumnInfo slaveColumnInfo : slaveTableInfo.getColumnInfoList()){
+        for (int i = 0;i < masterTableInfo.getColumnInfoList().size();i++){
+            ColumnInfo masterColumnInfo = masterTableInfo.getColumnInfoList().get(i);
+            for (int j = 0;j < slaveTableInfo.getColumnInfoList().size();j++){
+                ColumnInfo slaveColumnInfo = slaveTableInfo.getColumnInfoList().get(j);
                 if (masterColumnInfo.getColumnJavaName().equals(slaveColumnInfo.getColumnJavaName())){
-                    slaveTableInfo.getColumnInfoList().remove(slaveColumnInfo);
+                    masterTableInfo.getColumnInfoList().remove(i);
                 }
             }
         }

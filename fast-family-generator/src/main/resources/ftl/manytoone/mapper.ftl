@@ -4,9 +4,9 @@ import com.fast.family.mvc.generic.mapper.GenericMapper;
 import ${packageName}.entity.${className};
 import ${packageName}.dto.${className}DTO;
 
-<#if (type) > 1>
+
 import java.util.List;
-</#if>
+
 
 /**
 * <p>
@@ -17,8 +17,8 @@ import java.util.List;
 */
 public interface ${className}Mapper extends GenericMapper<${className},Long> {
 
-<#if (type > 1)>
-    List<${className}DTO> custom();
-</#if>
+
+    List<${className}DTO> custom(${className}DTO ${className?uncap_first}DTO);
+
 
 }

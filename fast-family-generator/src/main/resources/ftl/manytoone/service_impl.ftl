@@ -4,6 +4,7 @@ package ${packageName}.service.impl;
 import com.fast.family.mvc.generic.mapper.GenericMapper;
 import com.fast.family.mvc.generic.service.impl.GenericServiceImpl;
 import ${packageName}.entity.${className};
+import ${packageName}.dto.${className}DTO;
 import ${packageName}.mapper.${className}Mapper;
 import ${packageName}.service.${className}Service;
 
