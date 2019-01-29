@@ -14,7 +14,11 @@ public class SecurityProperties {
     @Getter
     private final CorsConfiguration cors = new CorsConfiguration();
 
+    @Getter
     private final Jwt jwt = new Jwt();
+
+    @Getter
+    private final MiniApp miniApp = new MiniApp();
 
     @Data
     public static class Jwt{
@@ -29,4 +33,15 @@ public class SecurityProperties {
 
         private long tokenValidityInSecondsForRememberMe = 2592000; //毫秒
     }
+
+    @Data
+    public static class MiniApp{
+
+        private String miniAppUrl;
+
+        private String httpMethod;
+
+    }
+
+
 }

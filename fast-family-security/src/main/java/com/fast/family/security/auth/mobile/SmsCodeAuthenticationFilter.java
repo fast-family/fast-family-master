@@ -1,8 +1,7 @@
-package com.fast.family.security.mobile;
+package com.fast.family.security.auth.mobile;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetailsService;

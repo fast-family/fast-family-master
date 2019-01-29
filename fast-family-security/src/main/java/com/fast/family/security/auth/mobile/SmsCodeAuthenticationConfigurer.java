@@ -1,4 +1,4 @@
-package com.fast.family.security.mobile;
+package com.fast.family.security.auth.mobile;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationManager;
