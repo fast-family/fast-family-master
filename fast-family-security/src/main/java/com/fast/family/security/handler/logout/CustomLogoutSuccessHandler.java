@@ -1,4 +1,4 @@
-package com.fast.family.security.handler;
+package com.fast.family.security.handler.logout;
 
 import com.fast.family.commons.utils.GsonUtils;
 import com.fast.family.commons.utils.WebUtils;

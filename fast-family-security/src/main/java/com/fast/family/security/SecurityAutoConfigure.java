@@ -1,5 +1,7 @@
 package com.fast.family.security;
 
+import com.fast.family.security.handler.success.DefaultAuthenticationSuccessHandler;
+import com.fast.family.security.handler.success.ExtendAuthenticationSuccessHandler;
 import com.fast.family.security.validate.code.ImMemoryValidateCodeRepository;
 import com.fast.family.security.validate.code.RedisValidateCodeRepository;
 import com.fast.family.security.validate.code.ValidateCodeGenerator;
@@ -24,6 +26,10 @@ public class SecurityAutoConfigure {
     public static final String PREFIX = "fast.family.security.validate.code";
 
 
+    @Bean
+    public ExtendAuthenticationSuccessHandler extendAuthenticationSuccessHandler(){
+        return new DefaultAuthenticationSuccessHandler();
+    }
 
     @Configuration
     @ConditionalOnClass(SecurityProperties.class)

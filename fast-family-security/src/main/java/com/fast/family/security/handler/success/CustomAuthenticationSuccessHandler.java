@@ -1,9 +1,7 @@
-package com.fast.family.security.handler;
+package com.fast.family.security.handler.success;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.codec.binary.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.codec.Base64;
@@ -23,15 +21,14 @@ import java.util.HashMap;
 @Component("customAuthenticationSuccessHandler")
 public class CustomAuthenticationSuccessHandler extends SimpleUrlAuthenticationSuccessHandler{
 
-
-    @Autowired
-    private ObjectMapper objectMapper;
-
     @Autowired
     private ClientDetailsService clientDetailsService;
 
     @Autowired
     private AuthorizationServerTokenServices authorizationServerTokenServices;
+
+    @Autowired
+    private ExtendAuthenticationSuccessHandler extendAuthenticationSuccessHandler;
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
@@ -42,32 +39,23 @@ public class CustomAuthenticationSuccessHandler extends SimpleUrlAuthenticationS
             throw new UnapprovedClientAuthenticationException("请求头中无client信息");
         }
         String[] tokens = this.extractAndDecodeHeader(header, request);
-
         if (tokens.length != 2){
             throw new BadCredentialsException("Invalid basic authentication token");
         }
-
         String clientId = tokens[0];
         String clientSecret = tokens[1];
-
         ClientDetails clientDetails = clientDetailsService.loadClientByClientId(clientId);
-
         if (clientDetails == null) {
             throw new UnapprovedClientAuthenticationException("clientId 对应的配置信息不存在" + clientId);
         } else if (!StringUtils.equals(clientDetails.getClientSecret(), clientSecret)) {
             throw new UnapprovedClientAuthenticationException("clientSecret 不匹配" + clientId);
         }
-
         TokenRequest tokenRequest = new TokenRequest(new HashMap<>(), clientId, clientDetails.getScope(), "custom");
-
         OAuth2Request oAuth2Request = tokenRequest.createOAuth2Request(clientDetails);
-
         OAuth2Authentication oAuth2Authentication = new OAuth2Authentication(oAuth2Request, authentication);
-
         OAuth2AccessToken token = authorizationServerTokenServices.createAccessToken(oAuth2Authentication);
-
-        response.setContentType(MediaType.APPLICATION_JSON_UTF8_VALUE);
-        response.getWriter().write(objectMapper.writeValueAsString(token));
+        //此处可自定义扩展返回结果。
+        extendAuthenticationSuccessHandler.customAuthenticationSuccessResult(response,token,authentication);
     }
 
     /**
