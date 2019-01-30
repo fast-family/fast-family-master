@@ -1,5 +1,12 @@
 package com.fast.family.security.auth.wechat;
 
+import com.fast.family.commons.utils.WebUtils;
+import com.fast.family.security.SecurityConstants;
+import lombok.extern.slf4j.Slf4j;
+import me.chanjar.weixin.common.error.WxErrorException;
+import me.chanjar.weixin.mp.api.WxMpService;
+import me.chanjar.weixin.mp.bean.result.WxMpOAuth2AccessToken;
+import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
@@ -14,7 +21,10 @@ import java.io.IOException;
  * @author 张顺
  * @version 1.0
  */
+@Slf4j
 public class WechatAuthenticationFilter extends AbstractAuthenticationProcessingFilter {
+
+    private WxMpService wxMpService;
 
     protected WechatAuthenticationFilter(String defaultFilterProcessesUrl) {
         super(defaultFilterProcessesUrl);
@@ -26,6 +36,14 @@ public class WechatAuthenticationFilter extends AbstractAuthenticationProcessing
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException, IOException, ServletException {
-        return null;
+        try {
+            WxMpOAuth2AccessToken wxToken = wxMpService.oauth2getAccessToken(SecurityConstants.WECHAT_APP_CODE);
+        } catch (WxErrorException e) {
+            throw new InternalAuthenticationServiceException("微信授权失败",e);
+        }
+        WechatAuthenticationToken token = new WechatAuthenticationToken(WebUtils.getHttpServletRequest()
+                .getParameter(SecurityConstants.MOBILE));
+        token.setDetails(authenticationDetailsSource.buildDetails(request));
+        return this.getAuthenticationManager().authenticate(token);
     }
 }

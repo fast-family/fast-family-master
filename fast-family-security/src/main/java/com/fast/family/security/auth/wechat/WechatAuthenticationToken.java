@@ -12,6 +12,19 @@ import java.util.Collection;
  */
 @Slf4j
 public class WechatAuthenticationToken extends BaseAuthenticationToken {
+
+    private Object principal;
+
+    public WechatAuthenticationToken(Object principal){
+        super(null);
+        this.principal = principal;
+    }
+
+    public WechatAuthenticationToken(Collection<? extends GrantedAuthority> authorities, Object principal) {
+        super(authorities);
+        this.principal = principal;
+    }
+
     /**
      * Creates a token with the supplied array of authorities.
      *

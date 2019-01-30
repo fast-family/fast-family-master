@@ -1,7 +1,16 @@
 package com.fast.family.security.auth.mini;
 
+import cn.binarywang.wx.miniapp.api.WxMaService;
+import cn.binarywang.wx.miniapp.bean.WxMaJscode2SessionResult;
+import com.fast.family.commons.utils.WebUtils;
+import com.fast.family.security.SecurityConstants;
 import com.fast.family.security.SecurityProperties;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
+import me.chanjar.weixin.common.error.WxErrorException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
@@ -21,9 +30,14 @@ import java.io.IOException;
 public class MiniAppAuthenticationFilter extends AbstractAuthenticationProcessingFilter {
 
 
+    @Autowired
     private SecurityProperties securityProperties;
 
-    public MiniAppAuthenticationFilter(SecurityProperties securityProperties){
+    @Getter
+    @Setter
+    private WxMaService wxMaService;
+
+    public MiniAppAuthenticationFilter(){
         super(new AntPathRequestMatcher(securityProperties.getMiniApp().getMiniAppUrl(),securityProperties.getMiniApp().getHttpMethod()));
     }
 
@@ -39,6 +53,15 @@ public class MiniAppAuthenticationFilter extends AbstractAuthenticationProcessin
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request,
                                                 HttpServletResponse response) throws AuthenticationException, IOException, ServletException {
-        return null;
+
+        try {
+            WxMaJscode2SessionResult wxResult = wxMaService.getUserService().getSessionInfo(WebUtils.getHttpServletRequest().getParameter(SecurityConstants.LOGIN_TYPE_SMS));
+        } catch (WxErrorException e) {
+            throw new InternalAuthenticationServiceException(e.getMessage(),e);
+        }
+        String mobile = WebUtils.getHttpServletRequest().getParameter(SecurityConstants.MOBILE);
+        MiniAppAuthenticationToken token = new MiniAppAuthenticationToken(mobile);
+        token.setDetails(authenticationDetailsSource.buildDetails(request));
+        return this.getAuthenticationManager().authenticate(token);
     }
 }

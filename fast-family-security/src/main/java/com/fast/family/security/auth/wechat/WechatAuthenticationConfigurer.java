@@ -15,6 +15,7 @@ import org.springframework.stereotype.Component;
 public class WechatAuthenticationConfigurer extends
         SecurityConfigurerAdapter<DefaultSecurityFilterChain, HttpSecurity> {
 
+
     @Override
     public void configure(HttpSecurity builder) throws Exception {
         super.configure(builder);

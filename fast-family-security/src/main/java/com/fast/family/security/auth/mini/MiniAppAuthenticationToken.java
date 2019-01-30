@@ -38,6 +38,6 @@ public class MiniAppAuthenticationToken extends BaseAuthenticationToken {
 
     @Override
     public Object getPrincipal() {
-        return null;
+        return this.principal;
     }
 }
