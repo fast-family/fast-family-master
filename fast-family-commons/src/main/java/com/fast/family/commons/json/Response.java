@@ -19,6 +19,9 @@ public class Response<T> {
 
     private T data;
 
+    public static <T>Response<T> ok(){
+        return ok(200,"success",null);
+    }
 
     public static <T>Response<T> ok(T data){
         return ok(200,"success",data);
