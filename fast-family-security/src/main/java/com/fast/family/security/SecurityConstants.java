@@ -23,4 +23,6 @@ public class SecurityConstants {
     public static final String UNIONID = "unionid";
 
     public static final String WECHAT_APP_CODE = "wechatAppCode";
+
+    public static final String WECHAT_AUTH_URL = "wechat";
 }

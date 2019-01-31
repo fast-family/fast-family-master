@@ -2,6 +2,8 @@ package com.fast.family.security.auth.wechat;
 
 import com.fast.family.commons.utils.WebUtils;
 import com.fast.family.security.SecurityConstants;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import me.chanjar.weixin.common.error.WxErrorException;
 import me.chanjar.weixin.mp.api.WxMpService;
@@ -10,6 +12,7 @@ import org.springframework.security.authentication.InternalAuthenticationService
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.web.util.matcher.RequestMatcher;
 
 import javax.servlet.ServletException;
@@ -24,7 +27,13 @@ import java.io.IOException;
 @Slf4j
 public class WechatAuthenticationFilter extends AbstractAuthenticationProcessingFilter {
 
+    @Getter
+    @Setter
     private WxMpService wxMpService;
+
+    public WechatAuthenticationFilter(){
+        super(new AntPathRequestMatcher(SecurityConstants.WECHAT_AUTH_URL,"POST"));
+    }
 
     protected WechatAuthenticationFilter(String defaultFilterProcessesUrl) {
         super(defaultFilterProcessesUrl);
@@ -37,7 +46,8 @@ public class WechatAuthenticationFilter extends AbstractAuthenticationProcessing
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException, IOException, ServletException {
         try {
-            WxMpOAuth2AccessToken wxToken = wxMpService.oauth2getAccessToken(SecurityConstants.WECHAT_APP_CODE);
+            WxMpOAuth2AccessToken token = wxMpService.oauth2getAccessToken(SecurityConstants.WECHAT_APP_CODE);
+            log.debug("wechat oauth success token {}",token);
         } catch (WxErrorException e) {
             throw new InternalAuthenticationServiceException("微信授权失败",e);
         }
