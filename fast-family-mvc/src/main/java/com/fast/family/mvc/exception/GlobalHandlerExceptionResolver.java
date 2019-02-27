@@ -33,16 +33,10 @@ public class GlobalHandlerExceptionResolver {
                 methodArgumentNotValidExceptionFirstErrorMessage(e.getBindingResult()));
     }
 
-
-
-
     static String methodArgumentNotValidExceptionFirstErrorMessage(BindingResult bindingResult) {
         return bindingResult.getAllErrors().stream().findFirst()
                 .map(ObjectError::getDefaultMessage).orElse("");
     }
-
-
-
 
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     @ExceptionHandler(ConstraintViolationException.class)
@@ -53,15 +47,11 @@ public class GlobalHandlerExceptionResolver {
                 constraintViolationExceptionFirstErrorMessage(e.getConstraintViolations()));
     }
 
-
-
     static String constraintViolationExceptionFirstErrorMessage(Set<ConstraintViolation<?>> constraintViolations) {
         return constraintViolations.stream().findFirst()
                 .map(constraintViolation -> constraintViolation.getPropertyPath().toString() + ":"
                         + constraintViolation.getMessage()).orElse("");
     }
-
-
 
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MissingServletRequestParameterException.class)
@@ -74,8 +64,6 @@ public class GlobalHandlerExceptionResolver {
     }
 
 
-
-
     @ResponseStatus(value = HttpStatus.UNSUPPORTED_MEDIA_TYPE)
     @ExceptionHandler(HttpMediaTypeNotSupportedException.class)
     public Response handleHttpMediaTypeNotSupportedException(
@@ -85,9 +73,6 @@ public class GlobalHandlerExceptionResolver {
                 .fail(415,
                         String.format("媒体类型%s错误", e.getContentType()));
     }
-
-
-
 
     @ResponseStatus(value = HttpStatus.METHOD_NOT_ALLOWED)
     @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
@@ -100,6 +85,12 @@ public class GlobalHandlerExceptionResolver {
                         e.getMessage());
     }
 
+    @ResponseStatus(value = HttpStatus.OK)
+    @ExceptionHandler
+    public Response handlerLdempotentException(LdempotentException t){
+        logError("handlerLdempotentException",t.getMessage(),t);
+        return Response.fail(t.getErrCode(),t.getMessage());
+    }
 
     @ResponseStatus(value = HttpStatus.OK)
     @ExceptionHandler(ApiException.class)
@@ -129,16 +120,12 @@ public class GlobalHandlerExceptionResolver {
         return Response.fail(t.getErrCode(),t.getMessage());
     }
 
-
     @ResponseStatus(value = HttpStatus.OK)
     @ExceptionHandler(NoLoginException.class)
     public Response handlerNoLoginException(NoLoginException t){
         logError("handlerNoLoginException",t.getMessage(),t);
         return Response.fail(t.getErrCode(),t.getMessage());
     }
-
-
-
 
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler
