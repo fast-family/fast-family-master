@@ -20,11 +20,11 @@ public class Response<T> {
     private T data;
 
     public static <T>Response<T> ok(){
-        return ok(200,"success",null);
+        return ok(ResponseCode.SUCCESS.getCode(),ResponseCode.SUCCESS.getMessage(),null);
     }
 
     public static <T>Response<T> ok(T data){
-        return ok(200,"success",data);
+        return ok(ResponseCode.SUCCESS.getCode(),ResponseCode.SUCCESS.getMessage(),data);
     }
 
     public static <T>Response<T> ok(int code,String message,T data){
@@ -36,7 +36,7 @@ public class Response<T> {
     }
 
     public static <T>Response<T> fail(){
-        return fail(500,"runtimeException");
+        return fail(ResponseCode.SERVER_ERROR.getCode(),ResponseCode.SERVER_ERROR.getMessage());
     }
 
     public static <T>Response<T> fail(int code,String message){
