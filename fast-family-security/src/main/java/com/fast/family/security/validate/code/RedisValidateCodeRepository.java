@@ -19,19 +19,19 @@ public class RedisValidateCodeRepository implements ValidateCodeRepository {
 
     @Override
     public void save(String key, ValidateCode validateCode) {
-        RMap<String,ValidateCode> rMap = redissonClient.getMap(VALIDATE_CODE);
-        rMap.put(key,validateCode);
+        RMap<String, ValidateCode> rMap = redissonClient.getMap(VALIDATE_CODE);
+        rMap.put(key, validateCode);
     }
 
     @Override
     public ValidateCode get(String key) {
-        RMap<String,ValidateCode> rMap = redissonClient.getMap(VALIDATE_CODE);
+        RMap<String, ValidateCode> rMap = redissonClient.getMap(VALIDATE_CODE);
         return rMap.get(key);
     }
 
     @Override
     public void remove(String key) {
-        RMap<String,ValidateCode> rMap = redissonClient.getMap(VALIDATE_CODE);
+        RMap<String, ValidateCode> rMap = redissonClient.getMap(VALIDATE_CODE);
         rMap.fastRemove(key);
     }
 }

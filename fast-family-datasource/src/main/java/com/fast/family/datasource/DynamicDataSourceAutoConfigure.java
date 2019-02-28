@@ -16,7 +16,7 @@ public class DynamicDataSourceAutoConfigure {
 
 
     @Bean
-    public DynamicRoutingDataSource routingDataSource(){
+    public DynamicRoutingDataSource routingDataSource() {
         return new DynamicRoutingDataSource();
     }
 }

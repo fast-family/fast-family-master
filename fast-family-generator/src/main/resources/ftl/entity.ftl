@@ -19,18 +19,20 @@ import javax.persistence.Table;
 
 /**
 * <p>
-* 描述: ${classComment}实体
-* <p>
-* @created ${sysTime?string("yyyy-MM-dd HH:mm:ss")}
-*/
-@Builder
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Entity
-@Table(name = "${tableInfo.tableName}")
-@ApiModel(value = "${classComment}实体")
-public class ${className} extends GenericEntity<Long> {
+    * 描述: ${classComment}实体
+    *
+<p>
+    * @created ${sysTime?string("yyyy-MM-dd HH:mm:ss")}
+    */
+    @Builder
+    @Data
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @Entity
+    @Table(name = "${tableInfo.tableName}")
+    @ApiModel(value = "${classComment}实体")
+    public class ${className} extends GenericEntity
+    <Long> {
 
 <#list tableInfo.columnInfoList as column>
     <#if column.columnComment?length gt 0>
@@ -51,7 +53,4 @@ public class ${className} extends GenericEntity<Long> {
 
 </#list>
 
-
-
-
-}
+        }

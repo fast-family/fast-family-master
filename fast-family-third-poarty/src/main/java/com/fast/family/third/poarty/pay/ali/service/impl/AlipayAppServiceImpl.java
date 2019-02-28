@@ -22,17 +22,17 @@ public class AlipayAppServiceImpl implements AlipayAppService {
 
     private AlipayProperties aliPayProperties;
 
-    public AlipayAppServiceImpl(AlipayProperties aliPayProperties,AlipayClient alipayClient) {
+    public AlipayAppServiceImpl(AlipayProperties aliPayProperties, AlipayClient alipayClient) {
         this.alipayClient = alipayClient;
         this.aliPayProperties = aliPayProperties;
     }
 
     @Override
     public AlipayTradeAppPayResponse createOrder(AlipayTradeAppPayModel model) throws AlipayApiException {
-            AlipayTradeAppPayRequest request = new AlipayTradeAppPayRequest();
-            request.setBizModel(model);
-            request.setNotifyUrl(aliPayProperties.getNotifyUrl());
-            return alipayClient.sdkExecute(request);
+        AlipayTradeAppPayRequest request = new AlipayTradeAppPayRequest();
+        request.setBizModel(model);
+        request.setNotifyUrl(aliPayProperties.getNotifyUrl());
+        return alipayClient.sdkExecute(request);
 
     }
 }

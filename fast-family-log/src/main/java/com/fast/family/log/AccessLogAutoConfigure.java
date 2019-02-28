@@ -23,7 +23,7 @@ public class AccessLogAutoConfigure {
 
     @Bean
     @ConditionalOnBean(AccessLogMethodInterceptor.class)
-    public AccessLogPointcutAdvisor accessLogPointcutAdvisor(AccessLogMethodInterceptor accessLogMethodInterceptor){
+    public AccessLogPointcutAdvisor accessLogPointcutAdvisor(AccessLogMethodInterceptor accessLogMethodInterceptor) {
         AccessLogPointcutAdvisor accessLogPointcutAdvisor =
                 new AccessLogPointcutAdvisor();
         accessLogPointcutAdvisor.setAdvice(accessLogMethodInterceptor);
@@ -33,16 +33,15 @@ public class AccessLogAutoConfigure {
 
     @Configuration
     @ConditionalOnClass(MongoTemplate.class)
-    public static class MongodbLogRepositoryAutoConfiguration{
+    public static class MongodbLogRepositoryAutoConfiguration {
 
 
         @Bean
         @ConditionalOnMissingBean
-        public LogRepository mongodbLogRepository(){
+        public LogRepository mongodbLogRepository() {
             return new MongodbLogRepository();
         }
     }
-
 
 
 }

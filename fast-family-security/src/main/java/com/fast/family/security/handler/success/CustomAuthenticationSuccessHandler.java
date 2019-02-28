@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.util.HashMap;
 
 @Component("customAuthenticationSuccessHandler")
-public class CustomAuthenticationSuccessHandler extends SimpleUrlAuthenticationSuccessHandler{
+public class CustomAuthenticationSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
 
     @Autowired
     private ClientDetailsService clientDetailsService;
@@ -39,7 +39,7 @@ public class CustomAuthenticationSuccessHandler extends SimpleUrlAuthenticationS
             throw new UnapprovedClientAuthenticationException("请求头中无client信息");
         }
         String[] tokens = this.extractAndDecodeHeader(header, request);
-        if (tokens.length != 2){
+        if (tokens.length != 2) {
             throw new BadCredentialsException("Invalid basic authentication token");
         }
         String clientId = tokens[0];
@@ -55,7 +55,7 @@ public class CustomAuthenticationSuccessHandler extends SimpleUrlAuthenticationS
         OAuth2Authentication oAuth2Authentication = new OAuth2Authentication(oAuth2Request, authentication);
         OAuth2AccessToken token = authorizationServerTokenServices.createAccessToken(oAuth2Authentication);
         //此处可自定义扩展返回结果。
-        extendAuthenticationSuccessHandler.customAuthenticationSuccessResult(response,token,authentication);
+        extendAuthenticationSuccessHandler.customAuthenticationSuccessResult(response, token, authentication);
     }
 
     /**

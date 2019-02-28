@@ -15,7 +15,7 @@ public class WechatAuthenticationToken extends BaseAuthenticationToken {
 
     private Object principal;
 
-    public WechatAuthenticationToken(Object principal){
+    public WechatAuthenticationToken(Object principal) {
         super(null);
         this.principal = principal;
     }

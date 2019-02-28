@@ -9,7 +9,7 @@ import java.io.IOException;
  */
 public class PackageDirUtils {
 
-    public static String getPackageControllerDir(String className,String srcBasePath)  {
+    public static String getPackageControllerDir(String className, String srcBasePath) {
         String modelPath = srcBasePath + "." + className + "Controller";
         String packPath = null;
         try {
@@ -22,7 +22,7 @@ public class PackageDirUtils {
 
     }
 
-    public static String getPackageEntityDir(String srcBasePath){
+    public static String getPackageEntityDir(String srcBasePath) {
         String modelPath = srcBasePath;
         String packPath = null;
 
@@ -36,7 +36,7 @@ public class PackageDirUtils {
 
     }
 
-    public static String getPackageDaoDir(String moduleName,String srcBasePath){
+    public static String getPackageDaoDir(String moduleName, String srcBasePath) {
         String modelPath = srcBasePath + "." + moduleName + "Dao";
         String packPath = null;
         try {
@@ -49,7 +49,7 @@ public class PackageDirUtils {
     }
 
 
-    public static String getPackageServiceDir(String moduleName,String srcBasePath){
+    public static String getPackageServiceDir(String moduleName, String srcBasePath) {
         String modelPath = srcBasePath + "." + moduleName + "Service";
         String packPath = null;
         try {
@@ -61,7 +61,7 @@ public class PackageDirUtils {
         }
     }
 
-    public static String getPackageServiceImplDir(String moduleName,String srcBasePath){
+    public static String getPackageServiceImplDir(String moduleName, String srcBasePath) {
         String modelPath = srcBasePath + "." + moduleName + "ServiceImpl";
         String packPath = null;
         try {
@@ -74,10 +74,9 @@ public class PackageDirUtils {
     }
 
 
-
-    private static void makeDirs(String dir){
+    private static void makeDirs(String dir) {
         File file = new File(dir);
-        if (!file.exists() && !file.isDirectory()){
+        if (!file.exists() && !file.isDirectory()) {
             file.mkdirs();
         }
     }

@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Slf4j
-public class CustomIpAuthencationProvider implements AuthenticationProvider{
+public class CustomIpAuthencationProvider implements AuthenticationProvider {
 
     @Autowired
     private SecurityProperties securityProperties;
@@ -21,13 +21,13 @@ public class CustomIpAuthencationProvider implements AuthenticationProvider{
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         WebAuthenticationDetails details = (WebAuthenticationDetails) authentication.getDetails();
-        if (securityProperties.getExcludeIps() != null && securityProperties.getExcludeIps().length > 0){
-            for (String excludeIp : securityProperties.getExcludeIps()){
-                if (excludeIp.equals(details.getRemoteAddress())){
+        if (securityProperties.getExcludeIps() != null && securityProperties.getExcludeIps().length > 0) {
+            for (String excludeIp : securityProperties.getExcludeIps()) {
+                if (excludeIp.equals(details.getRemoteAddress())) {
                     return authentication;
                 }
             }
-            throw new NoAuthException(401,"认证失败");
+            throw new NoAuthException(401, "认证失败");
         }
         return null;
     }

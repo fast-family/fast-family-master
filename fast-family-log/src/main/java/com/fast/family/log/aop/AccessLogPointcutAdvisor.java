@@ -26,15 +26,11 @@ public class AccessLogPointcutAdvisor extends StaticMethodMatcherPointcutAdvisor
     @Override
     public boolean matches(Method method, Class<?> aClass) {
         LogAnnotation log = method.getAnnotation(LogAnnotation.class);
-        if (log != null){
+        if (log != null) {
             return true;
         }
         return false;
     }
-
-
-
-
 
 
 }

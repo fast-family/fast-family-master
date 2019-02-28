@@ -26,28 +26,31 @@ public class DynamicDataSourceAspect {
 
     @Pointcut("@within(com.fast.family.datasource.annotation.DataSourceAnnotation) ||" +
             " @annotation(com.fast.family.datasource.annotation.DataSourceAnnotation)")
-    public void pointcut(){};
+    public void pointcut() {
+    }
+
+    ;
 
 
     @Before("pointcut()")
-    public void before(JoinPoint joinPoint){
-        Method method = ((MethodSignature)joinPoint.getSignature()).getMethod();
+    public void before(JoinPoint joinPoint) {
+        Method method = ((MethodSignature) joinPoint.getSignature()).getMethod();
         DataSourceAnnotation dataSourceAnnotation =
                 method.getAnnotation(DataSourceAnnotation.class);
-        if (dataSourceAnnotation == null){
+        if (dataSourceAnnotation == null) {
             dataSourceAnnotation = joinPoint.getTarget().getClass()
                     .getAnnotation(DataSourceAnnotation.class);
-            if (dataSourceAnnotation == null){
+            if (dataSourceAnnotation == null) {
                 return;
             }
         }
         String dataSourceKey = dataSourceAnnotation.name();
-        if (dataSourceKey != null){
+        if (dataSourceKey != null) {
             DataSourceContextHolder.add(dataSourceKey);
         }
     }
 
-    public void after(JoinPoint joinPoint){
+    public void after(JoinPoint joinPoint) {
         DataSourceContextHolder.clear();
     }
 }

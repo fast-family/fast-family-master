@@ -17,16 +17,17 @@
 
     <select id="custom" resultType="${packageName}.dto.${className}DTO">
         SELECT
-            *
+        *
         FROM
-            ${masterTableInfo.tableName},
-            ${slaveTableInfo.tableName}
+    ${masterTableInfo.tableName},
+    ${slaveTableInfo.tableName}
         WHERE
-            1=1
+        1=1
             <#list masterTableInfo.columnInfoList as masterColumn>
                 <#list slaveTableInfo.columnInfoList as slaveColumn>
                     <#if masterColumn.columnName == slaveColumn.columnName>
-        AND ${masterTableInfo.tableName}.${masterColumn.columnName} = ${slaveTableInfo.tableName}.${slaveColumn.columnName}
+        AND ${masterTableInfo.tableName}.${masterColumn.columnName} = ${slaveTableInfo.tableName}
+                        .${slaveColumn.columnName}
                     </#if>
                 </#list>
             </#list>

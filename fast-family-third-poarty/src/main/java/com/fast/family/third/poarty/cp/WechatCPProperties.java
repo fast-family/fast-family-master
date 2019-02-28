@@ -4,7 +4,7 @@ import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @Data
-@ConfigurationProperties(prefix ="fast.family.wechat.cp")
+@ConfigurationProperties(prefix = "fast.family.wechat.cp")
 public class WechatCPProperties {
 
     /**

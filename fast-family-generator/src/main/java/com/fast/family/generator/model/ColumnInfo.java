@@ -57,10 +57,9 @@ public class ColumnInfo {
             propertyType = "Date";
         } else if (type.startsWith("timestamp")) { // date
             propertyType = "Date";
-        } else if (type.startsWith("decimal")){
+        } else if (type.startsWith("decimal")) {
             propertyType = "BigDecimal";
-        }
-        else {
+        } else {
             System.out.println("==类型[" + type + "]解析尚不支持==");
         }
         return propertyType;

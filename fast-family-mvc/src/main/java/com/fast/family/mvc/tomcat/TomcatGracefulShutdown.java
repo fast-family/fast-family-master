@@ -14,7 +14,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 @Slf4j
-public class TomcatGracefulShutdown implements TomcatConnectorCustomizer,ApplicationListener<ContextClosedEvent> {
+public class TomcatGracefulShutdown implements TomcatConnectorCustomizer, ApplicationListener<ContextClosedEvent> {
 
 
     private volatile Connector connector;
@@ -27,35 +27,36 @@ public class TomcatGracefulShutdown implements TomcatConnectorCustomizer,Applica
 
     @Override
     public void customize(Connector connector) {
-        if (connector == null){
+        if (connector == null) {
             log.info("We are running unit test");
             return;
         }
         final Executor executor = connector.getProtocolHandler().getExecutor();
-        if (executor instanceof ThreadPoolExecutor){
+        if (executor instanceof ThreadPoolExecutor) {
             log.info("executor is ThreadPoolExecutor");
             final ThreadPoolExecutor threadPoolExecutor = (ThreadPoolExecutor) executor;
-            if (threadPoolExecutor.isTerminated()){
+            if (threadPoolExecutor.isTerminated()) {
                 log.info("thread pool executor has terminated");
             } else {
                 LocalDateTime startShutdown = LocalDateTime.now();
                 LocalDateTime stopShutdown = LocalDateTime.now();
 
-                try{
+                try {
                     threadPoolExecutor.shutdown();
                     if (!threadPoolExecutor
-                            .awaitTermination(tomcatGracefulShutdownProperties.getWaitTime(), TimeUnit.SECONDS)){
+                            .awaitTermination(tomcatGracefulShutdownProperties.getWaitTime(), TimeUnit.SECONDS)) {
                         log.warn("Tomcat thread pool did not shut down gracefully within"
-                            + tomcatGracefulShutdownProperties.getWaitTime() + " second(s). Proceeding with force shutdown");
+                                + tomcatGracefulShutdownProperties.getWaitTime() + " second(s). Proceeding with force shutdown");
                         threadPoolExecutor.shutdownNow();
                     } else {
                         log.info("Tomcat thread pool is empty,we stop now");
                     }
-                } catch (Exception e){
+                } catch (Exception e) {
                     log.error("The await termination has been interrupted : " + e.getMessage());
-                    Thread.currentThread().interrupt();;
+                    Thread.currentThread().interrupt();
+                    ;
                 } finally {
-                    final long seconds = Duration.between(startShutdown,stopShutdown).getSeconds();
+                    final long seconds = Duration.between(startShutdown, stopShutdown).getSeconds();
                     log.info("Shutdown performed in " + seconds + " second(s)");
                 }
 

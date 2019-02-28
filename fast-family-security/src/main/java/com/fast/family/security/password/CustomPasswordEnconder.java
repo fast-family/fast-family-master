@@ -7,7 +7,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  * @author 张顺
  * @version 1.0
  */
-public class CustomPasswordEnconder implements PasswordEncoder{
+public class CustomPasswordEnconder implements PasswordEncoder {
 
     @Override
     public String encode(CharSequence charSequence) {
@@ -16,6 +16,6 @@ public class CustomPasswordEnconder implements PasswordEncoder{
 
     @Override
     public boolean matches(CharSequence charSequence, String password) {
-        return PasswordUtils.matchPassword(charSequence.toString(),password);
+        return PasswordUtils.matchPassword(charSequence.toString(), password);
     }
 }

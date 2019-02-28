@@ -13,7 +13,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
  * @author 张顺
  * @version 1.0
  */
-public class SmsCodeAuthenticationProvider implements AuthenticationProvider{
+public class SmsCodeAuthenticationProvider implements AuthenticationProvider {
 
     @Setter
     @Getter
@@ -23,10 +23,10 @@ public class SmsCodeAuthenticationProvider implements AuthenticationProvider{
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         SmsCodeAuthenticationToken authenticationToken = (SmsCodeAuthenticationToken) authentication;
         UserDetails user = userDetailsService.loadUserByUsername((String) authenticationToken.getPrincipal());
-        if (user == null){
+        if (user == null) {
             throw new InternalAuthenticationServiceException("获取用户信息失败");
         }
-        SmsCodeAuthenticationToken authenticationResult = new SmsCodeAuthenticationToken(user.getAuthorities(),user);
+        SmsCodeAuthenticationToken authenticationResult = new SmsCodeAuthenticationToken(user.getAuthorities(), user);
         authenticationResult.setDetails(authenticationToken.getDetails());
         return authenticationResult;
     }

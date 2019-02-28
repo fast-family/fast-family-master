@@ -9,7 +9,7 @@ import java.io.Serializable;
  * @author 张顺
  * @version 1.0
  */
-public interface Service<T extends GenericEntity,PK extends Serializable> {
+public interface Service<T extends GenericEntity, PK extends Serializable> {
 
-    GenericMapper<T,PK> getMapper();
+    GenericMapper<T, PK> getMapper();
 }

@@ -1,6 +1,6 @@
 package com.fast.family.commons.exception;
 
-public class NoLoginException extends BaseException{
+public class NoLoginException extends BaseException {
 
 
     public NoLoginException(int errCode, String errMessage) {

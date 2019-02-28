@@ -9,7 +9,7 @@ import lombok.extern.slf4j.Slf4j;
  * @version 1.0
  */
 @Slf4j
-public class LogEventHandler implements  WorkHandler<LogEvent> {
+public class LogEventHandler implements WorkHandler<LogEvent> {
 
 
     private final LogRepository logRepository;

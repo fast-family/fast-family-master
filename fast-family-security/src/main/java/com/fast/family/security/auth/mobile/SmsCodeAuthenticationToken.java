@@ -9,7 +9,7 @@ import java.util.Collection;
  * @author 张顺
  * @version 1.0
  */
-public class SmsCodeAuthenticationToken extends AbstractAuthenticationToken{
+public class SmsCodeAuthenticationToken extends AbstractAuthenticationToken {
 
 
     private final Object principal;

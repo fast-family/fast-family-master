@@ -30,19 +30,19 @@ public class LogEventPublisher implements DisposableBean, InitializingBean {
         this.logRepository = logRepository;
     }
 
-    public void start(){
-        disruptor = new Disruptor<LogEvent>(new LogEventFactory(),1024,r -> {
+    public void start() {
+        disruptor = new Disruptor<LogEvent>(new LogEventFactory(), 1024, r -> {
             AtomicInteger integer = new AtomicInteger(1);
-            return new Thread(null,r,"disruptor-thread-" + integer.getAndIncrement());
-        }, ProducerType.MULTI,new BlockingWaitStrategy());
+            return new Thread(null, r, "disruptor-thread-" + integer.getAndIncrement());
+        }, ProducerType.MULTI, new BlockingWaitStrategy());
         disruptor.handleEventsWithWorkerPool(new LogEventHandler(logRepository));
         disruptor.setDefaultExceptionHandler(new IgnoreExceptionHandler());
         disruptor.start();
     }
 
-    public void publishEvent(AccessLogInfo accessLogInfo){
-       RingBuffer<LogEvent> ringBuffer = disruptor.getRingBuffer();
-       ringBuffer.publishEvent(new LogEventTranslator(),accessLogInfo);
+    public void publishEvent(AccessLogInfo accessLogInfo) {
+        RingBuffer<LogEvent> ringBuffer = disruptor.getRingBuffer();
+        ringBuffer.publishEvent(new LogEventTranslator(), accessLogInfo);
     }
 
     @Override

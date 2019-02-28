@@ -36,24 +36,24 @@ public class SmsValidateCodeFilter extends OncePerRequestFilter {
                                     FilterChain filterChain) throws ServletException, IOException {
         try {
             validate(request);
-        } catch (ValidateCodeException e){
-            log.error(e.getErrMessage(),e);
+        } catch (ValidateCodeException e) {
+            log.error(e.getErrMessage(), e);
             WebUtils.writeJson(response, GsonUtils.toJson(
-                    ResponseEntity.status(HttpStatus.UNAUTHORIZED).build(),ResponseEntity.class).getBytes());
+                    ResponseEntity.status(HttpStatus.UNAUTHORIZED).build(), ResponseEntity.class).getBytes());
             return;
         }
-        filterChain.doFilter(request,response);
+        filterChain.doFilter(request, response);
 
     }
 
-    private void validate(HttpServletRequest request){
+    private void validate(HttpServletRequest request) {
         String loginType = request.getHeader(SecurityConstants.LOGIN_TYPE);
-        if (loginType != null && loginType.equals(SecurityConstants.LOGIN_TYPE_SMS)){
+        if (loginType != null && loginType.equals(SecurityConstants.LOGIN_TYPE_SMS)) {
             String smsValidateCode = Optional.ofNullable(request.getParameter("smsValidateCode"))
                     .orElseThrow(() -> new ValidateCodeException("验证码不存在"));
             ValidateCode validateCode = Optional.ofNullable(validateCodeRepository.get(smsValidateCode))
                     .orElseThrow(() -> new ValidateCodeException("验证码不存在"));
-            if (System.currentTimeMillis() > validateCode.getExpireTime()){
+            if (System.currentTimeMillis() > validateCode.getExpireTime()) {
                 throw new ValidateCodeException("验证码已过期");
             }
         }

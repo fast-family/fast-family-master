@@ -17,7 +17,7 @@ import javax.servlet.Servlet;
 
 @Slf4j
 @Configuration
-@ConditionalOnProperty(value = "fast.family.tomcat.shutdown.enabled",havingValue = "true")
+@ConditionalOnProperty(value = "fast.family.tomcat.shutdown.enabled", havingValue = "true")
 @ConditionalOnBean(TomcatServletWebServerFactory.class)
 @ConditionalOnClass({Servlet.class, Tomcat.class})
 @EnableConfigurationProperties(TomcatGracefulShutdownProperties.class)
@@ -30,17 +30,17 @@ public class TomcatGracefulShutdownAutoConfiguration {
     }
 
     @Bean
-    public TomcatGracefulShutdown tomcatGracefulShutdown(){
+    public TomcatGracefulShutdown tomcatGracefulShutdown() {
         return new TomcatGracefulShutdown(tomcatGracefulShutdownProperties);
     }
 
     @Bean
-    public WebServerFactoryCustomizer tomcatServletWebServerFactory(){
-       return server -> {
-           if (server instanceof TomcatServletWebServerFactory){
-               ((TomcatServletWebServerFactory)server).addConnectorCustomizers(tomcatGracefulShutdown());
-           }
-       };
+    public WebServerFactoryCustomizer tomcatServletWebServerFactory() {
+        return server -> {
+            if (server instanceof TomcatServletWebServerFactory) {
+                ((TomcatServletWebServerFactory) server).addConnectorCustomizers(tomcatGracefulShutdown());
+            }
+        };
     }
 
 }

@@ -173,11 +173,12 @@ public class DateTimeUtils {
 
     /**
      * long转换类型date格式字符串
+     *
      * @param dateTime
      * @return
      */
-    public static String convertTimeToString(Long dateTime, TimeFormat timeFormat){
-        return now(convertLDTToLocalDateTime(dateTime),timeFormat);
+    public static String convertTimeToString(Long dateTime, TimeFormat timeFormat) {
+        return now(convertLDTToLocalDateTime(dateTime), timeFormat);
     }
 
 

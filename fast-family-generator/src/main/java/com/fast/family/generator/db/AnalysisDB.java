@@ -19,15 +19,15 @@ import java.util.List;
  */
 public class AnalysisDB {
 
-    public static final List<TableInfo> getAllTableInfoList(GeneratorConfig dbConfig){
+    public static final List<TableInfo> getAllTableInfoList(GeneratorConfig dbConfig) {
         List<TableInfo> list = new ArrayList<>();
-        String sql = "SELECT TABLE_NAME,TABLE_COMMENT FROM information_schema.tables WHERE table_schema ='"+dbConfig.getDbName()+"'";
+        String sql = "SELECT TABLE_NAME,TABLE_COMMENT FROM information_schema.tables WHERE table_schema ='" + dbConfig.getDbName() + "'";
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
             ps = DBHandler.createConnection(dbConfig).prepareStatement(sql);
             rs = ps.executeQuery();
-            while (rs.next()){
+            while (rs.next()) {
                 TableInfo tm = new TableInfo();
                 tm.setSchemaName(dbConfig.getDbName());
                 tm.setTableName(rs.getString("TABLE_NAME"));
@@ -46,21 +46,21 @@ public class AnalysisDB {
             }
         }
         list.forEach(tableInfo -> {
-            fillTableColInfo(tableInfo,dbConfig);
+            fillTableColInfo(tableInfo, dbConfig);
         });
         return list;
     }
 
-    public static final TableInfo getTableInfoByName(String tableName,GeneratorConfig dbConfig){
+    public static final TableInfo getTableInfoByName(String tableName, GeneratorConfig dbConfig) {
         String sql = "SELECT TABLE_NAME,TABLE_COMMENT FROM information_schema.tables WHERE table_schema = " +
-                "'"+dbConfig.getDbName()+"' AND TABLE_NAME = '"+tableName+"'";
+                "'" + dbConfig.getDbName() + "' AND TABLE_NAME = '" + tableName + "'";
         PreparedStatement ps = null;
         ResultSet rs = null;
         TableInfo tableInfo = new TableInfo();
         try {
             ps = DBHandler.createConnection(dbConfig).prepareStatement(sql);
             rs = ps.executeQuery();
-            while (rs.next()){
+            while (rs.next()) {
                 tableInfo.setSchemaName(dbConfig.getDbName());
                 tableInfo.setTableName(rs.getString("TABLE_NAME"));//表名
                 tableInfo.setComment(rs.getString("TABLE_COMMENT"));//描述
@@ -76,14 +76,14 @@ public class AnalysisDB {
                 e.printStackTrace();
             }
         }
-        fillTableColInfo(tableInfo,dbConfig);
+        fillTableColInfo(tableInfo, dbConfig);
         return tableInfo;
     }
 
-    private static final void fillTableColInfo(TableInfo table,GeneratorConfig dbConfig){
+    private static final void fillTableColInfo(TableInfo table, GeneratorConfig dbConfig) {
         List<ColumnInfo> list = new ArrayList<>();
         String sql = "SELECT DATA_TYPE,CHARACTER_MAXIMUM_LENGTH,COLUMN_NAME,ORDINAL_POSITION,IS_NULLABLE,COLUMN_DEFAULT,COLUMN_TYPE,COLUMN_KEY,EXTRA,COLUMN_COMMENT" +
-                " FROM information_schema.columns WHERE table_schema = '"+dbConfig.getDbName()+"' AND table_name = '"+table.getTableName()+"'";
+                " FROM information_schema.columns WHERE table_schema = '" + dbConfig.getDbName() + "' AND table_name = '" + table.getTableName() + "'";
 
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -92,17 +92,17 @@ public class AnalysisDB {
             ps = DBHandler.createConnection(dbConfig).prepareStatement(sql);
             rs = ps.executeQuery();
 
-            while (rs.next()){
+            while (rs.next()) {
                 ColumnInfo fm = new ColumnInfo();
                 String columnName = rs.getString("COLUMN_NAME");
                 String columnJavaName = StringUtils.uncapitalize(WordUtils.columnToJava(columnName));
-                if (!"createTime".equals(columnJavaName) && !"lastUpTime".equals(columnJavaName)){
+                if (!"createTime".equals(columnJavaName) && !"lastUpTime".equals(columnJavaName)) {
                     String dataType = rs.getString("DATA_TYPE");
                     String columnType = rs.getString("COLUMN_TYPE");
                     String length = rs.getString("CHARACTER_MAXIMUM_LENGTH");
-                    if (StringUtils.isBlank(length)){
-                        if (columnType.indexOf("(") != -1){
-                            length = columnType.substring(columnType.indexOf("(") + 1,columnType.indexOf(")"));
+                    if (StringUtils.isBlank(length)) {
+                        if (columnType.indexOf("(") != -1) {
+                            length = columnType.substring(columnType.indexOf("(") + 1, columnType.indexOf(")"));
                         }
                     }
                     fm.setLength(length);

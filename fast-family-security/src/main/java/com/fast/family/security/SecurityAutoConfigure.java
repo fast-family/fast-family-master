@@ -20,24 +20,24 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @EnableConfigurationProperties({SecurityProperties.class})
-@ConditionalOnProperty(prefix = "fast.family.security",name = "enabled",havingValue = "true")
+@ConditionalOnProperty(prefix = "fast.family.security", name = "enabled", havingValue = "true")
 public class SecurityAutoConfigure {
 
     public static final String PREFIX = "fast.family.security.validate.code";
 
 
     @Bean
-    public ExtendAuthenticationSuccessHandler extendAuthenticationSuccessHandler(){
+    public ExtendAuthenticationSuccessHandler extendAuthenticationSuccessHandler() {
         return new DefaultAuthenticationSuccessHandler();
     }
 
     @Configuration
     @ConditionalOnClass(SecurityProperties.class)
-    @ConditionalOnProperty(prefix = PREFIX,name = "repository",havingValue = "imMemory")
-    public static class ImMemoryValidateCodeRepositoryAutoConfigure{
+    @ConditionalOnProperty(prefix = PREFIX, name = "repository", havingValue = "imMemory")
+    public static class ImMemoryValidateCodeRepositoryAutoConfigure {
 
         @Bean
-        public ValidateCodeRepository imMemoryValidateCodeRepository(){
+        public ValidateCodeRepository imMemoryValidateCodeRepository() {
             return new ImMemoryValidateCodeRepository();
         }
 
@@ -45,10 +45,10 @@ public class SecurityAutoConfigure {
 
     @Configuration
     @ConditionalOnClass(SecurityProperties.class)
-    @ConditionalOnProperty(prefix = PREFIX,name = "repository",havingValue = "redis")
-    public static class RedisValidateCodeRepositoryAutoConfigure{
+    @ConditionalOnProperty(prefix = PREFIX, name = "repository", havingValue = "redis")
+    public static class RedisValidateCodeRepositoryAutoConfigure {
 
-        public ValidateCodeRepository redisValidateCodeRepository(){
+        public ValidateCodeRepository redisValidateCodeRepository() {
             return new RedisValidateCodeRepository();
         }
 
@@ -57,12 +57,12 @@ public class SecurityAutoConfigure {
 
     @Configuration
     @ConditionalOnClass(SmsValidateCodeProperties.class)
-    @ConditionalOnProperty(prefix = PREFIX,name = "sms",havingValue = "true",matchIfMissing = true)
+    @ConditionalOnProperty(prefix = PREFIX, name = "sms", havingValue = "true", matchIfMissing = true)
     @EnableConfigurationProperties({SmsValidateCodeProperties.class})
-    public static class SmsValidateCodeGeneratorAutoConfigure{
+    public static class SmsValidateCodeGeneratorAutoConfigure {
 
         @Bean
-        public ValidateCodeGenerator smsValidateCodeGenerator(){
+        public ValidateCodeGenerator smsValidateCodeGenerator() {
             return new SmsValidateCodeGenerator();
         }
 

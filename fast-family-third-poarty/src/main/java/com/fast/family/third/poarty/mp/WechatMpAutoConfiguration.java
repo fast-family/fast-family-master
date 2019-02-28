@@ -1,7 +1,6 @@
 package com.fast.family.third.poarty.mp;
 
 
-
 import lombok.extern.slf4j.Slf4j;
 import me.chanjar.weixin.mp.api.WxMpConfigStorage;
 import me.chanjar.weixin.mp.api.WxMpInMemoryConfigStorage;
@@ -23,19 +22,19 @@ import org.springframework.context.annotation.Configuration;
 @Slf4j
 @Configuration
 @ConditionalOnClass(WxMpService.class)
-@ConditionalOnProperty(prefix ="fast.family.wechat.mp",name = "enabled",havingValue = "true")
+@ConditionalOnProperty(prefix = "fast.family.wechat.mp", name = "enabled", havingValue = "true")
 @EnableConfigurationProperties(WechatMpProperties.class)
 public class WechatMpAutoConfiguration {
 
     @Configuration
-    public class MemoryWechatMqAutoConfiguration{
+    public class MemoryWechatMqAutoConfiguration {
 
         @Autowired
         private WechatMpProperties wechatMpProperties;
 
         @Bean
         @ConditionalOnMissingBean
-        public WxMpConfigStorage wxMpConfigStorage(){
+        public WxMpConfigStorage wxMpConfigStorage() {
             WxMpInMemoryConfigStorage memoryConfigStorage = new WxMpInMemoryConfigStorage();
             memoryConfigStorage.setAccessToken(wechatMpProperties.getToken());
             memoryConfigStorage.setAesKey(wechatMpProperties.getAesKey());
@@ -46,7 +45,7 @@ public class WechatMpAutoConfiguration {
 
         @Bean
         @ConditionalOnMissingBean
-        public WxMpService wxMpService(){
+        public WxMpService wxMpService() {
             WxMpService wxMpService = new WxMpServiceOkHttpImpl();
             wxMpService.setWxMpConfigStorage(wxMpConfigStorage());
             return wxMpService;

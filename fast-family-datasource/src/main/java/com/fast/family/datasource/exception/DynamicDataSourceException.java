@@ -4,7 +4,7 @@ package com.fast.family.datasource.exception;
  * @author 张顺
  * @version 1.0
  */
-public class DynamicDataSourceException extends RuntimeException{
+public class DynamicDataSourceException extends RuntimeException {
 
 
     public DynamicDataSourceException() {

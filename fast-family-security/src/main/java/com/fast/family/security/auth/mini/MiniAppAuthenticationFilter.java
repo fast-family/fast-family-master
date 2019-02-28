@@ -37,8 +37,8 @@ public class MiniAppAuthenticationFilter extends AbstractAuthenticationProcessin
     @Setter
     private WxMaService wxMaService;
 
-    public MiniAppAuthenticationFilter(){
-        super(new AntPathRequestMatcher(securityProperties.getMiniApp().getMiniAppUrl(),securityProperties.getMiniApp().getHttpMethod()));
+    public MiniAppAuthenticationFilter() {
+        super(new AntPathRequestMatcher(securityProperties.getMiniApp().getMiniAppUrl(), securityProperties.getMiniApp().getHttpMethod()));
     }
 
 
@@ -57,7 +57,7 @@ public class MiniAppAuthenticationFilter extends AbstractAuthenticationProcessin
         try {
             WxMaJscode2SessionResult wxResult = wxMaService.getUserService().getSessionInfo(WebUtils.getHttpServletRequest().getParameter(SecurityConstants.LOGIN_TYPE_SMS));
         } catch (WxErrorException e) {
-            throw new InternalAuthenticationServiceException(e.getMessage(),e);
+            throw new InternalAuthenticationServiceException(e.getMessage(), e);
         }
         String mobile = WebUtils.getHttpServletRequest().getParameter(SecurityConstants.MOBILE);
         MiniAppAuthenticationToken token = new MiniAppAuthenticationToken(mobile);

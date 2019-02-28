@@ -20,7 +20,7 @@ import org.springframework.context.annotation.Configuration;
 @Slf4j
 @Configuration
 @ConditionalOnClass(AlipayClient.class)
-@ConditionalOnProperty(prefix = "fast.family.ali.pay",name = "enabled",havingValue = "true")
+@ConditionalOnProperty(prefix = "fast.family.ali.pay", name = "enabled", havingValue = "true")
 @EnableConfigurationProperties({AlipayProperties.class})
 public class AlipayAutoConfiguration {
 
@@ -29,27 +29,27 @@ public class AlipayAutoConfiguration {
 
     @ConditionalOnMissingBean
     @Bean
-    public AlipayClient alipayClient(){
+    public AlipayClient alipayClient() {
         log.debug("初始化支付宝支付");
-        return new DefaultAlipayClient(aliPayProperties.getGatewayUrl(),aliPayProperties.getAppId(),
+        return new DefaultAlipayClient(aliPayProperties.getGatewayUrl(), aliPayProperties.getAppId(),
                 aliPayProperties.getMerchantPrivateKey(),
                 aliPayProperties.getFormat(),
                 aliPayProperties.getCharset(),
-                aliPayProperties.getAlipayPublicKey(),aliPayProperties.getSignType());
+                aliPayProperties.getAlipayPublicKey(), aliPayProperties.getSignType());
     }
 
     @Bean
-    public AlipayService alipayService(){
-        return new AlipayServiceImpl(aliPayProperties,alipayClient());
+    public AlipayService alipayService() {
+        return new AlipayServiceImpl(aliPayProperties, alipayClient());
     }
 
     @Bean
-    public AlipayWapService alipayWapService(){
-        return new AlipayWapServiceImpl(aliPayProperties,alipayClient());
+    public AlipayWapService alipayWapService() {
+        return new AlipayWapServiceImpl(aliPayProperties, alipayClient());
     }
 
     @Bean
-    public AlipayAppService alipayAppService(){
-        return new AlipayAppServiceImpl(aliPayProperties,alipayClient());
+    public AlipayAppService alipayAppService() {
+        return new AlipayAppServiceImpl(aliPayProperties, alipayClient());
     }
 }

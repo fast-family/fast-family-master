@@ -27,10 +27,10 @@ public abstract class AbstractAliSmsTemplate<T extends AliSmsEntity>
     @Override
     public IAcsClient getAcsClient() {
         IClientProfile profile = DefaultProfile.getProfile(aliSmsProperties.getRegionId(),
-                aliSmsProperties.getAliyunAccessKeyId(),aliSmsProperties.getAliyunAccessKeySecret());
+                aliSmsProperties.getAliyunAccessKeyId(), aliSmsProperties.getAliyunAccessKeySecret());
         try {
-            DefaultProfile.addEndpoint(aliSmsProperties.getEndPointName(),aliSmsProperties.getRegionId(),
-                    aliSmsProperties.getProduce(),aliSmsProperties.getDomain());
+            DefaultProfile.addEndpoint(aliSmsProperties.getEndPointName(), aliSmsProperties.getRegionId(),
+                    aliSmsProperties.getProduce(), aliSmsProperties.getDomain());
         } catch (ClientException e) {
             throw new AliSmsException(e);
         }
@@ -44,7 +44,7 @@ public abstract class AbstractAliSmsTemplate<T extends AliSmsEntity>
         request.setPhoneNumbers(t.getMobile());
         request.setSignName(t.getSignName());
         request.setTemplateCode(t.getTemplateCode());
-        request.setTemplateParam(GsonUtils.toJson(t,t.getClass()));
+        request.setTemplateParam(GsonUtils.toJson(t, t.getClass()));
         request.setOutId(t.getOutId());
         return request;
     }

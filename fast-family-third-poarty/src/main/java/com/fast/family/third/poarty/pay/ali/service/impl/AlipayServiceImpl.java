@@ -33,27 +33,27 @@ public class AlipayServiceImpl implements AlipayService {
 
     @Override
     public AlipayTradeRefundResponse refund(AlipayTradeRefundModel model) throws AlipayApiException {
-            AlipayTradeRefundRequest request = new AlipayTradeRefundRequest();
-            request.setBizModel(model);
-            request.setNotifyUrl(aliPayProperties.getNotifyUrl());
-            request.setReturnUrl(aliPayProperties.getReturnUrl());
-            return alipayClient.execute(request);
+        AlipayTradeRefundRequest request = new AlipayTradeRefundRequest();
+        request.setBizModel(model);
+        request.setNotifyUrl(aliPayProperties.getNotifyUrl());
+        request.setReturnUrl(aliPayProperties.getReturnUrl());
+        return alipayClient.execute(request);
 
     }
 
     @Override
     public AlipayTradeFastpayRefundQueryResponse selectRefund(AlipayTradeFastpayRefundQueryModel model) throws AlipayApiException {
-            AlipayTradeFastpayRefundQueryRequest request = new AlipayTradeFastpayRefundQueryRequest();
-            request.setBizModel(model);
-            return alipayClient.execute(request);
+        AlipayTradeFastpayRefundQueryRequest request = new AlipayTradeFastpayRefundQueryRequest();
+        request.setBizModel(model);
+        return alipayClient.execute(request);
 
     }
 
     @Override
     public AlipayTradeQueryResponse selectOrder(AlipayTradeQueryModel model) throws AlipayApiException {
-            AlipayTradeQueryRequest request = new AlipayTradeQueryRequest();
-            request.setBizModel(model);
-            return alipayClient.execute(request);
+        AlipayTradeQueryRequest request = new AlipayTradeQueryRequest();
+        request.setBizModel(model);
+        return alipayClient.execute(request);
     }
 
     @Override

@@ -13,11 +13,11 @@ import java.util.concurrent.ConcurrentHashMap;
 @Slf4j
 public class ImMemoryValidateCodeRepository implements ValidateCodeRepository {
 
-    private static Map<String,ValidateCode> codeMap = new ConcurrentHashMap<>();
+    private static Map<String, ValidateCode> codeMap = new ConcurrentHashMap<>();
 
     @Override
     public void save(String key, ValidateCode validateCode) {
-        codeMap.put(key,validateCode);
+        codeMap.put(key, validateCode);
     }
 
     @Override
@@ -27,10 +27,10 @@ public class ImMemoryValidateCodeRepository implements ValidateCodeRepository {
 
     @Override
     public void remove(String key) {
-        Iterator<Map.Entry<String,ValidateCode>> codeIterator = codeMap.entrySet().iterator();
-        while (codeIterator.hasNext()){
-            Map.Entry<String,ValidateCode> codeEntry = codeIterator.next();
-            if (codeEntry.getKey().equals(key)){
+        Iterator<Map.Entry<String, ValidateCode>> codeIterator = codeMap.entrySet().iterator();
+        while (codeIterator.hasNext()) {
+            Map.Entry<String, ValidateCode> codeEntry = codeIterator.next();
+            if (codeEntry.getKey().equals(key)) {
                 codeIterator.remove();
             }
         }

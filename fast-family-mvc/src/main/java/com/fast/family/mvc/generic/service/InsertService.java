@@ -9,14 +9,14 @@ import java.util.List;
  * @author 张顺
  * @version 1.0
  */
-public interface InsertService<T extends GenericEntity,PK extends Serializable>
-        extends Service<T,PK>{
+public interface InsertService<T extends GenericEntity, PK extends Serializable>
+        extends Service<T, PK> {
 
-    default void insert(T t){
+    default void insert(T t) {
         this.getMapper().insert(t);
     }
 
-    default void insertBatch(List<T> list){
+    default void insertBatch(List<T> list) {
         this.getMapper().insertList(list);
     }
 }

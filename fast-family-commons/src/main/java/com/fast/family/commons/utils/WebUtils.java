@@ -30,18 +30,18 @@ public class WebUtils {
 
     private static final Pattern SKIP_PATTERNS = Pattern.compile(DEFAULT_SKIP_PATTERN);
 
-    public static boolean ignoreRequest(HttpServletRequest request){
+    public static boolean ignoreRequest(HttpServletRequest request) {
         String path = request.getRequestURI();
         return SKIP_PATTERNS.matcher(path).matches();
     }
 
-    public static boolean isBinaryContent(final HttpServletResponse response){
+    public static boolean isBinaryContent(final HttpServletResponse response) {
         return response.getContentType() != null && (response.getContentType()
                 .startsWith("image") || response.getContentType().startsWith("video") || response
                 .getContentType().startsWith("audio"));
     }
 
-    public static boolean isMultipart(final HttpServletResponse response){
+    public static boolean isMultipart(final HttpServletResponse response) {
         return response.getContentType() != null && (response.getContentType()
                 .startsWith("multipart/form-data") || response.getContentType()
                 .startsWith("application/octet-stream"));
@@ -51,24 +51,22 @@ public class WebUtils {
         return request.getHeader("XMLHttpRequest") != null;
     }
 
-    public static boolean isNormalRequest(HttpServletRequest request){
+    public static boolean isNormalRequest(HttpServletRequest request) {
         return !isMultipart(request) && !isBinaryContent(request);
     }
 
-    public static boolean isMultipart(final HttpServletRequest request){
+    public static boolean isMultipart(final HttpServletRequest request) {
         return request.getContentType() != null && request.getContentType()
                 .startsWith("multipart/form-data");
     }
 
-    public static boolean isBinaryContent(final HttpServletRequest request){
-        if (request.getContentType() == null){
+    public static boolean isBinaryContent(final HttpServletRequest request) {
+        if (request.getContentType() == null) {
             return false;
         }
         return request.getContentType().startsWith("image") || request.getContentType()
                 .startsWith("video") || request.getContentType().startsWith("audio");
     }
-
-
 
 
     public static byte[] getRequestPostByteArray(HttpServletRequest request)
@@ -123,8 +121,7 @@ public class WebUtils {
     }
 
 
-    public static String getClientIP(HttpServletRequest request)
-            {
+    public static String getClientIP(HttpServletRequest request) {
         String ipAddress = null;
         ipAddress = request.getHeader("x-forwarded-for");
         if (ipAddress == null || ipAddress.length() == 0
@@ -154,7 +151,6 @@ public class WebUtils {
     }
 
 
-
     public static String getBasePath(HttpServletRequest request) {
         String path = request.getContextPath();
         String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
@@ -174,7 +170,6 @@ public class WebUtils {
     public static Map<String, String> getRequestHeaders(HttpServletRequest request) {
         return buildRequestParams(request.getHeaderNames(), request);
     }
-
 
 
     private static Map<String, String> buildRequestParams(Enumeration enumeration, HttpServletRequest request) {

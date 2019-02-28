@@ -20,11 +20,11 @@ public class GsonUtils {
             .create();
 
 
-    public static String toJson(Object o, Type type){
-        return gson.toJson(o,type);
+    public static String toJson(Object o, Type type) {
+        return gson.toJson(o, type);
     }
 
-    public static <T>T fromJson(String str,Type type){
-        return gson.fromJson(str,type);
+    public static <T> T fromJson(String str, Type type) {
+        return gson.fromJson(str, type);
     }
 }

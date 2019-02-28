@@ -24,17 +24,15 @@ import java.util.Map;
 public class DTOGenerator {
 
 
-
-
     public static void genResourceCode(String className,
-                                        String classComment,
-                                        GeneratorConfig generatorConfig){
-        Map<String,Object> paramMap = new HashMap<>();
-        paramMap.put("className",className);
-        paramMap.put("classComment",classComment);
-        paramMap.put("sysTime",new Date());
-        paramMap.put("packageName",generatorConfig.getPackageName());
-        genDTO(paramMap,"ftl",generatorConfig);
+                                       String classComment,
+                                       GeneratorConfig generatorConfig) {
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("className", className);
+        paramMap.put("classComment", classComment);
+        paramMap.put("sysTime", new Date());
+        paramMap.put("packageName", generatorConfig.getPackageName());
+        genDTO(paramMap, "ftl", generatorConfig);
     }
 
 
@@ -42,26 +40,26 @@ public class DTOGenerator {
                                                String classComment,
                                                String masterTableName,
                                                String slaveTableName,
-                                               GeneratorConfig generatorConfig){
-        TableInfo masterTableInfo = AnalysisDB.getTableInfoByName(masterTableName,generatorConfig);
-        TableInfo slaveTableInfo = AnalysisDB.getTableInfoByName(slaveTableName,generatorConfig);
-        for (int i = 0;i < masterTableInfo.getColumnInfoList().size();i++){
+                                               GeneratorConfig generatorConfig) {
+        TableInfo masterTableInfo = AnalysisDB.getTableInfoByName(masterTableName, generatorConfig);
+        TableInfo slaveTableInfo = AnalysisDB.getTableInfoByName(slaveTableName, generatorConfig);
+        for (int i = 0; i < masterTableInfo.getColumnInfoList().size(); i++) {
             ColumnInfo masterColumnInfo = masterTableInfo.getColumnInfoList().get(i);
-            for (int j = 0;j < slaveTableInfo.getColumnInfoList().size();j++){
+            for (int j = 0; j < slaveTableInfo.getColumnInfoList().size(); j++) {
                 ColumnInfo slaveColumnInfo = slaveTableInfo.getColumnInfoList().get(j);
-                if (masterColumnInfo.getColumnJavaName().equals(slaveColumnInfo.getColumnJavaName())){
+                if (masterColumnInfo.getColumnJavaName().equals(slaveColumnInfo.getColumnJavaName())) {
                     masterTableInfo.getColumnInfoList().remove(i);
                 }
             }
         }
-        Map<String,Object> paramMap = new HashMap<>();
-        paramMap.put("className",className);
-        paramMap.put("classComment",classComment);
-        paramMap.put("sysTime",new Date());
-        paramMap.put("packageName",generatorConfig.getPackageName());
-        paramMap.put("masterTableInfo",masterTableInfo);
-        paramMap.put("slaveTableInfo",slaveTableInfo);
-        genDTO(paramMap,"ftl/onetoone",generatorConfig);
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("className", className);
+        paramMap.put("classComment", classComment);
+        paramMap.put("sysTime", new Date());
+        paramMap.put("packageName", generatorConfig.getPackageName());
+        paramMap.put("masterTableInfo", masterTableInfo);
+        paramMap.put("slaveTableInfo", slaveTableInfo);
+        genDTO(paramMap, "ftl/onetoone", generatorConfig);
     }
 
 
@@ -69,26 +67,26 @@ public class DTOGenerator {
                                                 String classComment,
                                                 String masterTableName,
                                                 String slaveTableName,
-                                                GeneratorConfig generatorConfig){
-        TableInfo masterTableInfo = AnalysisDB.getTableInfoByName(masterTableName,generatorConfig);
-        TableInfo slaveTableInfo = AnalysisDB.getTableInfoByName(slaveTableName,generatorConfig);
-        for (int i = 0;i < masterTableInfo.getColumnInfoList().size();i++){
+                                                GeneratorConfig generatorConfig) {
+        TableInfo masterTableInfo = AnalysisDB.getTableInfoByName(masterTableName, generatorConfig);
+        TableInfo slaveTableInfo = AnalysisDB.getTableInfoByName(slaveTableName, generatorConfig);
+        for (int i = 0; i < masterTableInfo.getColumnInfoList().size(); i++) {
             ColumnInfo masterColumnInfo = masterTableInfo.getColumnInfoList().get(i);
-            for (int j = 0;j < slaveTableInfo.getColumnInfoList().size();j++){
+            for (int j = 0; j < slaveTableInfo.getColumnInfoList().size(); j++) {
                 ColumnInfo slaveColumnInfo = slaveTableInfo.getColumnInfoList().get(j);
-                if (masterColumnInfo.getColumnJavaName().equals(slaveColumnInfo.getColumnJavaName())){
+                if (masterColumnInfo.getColumnJavaName().equals(slaveColumnInfo.getColumnJavaName())) {
                     masterTableInfo.getColumnInfoList().remove(i);
                 }
             }
         }
-        Map<String,Object> paramMap = new HashMap<>();
-        paramMap.put("className",className);
-        paramMap.put("classComment",classComment);
-        paramMap.put("sysTime",new Date());
-        paramMap.put("packageName",generatorConfig.getPackageName());
-        paramMap.put("masterTableInfo",masterTableInfo);
-        paramMap.put("slaveTableInfo",slaveTableInfo);
-        genDTO(paramMap,"ftl/onetomany",generatorConfig);
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("className", className);
+        paramMap.put("classComment", classComment);
+        paramMap.put("sysTime", new Date());
+        paramMap.put("packageName", generatorConfig.getPackageName());
+        paramMap.put("masterTableInfo", masterTableInfo);
+        paramMap.put("slaveTableInfo", slaveTableInfo);
+        genDTO(paramMap, "ftl/onetomany", generatorConfig);
     }
 
 
@@ -96,31 +94,31 @@ public class DTOGenerator {
                                                 String classComment,
                                                 String masterTableName,
                                                 String slaveTableName,
-                                                GeneratorConfig generatorConfig){
-        TableInfo masterTableInfo = AnalysisDB.getTableInfoByName(masterTableName,generatorConfig);
-        TableInfo slaveTableInfo = AnalysisDB.getTableInfoByName(slaveTableName,generatorConfig);
-        for (int i = 0;i < masterTableInfo.getColumnInfoList().size();i++){
+                                                GeneratorConfig generatorConfig) {
+        TableInfo masterTableInfo = AnalysisDB.getTableInfoByName(masterTableName, generatorConfig);
+        TableInfo slaveTableInfo = AnalysisDB.getTableInfoByName(slaveTableName, generatorConfig);
+        for (int i = 0; i < masterTableInfo.getColumnInfoList().size(); i++) {
             ColumnInfo masterColumnInfo = masterTableInfo.getColumnInfoList().get(i);
-            for (int j = 0;j < slaveTableInfo.getColumnInfoList().size();j++){
+            for (int j = 0; j < slaveTableInfo.getColumnInfoList().size(); j++) {
                 ColumnInfo slaveColumnInfo = slaveTableInfo.getColumnInfoList().get(j);
-                if (masterColumnInfo.getColumnJavaName().equals(slaveColumnInfo.getColumnJavaName())){
+                if (masterColumnInfo.getColumnJavaName().equals(slaveColumnInfo.getColumnJavaName())) {
                     masterTableInfo.getColumnInfoList().remove(i);
                 }
             }
         }
-        Map<String,Object> paramMap = new HashMap<>();
-        paramMap.put("className",className);
-        paramMap.put("classComment",classComment);
-        paramMap.put("sysTime",new Date());
-        paramMap.put("packageName",generatorConfig.getPackageName());
-        paramMap.put("masterTableInfo",masterTableInfo);
-        paramMap.put("slaveTableInfo",slaveTableInfo);
-        genDTO(paramMap,"ftl/manytoone",generatorConfig);
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("className", className);
+        paramMap.put("classComment", classComment);
+        paramMap.put("sysTime", new Date());
+        paramMap.put("packageName", generatorConfig.getPackageName());
+        paramMap.put("masterTableInfo", masterTableInfo);
+        paramMap.put("slaveTableInfo", slaveTableInfo);
+        genDTO(paramMap, "ftl/manytoone", generatorConfig);
     }
 
-    private static void genDTO(Map<String,Object> paramMap,
+    private static void genDTO(Map<String, Object> paramMap,
                                String reousrcePath,
-                               GeneratorConfig generatorConfig){
+                               GeneratorConfig generatorConfig) {
 
 
         Version version = new Version("2.3.27");

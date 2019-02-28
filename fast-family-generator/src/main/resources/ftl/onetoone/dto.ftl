@@ -8,13 +8,13 @@ import lombok.Data;
 
 /**
 * <p>
-* 描述: ${classComment}Dto实体
-* <p>
-*
-* @created ${sysTime?string("yyyy-MM-dd HH:mm:ss")}
-*/
-@Data
-public class ${className}DTO extends AbstractPersistableBusinessObjectAdapter<${className}>{
+    * 描述: ${classComment}Dto实体
+    * <p>
+    *
+    * @created ${sysTime?string("yyyy-MM-dd HH:mm:ss")}
+    */
+    @Data
+    public class ${className}DTO extends AbstractPersistableBusinessObjectAdapter<${className}>{
 
 
     <#list masterTableInfo.columnInfoList as column>
@@ -35,9 +35,8 @@ public class ${className}DTO extends AbstractPersistableBusinessObjectAdapter<${
     private ${slaveColumn.dataType} ${slaveColumn.columnJavaName};
     </#list>
 
-
     public ${className}DTO(Class<${className}> persistableEntityClass) {
-        super(persistableEntityClass);
+    super(persistableEntityClass);
     }
 
     @Override
@@ -50,4 +49,4 @@ public class ${className}DTO extends AbstractPersistableBusinessObjectAdapter<${
 
     }
 
-}
+    }

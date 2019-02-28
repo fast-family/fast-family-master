@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Slf4j
 public class SmsCodeAuthenticationConfigurer extends
-        SecurityConfigurerAdapter<DefaultSecurityFilterChain,HttpSecurity>{
+        SecurityConfigurerAdapter<DefaultSecurityFilterChain, HttpSecurity> {
 
 
     private final UserDetailsService userDetailsService;

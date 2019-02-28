@@ -17,12 +17,12 @@ import java.io.IOException;
 
 @Slf4j
 @Component("customAuthenticationFailureHandler")
-public class CustomAuthenticationFailureHandler extends SimpleUrlAuthenticationFailureHandler{
+public class CustomAuthenticationFailureHandler extends SimpleUrlAuthenticationFailureHandler {
 
 
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
         WebUtils.writeJson(response, GsonUtils.toJson(
-                ResponseEntity.status(HttpStatus.UNAUTHORIZED).build(),ResponseEntity.class).getBytes());
+                ResponseEntity.status(HttpStatus.UNAUTHORIZED).build(), ResponseEntity.class).getBytes());
     }
 }

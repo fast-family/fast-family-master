@@ -29,29 +29,29 @@ public class CustomJwtTokenEnhancer implements TokenEnhancer {
 
     @Override
     public OAuth2AccessToken enhance(OAuth2AccessToken oAuth2AccessToken, OAuth2Authentication oAuth2Authentication) {
-        if (oAuth2AccessToken instanceof DefaultOAuth2AccessToken){
+        if (oAuth2AccessToken instanceof DefaultOAuth2AccessToken) {
             DefaultOAuth2AccessToken token = (DefaultOAuth2AccessToken) oAuth2AccessToken;
             String clientId = oAuth2Authentication.getOAuth2Request().getClientId();
             Date expiration = oAuth2AccessToken.getExpiration();
-            String createToken = createToken(clientId,expiration);
+            String createToken = createToken(clientId, expiration);
             token.setValue(createToken);
             OAuth2RefreshToken refreshToken = oAuth2AccessToken.getRefreshToken();
-            if (refreshToken instanceof DefaultOAuth2AccessToken){
-                token.setRefreshToken(new DefaultOAuth2RefreshToken(createToken(clientId,expiration)));
+            if (refreshToken instanceof DefaultOAuth2AccessToken) {
+                token.setRefreshToken(new DefaultOAuth2RefreshToken(createToken(clientId, expiration)));
             }
-            Map<String,Object> additionalInformation = new HashMap<>();
-            additionalInformation.put("client_id",oAuth2Authentication.getOAuth2Request().getClientId());
+            Map<String, Object> additionalInformation = new HashMap<>();
+            additionalInformation.put("client_id", oAuth2Authentication.getOAuth2Request().getClientId());
             token.setAdditionalInformation(additionalInformation);
             return token;
         }
         return oAuth2AccessToken;
     }
 
-    private String createToken(String clientId, Date expiration){
+    private String createToken(String clientId, Date expiration) {
         return Jwts.builder()
                 .setSubject(clientId)
-                .claim(SecurityConstants.AUTHORIZATION_HEADER,clientId)
-                .signWith(SignatureAlgorithm.HS256,properties.getJwt().getAuthoritiesKey())
+                .claim(SecurityConstants.AUTHORIZATION_HEADER, clientId)
+                .signWith(SignatureAlgorithm.HS256, properties.getJwt().getAuthoritiesKey())
                 .setExpiration(expiration)
                 .compact();
     }

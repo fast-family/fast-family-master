@@ -6,7 +6,7 @@ import com.fast.family.mvc.generic.entity.GenericEntity;
 
 
 public abstract class AbstractPersistableBusinessObject<T extends GenericEntity>
-        implements BusinessObject{
+        implements BusinessObject {
 
     private final Class<T> persistableEntityClass;
 
@@ -15,15 +15,15 @@ public abstract class AbstractPersistableBusinessObject<T extends GenericEntity>
         this.persistableEntityClass = persistableEntityClass;
     }
 
-    public final T convertTo(){
+    public final T convertTo() {
         T result = ReflectionUtils.newInstance(persistableEntityClass);
-        BeanUtils.copy(this,result);
+        BeanUtils.copy(this, result);
         customizeConvert(result);
         return result;
     }
 
-    public final void fillFrom(final T persistableEntity){
-        BeanUtils.copy(persistableEntity,this);
+    public final void fillFrom(final T persistableEntity) {
+        BeanUtils.copy(persistableEntity, this);
         customizeFill(persistableEntity);
     }
 

@@ -8,9 +8,9 @@ import java.io.Serializable;
  * @author 张顺
  * @version 1.0
  */
-public interface SimpleCrudService<T extends GenericEntity,PK extends Serializable>
-        extends InsertService<T,PK>,
-                 UpdateService<T,PK>,
-                 DeleteService<T,PK>,
-                 SelectService<T,PK>{
+public interface SimpleCrudService<T extends GenericEntity, PK extends Serializable>
+        extends InsertService<T, PK>,
+        UpdateService<T, PK>,
+        DeleteService<T, PK>,
+        SelectService<T, PK> {
 }

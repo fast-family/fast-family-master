@@ -1,6 +1,6 @@
 package com.fast.family.commons.exception;
 
-public class GenericBusinessException extends BaseException{
+public class GenericBusinessException extends BaseException {
 
     public GenericBusinessException(int errCode, String errMessage) {
         super(errCode, errMessage);

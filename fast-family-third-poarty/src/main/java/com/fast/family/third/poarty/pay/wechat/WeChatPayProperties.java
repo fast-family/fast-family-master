@@ -24,7 +24,7 @@ public class WeChatPayProperties {
     /**
      * 微信支付商户密钥
      */
-    private String mchKey ;
+    private String mchKey;
 
     /**
      * 服务商模式下的子商户公众账号ID，普通模式请不要配置，请在配置文件中将对应项删除

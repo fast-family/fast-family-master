@@ -31,8 +31,8 @@ public class WechatAuthenticationFilter extends AbstractAuthenticationProcessing
     @Setter
     private WxMpService wxMpService;
 
-    public WechatAuthenticationFilter(){
-        super(new AntPathRequestMatcher(SecurityConstants.WECHAT_AUTH_URL,"POST"));
+    public WechatAuthenticationFilter() {
+        super(new AntPathRequestMatcher(SecurityConstants.WECHAT_AUTH_URL, "POST"));
     }
 
     protected WechatAuthenticationFilter(String defaultFilterProcessesUrl) {
@@ -47,9 +47,9 @@ public class WechatAuthenticationFilter extends AbstractAuthenticationProcessing
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException, IOException, ServletException {
         try {
             WxMpOAuth2AccessToken token = wxMpService.oauth2getAccessToken(SecurityConstants.WECHAT_APP_CODE);
-            log.debug("wechat oauth success token {}",token);
+            log.debug("wechat oauth success token {}", token);
         } catch (WxErrorException e) {
-            throw new InternalAuthenticationServiceException("微信授权失败",e);
+            throw new InternalAuthenticationServiceException("微信授权失败", e);
         }
         WechatAuthenticationToken token = new WechatAuthenticationToken(WebUtils.getHttpServletRequest()
                 .getParameter(SecurityConstants.MOBILE));

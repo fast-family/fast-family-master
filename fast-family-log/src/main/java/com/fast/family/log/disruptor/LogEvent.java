@@ -12,7 +12,7 @@ public class LogEvent {
 
     private AccessLogInfo accessLogInfo;
 
-    public void clear(){
+    public void clear() {
         accessLogInfo = null;
     }
 }

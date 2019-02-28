@@ -9,7 +9,15 @@ import com.aliyuncs.dysmsapi.model.v20170525.SendSmsRequest;
  */
 public interface AliSmsTemplate<T extends AliSmsEntity> {
 
-    default IAcsClient getAcsClient(){ return null;};
+    default IAcsClient getAcsClient() {
+        return null;
+    }
 
-    default SendSmsRequest getAliSmsRequest(T t){ return null;};
+    ;
+
+    default SendSmsRequest getAliSmsRequest(T t) {
+        return null;
+    }
+
+    ;
 }

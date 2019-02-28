@@ -12,12 +12,14 @@ import java.util.List;
 @ConditionalOnProperty(prefix = "fast.family.common")
 public class CommonProperties {
 
-    private  SecuirtyConfiguration secuirty = new SecuirtyConfiguration();
+    private final SecuirtyConfiguration secuirty = new SecuirtyConfiguration();
+
+    private final LdempotentConfiguration ldempotent = new LdempotentConfiguration();
 
     @Data
     public static class SecuirtyConfiguration{
 
-        private  CorsConfiguration cors = new CorsConfiguration();
+        private final CorsConfiguration cors = new CorsConfiguration();
 
         @Data
         public static class CorsConfiguration{
@@ -30,6 +32,19 @@ public class CommonProperties {
 
 
         }
+    }
+
+
+    @Data
+    public static class LdempotentConfiguration{
+
+        private int ttl = 5;
+
+        private String ldempotentKey = "Ldempotent_Storage";
+
+        private String ldempotentHeaderName = "Ldempotent_Token";
+
+        private String ldempotentPrefix = "ldempotent_";
     }
 
 }

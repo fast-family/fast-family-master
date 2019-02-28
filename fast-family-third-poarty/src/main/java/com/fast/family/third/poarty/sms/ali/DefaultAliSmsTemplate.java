@@ -26,7 +26,7 @@ public class DefaultAliSmsTemplate extends AbstractAliSmsTemplate<AliSmsEntity> 
         try {
             response = acsClient.getAcsResponse(request);
             if (response.getCode() == null
-                    || !response.getCode().equalsIgnoreCase("OK")){
+                    || !response.getCode().equalsIgnoreCase("OK")) {
                 throw new AliSmsException(response.getMessage());
             }
         } catch (ClientException e) {

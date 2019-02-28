@@ -14,7 +14,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @version 1.0
  */
 @Component
-public class MongodbLogRepository implements LogRepository{
+public class MongodbLogRepository implements LogRepository {
 
     @Autowired
     private MongoTemplate mongoTemplate;

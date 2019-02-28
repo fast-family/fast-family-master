@@ -57,13 +57,14 @@ public class ContentCachingRequestWrapper extends HttpServletRequestWrapper {
 
     /**
      * 通过BufferedReader和字符编码集转换成byte数组
+     *
      * @param br
      * @param encoding
      * @return
      * @throws IOException
      */
-    private byte[] readBytes(BufferedReader br,String encoding) throws IOException{
-        String str = null,retStr="";
+    private byte[] readBytes(BufferedReader br, String encoding) throws IOException {
+        String str = null, retStr = "";
         while ((str = br.readLine()) != null) {
             retStr += str;
         }

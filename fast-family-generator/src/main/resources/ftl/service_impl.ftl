@@ -14,14 +14,14 @@ import org.springframework.stereotype.Service;
 
 /**
 * <p>
-* 描述: ${classComment}业务实现类
-* <p>
-*
-* @created ${sysTime?string("yyyy-MM-dd HH:mm:ss")}
-*/
-@Service
-@Slf4j
-public class ${className}ServiceImpl extends GenericServiceImpl<${className},Long> implements ${className}Service{
+    * 描述: ${classComment}业务实现类
+    * <p>
+    *
+    * @created ${sysTime?string("yyyy-MM-dd HH:mm:ss")}
+    */
+    @Service
+    @Slf4j
+    public class ${className}ServiceImpl extends GenericServiceImpl<${className},Long> implements ${className}Service{
 
     @Autowired
     private ${className}Mapper ${className?uncap_first}Mapper;
@@ -29,6 +29,6 @@ public class ${className}ServiceImpl extends GenericServiceImpl<${className},Lon
 
     @Override
     public GenericMapper<${className}, Long> getMapper() {
-        return ${className?uncap_first}Mapper;
+    return ${className?uncap_first}Mapper;
     }
-}
+    }

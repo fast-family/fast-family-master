@@ -18,13 +18,13 @@ import org.springframework.context.annotation.Configuration;
 @Slf4j
 @Configuration
 @ConditionalOnClass(WxPayService.class)
-@ConditionalOnProperty(prefix = "fast.family.wechat.pay",name = "enabled",havingValue = "true")
+@ConditionalOnProperty(prefix = "fast.family.wechat.pay", name = "enabled", havingValue = "true")
 @EnableConfigurationProperties(WeChatPayProperties.class)
 public class WeChatPayAutoConfiguration {
 
     @Bean
     @ConditionalOnMissingBean
-    public WxPayService wxPayService(WeChatPayProperties payProperties){
+    public WxPayService wxPayService(WeChatPayProperties payProperties) {
         log.debug("初始化微信支付");
         WxPayConfig wxPayConfig = new WxPayConfig();
         wxPayConfig.setAppId(payProperties.getAppId());

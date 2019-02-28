@@ -18,23 +18,23 @@ import java.sql.SQLException;
 @Slf4j
 public class DynamicDataSourceFatcory {
 
-    public static DataSource createDateSource(DynamicDataSourceProperties properties,DataSource dataSource){
-        if (properties.getDruid() != null && dataSource instanceof DruidXADataSource){
+    public static DataSource createDateSource(DynamicDataSourceProperties properties, DataSource dataSource) {
+        if (properties.getDruid() != null && dataSource instanceof DruidXADataSource) {
             return createAtomikosDataSouce(properties);
-        } else if (properties.getDruid() != null && dataSource instanceof DruidDataSource){
+        } else if (properties.getDruid() != null && dataSource instanceof DruidDataSource) {
             return createDruidDataSource(properties.getDruid());
         }
         throw new DynamicDataSourceException("数据源创建失败");
     }
 
-    private static DataSource createAtomikosDataSouce(DynamicDataSourceProperties properties){
+    private static DataSource createAtomikosDataSouce(DynamicDataSourceProperties properties) {
         AtomikosDataSourceBean dataSourceBean = new AtomikosDataSourceBean();
         dataSourceBean.setBorrowConnectionTimeout(properties.getAtomikos().getBorrowConnectionTimeout());
         dataSourceBean.setDefaultIsolationLevel(properties.getAtomikos().getDefaultIsolationLevel());
         try {
             dataSourceBean.setLoginTimeout(properties.getAtomikos().getLoginTimeout());
         } catch (SQLException e) {
-            log.warn("init atomikos datasource param loginTimeout",e);
+            log.warn("init atomikos datasource param loginTimeout", e);
         }
         dataSourceBean.setUniqueResourceName(properties.getAtomikos().getUniqueResourceName());
         dataSourceBean.setMaintenanceInterval(properties.getAtomikos().getMaintenanceInterval());
@@ -51,7 +51,7 @@ public class DynamicDataSourceFatcory {
     }
 
 
-    private static XADataSource createXADruidDataSource(DruidDataSourceProperties properties){
+    private static XADataSource createXADruidDataSource(DruidDataSourceProperties properties) {
         DruidXADataSource druidXADataSource = new DruidXADataSource();
         druidXADataSource.setUrl(properties.getUrl());
         druidXADataSource.setUsername(properties.getUsername());
@@ -77,12 +77,12 @@ public class DynamicDataSourceFatcory {
             druidXADataSource.setFilters(properties.getFilters());
             druidXADataSource.init();
         } catch (SQLException e) {
-            throw new DynamicDataSourceException("创建数据源失败",e);
+            throw new DynamicDataSourceException("创建数据源失败", e);
         }
         return druidXADataSource;
     }
 
-    private static DataSource createDruidDataSource(DruidDataSourceProperties properties){
+    private static DataSource createDruidDataSource(DruidDataSourceProperties properties) {
         DruidDataSource druidDataSource = new DruidDataSource();
         druidDataSource.setUrl(properties.getUrl());
         druidDataSource.setUsername(properties.getUsername());
@@ -108,7 +108,7 @@ public class DynamicDataSourceFatcory {
             druidDataSource.setFilters(properties.getFilters());
             druidDataSource.init();
         } catch (SQLException e) {
-            throw new DynamicDataSourceException("创建数据源失败",e);
+            throw new DynamicDataSourceException("创建数据源失败", e);
         }
         return druidDataSource;
     }

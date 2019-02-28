@@ -8,18 +8,18 @@ import java.io.Serializable;
  * @author 张顺
  * @version 1.0
  */
-public interface DeleteService<T extends GenericEntity,PK extends Serializable>
-        extends Service<T,PK>{
+public interface DeleteService<T extends GenericEntity, PK extends Serializable>
+        extends Service<T, PK> {
 
-    default void deleteById(PK id){
+    default void deleteById(PK id) {
         this.getMapper().deleteByPrimaryKey(id);
     }
 
-    default void delete(T t){
+    default void delete(T t) {
         this.getMapper().delete(t);
     }
 
-    default void deleteByExample(T t){
+    default void deleteByExample(T t) {
         this.getMapper().deleteByExample(t);
     }
 }

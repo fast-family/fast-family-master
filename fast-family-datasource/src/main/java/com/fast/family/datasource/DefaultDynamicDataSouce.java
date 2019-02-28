@@ -17,7 +17,7 @@ import java.util.Map;
  */
 @Component
 @Slf4j
-public class DefaultDynamicDataSouce implements DynamicDataSource{
+public class DefaultDynamicDataSouce implements DynamicDataSource {
 
     @Autowired
     private DynamicDataSourceProperties properties;
@@ -26,15 +26,15 @@ public class DefaultDynamicDataSouce implements DynamicDataSource{
     public Map<Object, Object> loadDataSource() {
         Class<? extends DataSource> type = properties.getType();
         DataSource result = (DataSource) BeanUtils.instantiate(type);
-        Map<String,DynamicDataSourceProperties> map = properties.getDatasource();
+        Map<String, DynamicDataSourceProperties> map = properties.getDatasource();
         Iterator<Map.Entry<String, DynamicDataSourceProperties>> iterator = map.entrySet().iterator();
 
-        Map<Object,Object> dataSourceMap = new HashMap<>();
-        while (iterator.hasNext()){
-            Map.Entry<String,DynamicDataSourceProperties> entry = iterator.next();
-            DataSource dataSource = DynamicDataSourceFatcory.createDateSource(entry.getValue(),result);
-            dataSourceMap.put(entry.getKey(),dataSource);
-            DynamicDataSourceCacheUtils.put(entry.getKey(),dataSource);
+        Map<Object, Object> dataSourceMap = new HashMap<>();
+        while (iterator.hasNext()) {
+            Map.Entry<String, DynamicDataSourceProperties> entry = iterator.next();
+            DataSource dataSource = DynamicDataSourceFatcory.createDateSource(entry.getValue(), result);
+            dataSourceMap.put(entry.getKey(), dataSource);
+            DynamicDataSourceCacheUtils.put(entry.getKey(), dataSource);
         }
         return dataSourceMap;
     }

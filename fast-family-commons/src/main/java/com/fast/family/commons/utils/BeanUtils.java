@@ -13,8 +13,8 @@ import java.util.Set;
  */
 public class BeanUtils {
 
-    public static void copy(Object source,Object target){
-        org.springframework.beans.BeanUtils.copyProperties(source,target);
+    public static void copy(Object source, Object target) {
+        org.springframework.beans.BeanUtils.copyProperties(source, target);
     }
 
 

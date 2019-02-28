@@ -22,82 +22,78 @@ public class ControllerGenerator {
 
 
     /**
-     *
-     * @param className 类名
-     * @param classComment 类描述
-     * @param urlStr 类路径
+     * @param className       类名
+     * @param classComment    类描述
+     * @param urlStr          类路径
      * @param generatorConfig
      */
     public static void genSingleController(String className,
                                            String classComment,
                                            String urlStr,
-                                           GeneratorConfig generatorConfig){
-        genController(className,classComment,urlStr,"ftl",generatorConfig);
+                                           GeneratorConfig generatorConfig) {
+        genController(className, classComment, urlStr, "ftl", generatorConfig);
     }
 
 
     /**
-     *
-     * @param className 类名
-     * @param classComment 类描述
-     * @param urlStr 类路径
+     * @param className       类名
+     * @param classComment    类描述
+     * @param urlStr          类路径
      * @param generatorConfig
      */
     public static void genOneToOneController(String className,
                                              String classComment,
                                              String urlStr,
-                                             GeneratorConfig generatorConfig){
-        genController(className,classComment,urlStr,"ftl/onetoone",generatorConfig);
+                                             GeneratorConfig generatorConfig) {
+        genController(className, classComment, urlStr, "ftl/onetoone", generatorConfig);
     }
 
     /**
-     *
-     * @param className 类名
-     * @param classComment 类描述
-     * @param urlStr 类路径
+     * @param className       类名
+     * @param classComment    类描述
+     * @param urlStr          类路径
      * @param generatorConfig
      */
     public static void genOneToManyControllerCode(String className,
                                                   String classComment,
                                                   String urlStr,
-                                                  GeneratorConfig generatorConfig){
-        genController(className,classComment,urlStr,"ftl/onetomany",generatorConfig);
+                                                  GeneratorConfig generatorConfig) {
+        genController(className, classComment, urlStr, "ftl/onetomany", generatorConfig);
     }
 
 
     /**
-     *
-     * @param className 类名
-     * @param classComment 类描述
-     * @param urlStr 类路径
+     * @param className       类名
+     * @param classComment    类描述
+     * @param urlStr          类路径
      * @param generatorConfig
      */
     public static void genManyToOneController(String className,
                                               String classComment,
                                               String urlStr,
-                                              GeneratorConfig generatorConfig){
-        genController(className,classComment,urlStr,"ftl/manytoone",generatorConfig);
+                                              GeneratorConfig generatorConfig) {
+        genController(className, classComment, urlStr, "ftl/manytoone", generatorConfig);
     }
 
     private static void genController(String className,
-                                     String classComment,
-                                     String urlStr,
-                                     String resourcePath,
-                                     GeneratorConfig generatorConfig){
-        Map<String,Object> paramMap = new HashMap<>();
-        paramMap.put("className",className);
-        paramMap.put("classComment",classComment);
-        paramMap.put("sysTime",new Date());
-        paramMap.put("packageName",generatorConfig.getPackageName());
-        paramMap.put("url",urlStr);
+                                      String classComment,
+                                      String urlStr,
+                                      String resourcePath,
+                                      GeneratorConfig generatorConfig) {
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("className", className);
+        paramMap.put("classComment", classComment);
+        paramMap.put("sysTime", new Date());
+        paramMap.put("packageName", generatorConfig.getPackageName());
+        paramMap.put("url", urlStr);
         Version version = new Version("2.3.27");
         Configuration configuration = new Configuration(version);
         try {
             URL url = ControllerGenerator.class.getClassLoader().getResource(resourcePath);
             configuration.setDirectoryForTemplateLoading(new File(url.getPath()));
             configuration.setObjectWrapper(new DefaultObjectWrapper(version));
-            String filePath =  generatorConfig.getSrcBasePath() + "controller//";
-            String savePath = filePath +className + "Controller.java";
+            String filePath = generatorConfig.getSrcBasePath() + "controller//";
+            String savePath = filePath + className + "Controller.java";
             File dirPath = new File(filePath);
             if (!dirPath.exists()) {
                 dirPath.mkdirs();

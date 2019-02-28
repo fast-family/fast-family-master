@@ -24,6 +24,6 @@ public class DynamicDataSourceProperties {
 
     private AtomikosDataSouceProperties atomikos = new AtomikosDataSouceProperties();
 
-    private Map<String,DynamicDataSourceProperties> datasource = new HashMap<>();
+    private Map<String, DynamicDataSourceProperties> datasource = new HashMap<>();
 
 }

@@ -1,6 +1,6 @@
 package com.fast.family.commons.exception;
 
-public class ApiException extends BaseException{
+public class ApiException extends BaseException {
 
     public ApiException(int errCode, String errMessage) {
         super(errCode, errMessage);

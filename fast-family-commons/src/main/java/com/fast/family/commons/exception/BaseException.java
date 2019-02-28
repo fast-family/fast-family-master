@@ -4,7 +4,7 @@ package com.fast.family.commons.exception;
  * @author 张顺
  * @version 1.0
  */
-public class BaseException extends RuntimeException{
+public class BaseException extends RuntimeException {
 
     private int errCode = 500;
 

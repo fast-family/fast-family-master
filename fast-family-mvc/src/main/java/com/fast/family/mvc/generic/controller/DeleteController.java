@@ -12,27 +12,27 @@ import java.io.Serializable;
  * @author 张顺
  * @version 1.0
  */
-public interface DeleteController<T extends GenericEntity,PK extends Serializable>
-        extends Controller<T,PK>{
+public interface DeleteController<T extends GenericEntity, PK extends Serializable>
+        extends Controller<T, PK> {
 
 
     @ApiOperation("删除(主键)")
     @GetMapping("/delete/{id}")
-    default Response deleteById(@PathVariable PK id){
+    default Response deleteById(@PathVariable PK id) {
         this.getService().selectById(id);
-        return  Response.ok();
+        return Response.ok();
     }
 
     @ApiOperation("删除(对象)")
     @GetMapping("/delete")
-    default Response delete(T t){
+    default Response delete(T t) {
         this.getService().delete(t);
         return Response.ok();
     }
 
     @ApiOperation("删除(条件)")
     @GetMapping("/delete/example")
-    default Response deleteByExample(T t){
+    default Response deleteByExample(T t) {
         this.getService().deleteByExample(t);
         return Response.ok();
     }

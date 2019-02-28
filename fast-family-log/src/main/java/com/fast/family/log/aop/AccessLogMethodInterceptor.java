@@ -34,7 +34,7 @@ public class AccessLogMethodInterceptor implements MethodInterceptor {
 
     private final List<AccessLogInterceptor> logInterceptors = new LinkedList<>();
 
-    public void add(AccessLogInterceptor accessLogInterceptor){
+    public void add(AccessLogInterceptor accessLogInterceptor) {
         logInterceptors.add(accessLogInterceptor);
     }
 
@@ -51,7 +51,7 @@ public class AccessLogMethodInterceptor implements MethodInterceptor {
         try {
             result = methodInvocation.proceed();
             accessLogInfo.setResponse(result);
-        } catch (Exception e){
+        } catch (Exception e) {
             accessLogInfo.setException(e);
             throw e;
         } finally {
@@ -62,7 +62,7 @@ public class AccessLogMethodInterceptor implements MethodInterceptor {
         return result;
     }
 
-    private AccessLogInfo createAccessLogInfo(MethodInvocation methodInvocation){
+    private AccessLogInfo createAccessLogInfo(MethodInvocation methodInvocation) {
         AccessLogInfo accessLogInfo = new AccessLogInfo();
         HttpServletRequest request = WebUtils.getHttpServletRequest();
         accessLogInfo.setUrl(request.getRequestURI());

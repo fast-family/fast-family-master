@@ -1,16 +1,18 @@
 package com.fast.family.mvc.ldempotent;
 
+import com.fast.family.commons.CommonProperties;
 import com.fast.family.commons.exception.LdempotentException;
 import com.fast.family.commons.json.ResponseCode;
 import com.fast.family.commons.utils.WebUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
-import org.redisson.api.RMap;
+import org.redisson.api.RMapCache;
 import org.redisson.api.RedissonClient;
 
 import java.lang.reflect.Method;
 import java.util.Optional;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author 张顺
@@ -21,22 +23,25 @@ public class LdempotentMethodInterceptor implements MethodInterceptor {
 
     private RedissonClient redissonClient;
 
-    public LdempotentMethodInterceptor(RedissonClient redissonClient) {
-        this.redissonClient = redissonClient;
-    }
+    private CommonProperties commonProperties;
 
-    private static final String LDEMPOTENT_TOKEN = "Ldempotent_token";
+    public LdempotentMethodInterceptor(RedissonClient redissonClient,CommonProperties commonProperties) {
+        this.redissonClient = redissonClient;
+        this.commonProperties = commonProperties;
+    }
 
     @Override
     public Object invoke(MethodInvocation invocation) throws Throwable {
         Method method = invocation.getMethod();
         LdempotentAnnotation annotation = method.getAnnotation(LdempotentAnnotation.class);
         if (annotation != null){
-            String ldempotentToken = Optional.ofNullable(WebUtils.getHttpServletRequest().getHeader(LDEMPOTENT_TOKEN))
+            String ldempotentToken = Optional.ofNullable(WebUtils.getHttpServletRequest().getHeader(commonProperties.getLdempotent().getLdempotentHeaderName()))
                     .orElseThrow(() -> new LdempotentException(ResponseCode.LDEMPOTENT_ERROR.getCode(),ResponseCode.LDEMPOTENT_ERROR.getMessage()));
-            RMap<String,String> rMap = redissonClient.getMap(LDEMPOTENT_TOKEN);
-            Optional.ofNullable(rMap.get(ldempotentToken))
-                    .orElseThrow(() -> new LdempotentException(ResponseCode.LDEMPOTENT_ERROR.getCode(),ResponseCode.LDEMPOTENT_ERROR.getMessage()));
+            RMapCache<String,String> rMapCache = redissonClient.getMapCache(commonProperties.getLdempotent().getLdempotentKey());
+            if (rMapCache.put(commonProperties.getLdempotent().getLdempotentPrefix() + ldempotentToken,ldempotentToken,
+                    commonProperties.getLdempotent().getTtl(), TimeUnit.MINUTES) != null){
+                throw new LdempotentException(ResponseCode.LDEMPOTENT_ERROR.getCode(),ResponseCode.LDEMPOTENT_ERROR.getMessage());
+            }
         }
         return invocation.proceed();
     }

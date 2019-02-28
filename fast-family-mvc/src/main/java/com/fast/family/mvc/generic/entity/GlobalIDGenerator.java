@@ -7,7 +7,7 @@ import com.fast.family.commons.utils.SpringContextUtils;
  * @author 张顺
  * @version 1.0
  */
-public class GlobalIDGenerator<Long> implements IDGenerator<java.lang.Long>{
+public class GlobalIDGenerator<Long> implements IDGenerator<java.lang.Long> {
 
 
     private final SnowflakeIdGenerator snowflakeIdGenerator =

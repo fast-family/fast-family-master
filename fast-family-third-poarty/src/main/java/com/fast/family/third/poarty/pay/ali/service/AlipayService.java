@@ -16,6 +16,7 @@ public interface AlipayService {
 
     /**
      * 退款
+     *
      * @param model
      * @return
      * @throws AlipayApiException
@@ -25,6 +26,7 @@ public interface AlipayService {
 
     /**
      * 查询退款
+     *
      * @param model
      * @return
      * @throws AlipayApiException
@@ -33,6 +35,7 @@ public interface AlipayService {
 
     /**
      * 查询订单
+     *
      * @param model
      * @return
      * @throws AlipayApiException
@@ -42,6 +45,7 @@ public interface AlipayService {
 
     /**
      * 下载账单
+     *
      * @param model
      * @return
      * @throws AlipayApiException

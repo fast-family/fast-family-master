@@ -10,15 +10,17 @@ import java.util.List;
 
 /**
 * <p>
-* 描述: ${classComment}Mapper接口
-* <p>
-*
-* @created ${sysTime?string("yyyy-MM-dd HH:mm:ss")}
-*/
-public interface ${className}Mapper extends GenericMapper<${className},Long> {
+    * 描述: ${classComment}Mapper接口
+    *
+<p>
+    *
+    * @created ${sysTime?string("yyyy-MM-dd HH:mm:ss")}
+    */
+    public interface ${className}Mapper extends GenericMapper<${className},Long> {
 
 
-    List<${className}DTO> custom(${className}DTO ${className?uncap_first}DTO);
+    List
+    <${className}DTO> custom(${className}DTO ${className?uncap_first}DTO);
 
 
-}
+        }

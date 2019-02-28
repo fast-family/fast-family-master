@@ -11,6 +11,6 @@ import java.io.Serializable;
  * @version 1.0
  */
 @Service
-public abstract class GenericServiceImpl<T extends GenericEntity,PK extends Serializable>
-        implements GenericService<T,PK>{
+public abstract class GenericServiceImpl<T extends GenericEntity, PK extends Serializable>
+        implements GenericService<T, PK> {
 }

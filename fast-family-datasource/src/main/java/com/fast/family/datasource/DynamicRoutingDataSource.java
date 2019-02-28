@@ -28,13 +28,12 @@ public class DynamicRoutingDataSource extends AbstractRoutingDataSource
     @Override
     protected DataSource determineTargetDataSource() {
         String dataSourceKey = DataSourceContextHolder.get();
-        if (dataSourceKey != null && !dataSourceKey.equals("")){
+        if (dataSourceKey != null && !dataSourceKey.equals("")) {
             return DynamicDataSourceCacheUtils.get(dataSourceKey);
         } else {
             return DynamicDataSourceCacheUtils.get("master");
         }
     }
-
 
 
     @Override
@@ -44,7 +43,7 @@ public class DynamicRoutingDataSource extends AbstractRoutingDataSource
 
     @Override
     public void afterPropertiesSet() {
-       this.setTargetDataSources(dynamicDataSource.loadDataSource());
+        this.setTargetDataSources(dynamicDataSource.loadDataSource());
     }
 
 

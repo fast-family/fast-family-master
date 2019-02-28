@@ -18,9 +18,9 @@ import java.util.Map;
 @Data
 public class AccessLogInfo implements Serializable {
 
-    private Map<String,String> requestParams;
+    private Map<String, String> requestParams;
 
-    private Map<String,String> headerParams;
+    private Map<String, String> headerParams;
 
     private String applyName;
 

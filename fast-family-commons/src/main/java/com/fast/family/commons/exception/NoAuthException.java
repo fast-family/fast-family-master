@@ -1,6 +1,6 @@
 package com.fast.family.commons.exception;
 
-public class NoAuthException extends BaseException{
+public class NoAuthException extends BaseException {
 
     public NoAuthException(int errCode, String errMessage) {
         super(errCode, errMessage);

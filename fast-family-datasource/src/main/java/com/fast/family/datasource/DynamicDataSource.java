@@ -9,6 +9,6 @@ import java.util.Map;
 public interface DynamicDataSource {
 
 
-    Map<Object,Object> loadDataSource();
+    Map<Object, Object> loadDataSource();
 
 }

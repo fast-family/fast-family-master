@@ -14,7 +14,7 @@ public class MiniAppAuthenticationToken extends BaseAuthenticationToken {
 
     private final Object principal;
 
-    public MiniAppAuthenticationToken(Object principal){
+    public MiniAppAuthenticationToken(Object principal) {
         super(null);
         this.principal = principal;
     }

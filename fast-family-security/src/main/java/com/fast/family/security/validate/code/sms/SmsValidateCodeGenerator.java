@@ -20,7 +20,7 @@ public class SmsValidateCodeGenerator implements ValidateCodeGenerator {
     @Override
     public ValidateCode generate() {
         String code = RandomUtils.genRandom(
-                smsValidateCodeProperties.getLength(),10);
+                smsValidateCodeProperties.getLength(), 10);
         return new ValidateCode(code, DateTimeUtils.convertLDTToLong(DateTimeUtils.parserDateTime()
                 .withMinute(smsValidateCodeProperties.getExpireIn())));
     }

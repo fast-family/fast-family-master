@@ -21,7 +21,7 @@ public class SecurityProperties {
     private final MiniApp miniApp = new MiniApp();
 
     @Data
-    public static class Jwt{
+    public static class Jwt {
 
         private String[] excludeUrls;
 
@@ -35,7 +35,7 @@ public class SecurityProperties {
     }
 
     @Data
-    public static class MiniApp{
+    public static class MiniApp {
 
         private String miniAppUrl;
 

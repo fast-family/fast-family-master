@@ -6,9 +6,15 @@ package com.fast.family.log;
  */
 public interface AccessLogInterceptor {
 
-    default void before(AccessLogInfo accessLogInfo){};
+    default void before(AccessLogInfo accessLogInfo) {
+    }
 
-    default void after(AccessLogInfo accessLogInfo){};
+    ;
+
+    default void after(AccessLogInfo accessLogInfo) {
+    }
+
+    ;
 
 
 }

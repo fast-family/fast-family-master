@@ -12,6 +12,7 @@ public interface AlipayWapService {
 
     /**
      * 网页支付
+     *
      * @param model
      * @return
      * @throws AlipayApiException

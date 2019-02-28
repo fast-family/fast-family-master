@@ -13,19 +13,19 @@ import java.util.List;
  * @author 张顺
  * @version 1.0
  */
-public interface UpdateController<T extends GenericEntity,PK extends Serializable>
-        extends Controller<T,PK>{
+public interface UpdateController<T extends GenericEntity, PK extends Serializable>
+        extends Controller<T, PK> {
 
     @ApiOperation("更新")
     @PostMapping("/update")
-    default Response updateById(@RequestBody T t){
+    default Response updateById(@RequestBody T t) {
         this.getService().updateById(t);
         return Response.ok();
     }
 
     @ApiOperation("批量更新")
     @PostMapping("/update/batch")
-    default Response updateBatch(@RequestBody List<T> list){
+    default Response updateBatch(@RequestBody List<T> list) {
         this.getService().updateBatch(list);
         return Response.ok();
     }

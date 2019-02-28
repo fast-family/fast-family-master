@@ -1,7 +1,7 @@
 package com.fast.family.commons.exception;
 
 
-public class ValidateCodeException extends BaseException{
+public class ValidateCodeException extends BaseException {
 
 
     public ValidateCodeException(String message) {

@@ -15,7 +15,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ValidateCode implements Serializable{
+public class ValidateCode implements Serializable {
 
     private String code;
 

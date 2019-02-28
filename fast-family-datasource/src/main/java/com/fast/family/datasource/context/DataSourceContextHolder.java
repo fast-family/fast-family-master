@@ -10,15 +10,15 @@ public class DataSourceContextHolder {
     private static final ThreadLocal<String> threadLocal = new ThreadLocal<>();
 
 
-    public static void add(String name){
+    public static void add(String name) {
         threadLocal.set(name);
     }
 
-    public static String get(){
+    public static String get() {
         return threadLocal.get();
     }
 
-    public static void clear(){
+    public static void clear() {
         threadLocal.remove();
     }
 }

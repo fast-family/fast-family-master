@@ -21,16 +21,16 @@ import java.util.Map;
  */
 public class EntityGenerator {
 
-    public static void generatorSingleEntity(String tableName,String className,
-                                             String classComment,GeneratorConfig generatorConfig){
-        TableInfo tableInfo = AnalysisDB.getTableInfoByName(tableName,generatorConfig);
-        Map<String,Object> paramMap = new HashMap<>();
+    public static void generatorSingleEntity(String tableName, String className,
+                                             String classComment, GeneratorConfig generatorConfig) {
+        TableInfo tableInfo = AnalysisDB.getTableInfoByName(tableName, generatorConfig);
+        Map<String, Object> paramMap = new HashMap<>();
 
-        paramMap.put("className",className);
-        paramMap.put("tableInfo",tableInfo);
-        paramMap.put("sysTime",new Date());
-        paramMap.put("classComment",classComment);
-        paramMap.put("packageName",generatorConfig.getPackageName());
+        paramMap.put("className", className);
+        paramMap.put("tableInfo", tableInfo);
+        paramMap.put("sysTime", new Date());
+        paramMap.put("classComment", classComment);
+        paramMap.put("packageName", generatorConfig.getPackageName());
 
 
         Version version = new Version("2.3.27");
@@ -50,7 +50,7 @@ public class EntityGenerator {
                 Template temporal = configuration.getTemplate("entity.ftl");
                 temporal.process(paramMap, fileWriter);
             }
-            System.out.println("************"+savePath+"************");
+            System.out.println("************" + savePath + "************");
         } catch (Exception e) {
             e.printStackTrace();
         }

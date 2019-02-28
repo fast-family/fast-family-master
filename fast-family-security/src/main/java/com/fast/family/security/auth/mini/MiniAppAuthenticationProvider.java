@@ -15,7 +15,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
  * @version 1.0
  */
 @Slf4j
-public class MiniAppAuthenticationProvider  implements AuthenticationProvider {
+public class MiniAppAuthenticationProvider implements AuthenticationProvider {
 
     @Getter
     @Setter
@@ -25,7 +25,7 @@ public class MiniAppAuthenticationProvider  implements AuthenticationProvider {
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         MiniAppAuthenticationToken token = (MiniAppAuthenticationToken) authentication;
         UserDetails userDetails = userDetailsService.loadUserByUsername((String) token.getPrincipal());
-        if (userDetails == null){
+        if (userDetails == null) {
             throw new InternalAuthenticationServiceException("用户名或密码错误");
         }
         MiniAppAuthenticationToken result = new MiniAppAuthenticationToken(userDetails.getAuthorities());

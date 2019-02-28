@@ -17,13 +17,13 @@ import java.io.IOException;
 
 @Slf4j
 @Component("customLogoutSuccessHandler")
-public class CustomLogoutSuccessHandler extends SimpleUrlLogoutSuccessHandler{
+public class CustomLogoutSuccessHandler extends SimpleUrlLogoutSuccessHandler {
 
     @Override
     public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response,
                                 Authentication authentication) throws IOException, ServletException {
 
         WebUtils.writeJson(response, GsonUtils.toJson(
-                ResponseEntity.status(HttpStatus.OK).build(),ResponseEntity.class).getBytes());
+                ResponseEntity.status(HttpStatus.OK).build(), ResponseEntity.class).getBytes());
     }
 }

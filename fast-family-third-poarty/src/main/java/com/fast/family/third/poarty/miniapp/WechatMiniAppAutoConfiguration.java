@@ -22,12 +22,12 @@ import java.util.Optional;
  */
 @Slf4j
 @Configuration
-@ConditionalOnProperty(prefix = "fast.family.wechat.miniapp",name = "enabled",havingValue = "true")
+@ConditionalOnProperty(prefix = "fast.family.wechat.miniapp", name = "enabled", havingValue = "true")
 @EnableConfigurationProperties(WechatMiniAppProperties.class)
 public class WechatMiniAppAutoConfiguration {
 
     @Configuration
-    public class MemoryWechatMiniAppAutoConfiguration{
+    public class MemoryWechatMiniAppAutoConfiguration {
 
         @Autowired
         private WechatMiniAppProperties properties;

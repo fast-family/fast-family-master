@@ -1,6 +1,6 @@
 package com.fast.family.commons.exception;
 
-public class SqlException extends BaseException{
+public class SqlException extends BaseException {
 
 
     public SqlException(int errCode, String errMessage) {

@@ -26,7 +26,7 @@ public class WechatAuthenticationProvider implements AuthenticationProvider {
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         WechatAuthenticationToken token = (WechatAuthenticationToken) authentication;
         UserDetails user = userDetailsService.loadUserByUsername((String) token.getPrincipal());
-        if (user == null){
+        if (user == null) {
             throw new InternalAuthenticationServiceException("用户名或密码错误");
         }
         WechatAuthenticationToken result = new WechatAuthenticationToken(user.getAuthorities());

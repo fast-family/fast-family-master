@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
 public class SmsAutoConfigure {
 
     @Bean
-    public SmsTemplate aliSmsTemplate(SmsProperties properties){
+    public SmsTemplate aliSmsTemplate(SmsProperties properties) {
         return new DefaultAliSmsTemplate(properties.getAli());
     }
 

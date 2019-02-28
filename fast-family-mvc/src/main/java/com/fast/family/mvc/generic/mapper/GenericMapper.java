@@ -10,6 +10,6 @@ import java.io.Serializable;
  * @author 张顺
  * @version 1.0
  */
-public interface GenericMapper<T extends GenericEntity,PK extends Serializable> extends
-        Mapper<T>,MySqlMapper<T> {
+public interface GenericMapper<T extends GenericEntity, PK extends Serializable> extends
+        Mapper<T>, MySqlMapper<T> {
 }

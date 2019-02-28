@@ -19,7 +19,7 @@ public class SecurityUtils {
     public static boolean skipPathRequest(HttpServletRequest request, String[] whiteList) {
         List<String> pathsToSkip = new ArrayList();
         pathsToSkip.addAll(Arrays.asList(whiteList));
-        List<RequestMatcher> m = (List)pathsToSkip.stream().map((path) -> {
+        List<RequestMatcher> m = (List) pathsToSkip.stream().map((path) -> {
             return new AntPathRequestMatcher(path);
         }).collect(Collectors.toList());
         OrRequestMatcher matchers = new OrRequestMatcher(m);
