@@ -1,4 +1,4 @@
-package com.fast.family.mvc.filter;
+package com.fast.family.mvc.filter.log;
 
 import com.fast.family.commons.utils.GsonUtils;
 import com.fast.family.commons.utils.WebUtils;
@@ -114,7 +114,7 @@ public class AccessLogger {
 
     public void printLog(){
         log.info("request 信息:" + GsonUtils.toJson(requestInfo, AccessLogEntity.RequestInfo.class));
-        log.info("response 信息:" + GsonUtils.toJson(responseInfo,AccessLogEntity.ResponseInfo.class));
+        log.info("response 信息:" + GsonUtils.toJson(responseInfo, AccessLogEntity.ResponseInfo.class));
     }
 
 
