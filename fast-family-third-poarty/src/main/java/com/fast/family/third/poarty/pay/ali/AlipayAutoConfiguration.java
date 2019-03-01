@@ -2,6 +2,7 @@ package com.fast.family.third.poarty.pay.ali;
 
 import com.alipay.api.AlipayClient;
 import com.alipay.api.DefaultAlipayClient;
+import com.fast.family.commons.constant.CommonStant;
 import com.fast.family.third.poarty.pay.ali.service.AlipayAppService;
 import com.fast.family.third.poarty.pay.ali.service.AlipayService;
 import com.fast.family.third.poarty.pay.ali.service.AlipayWapService;
@@ -20,7 +21,7 @@ import org.springframework.context.annotation.Configuration;
 @Slf4j
 @Configuration
 @ConditionalOnClass(AlipayClient.class)
-@ConditionalOnProperty(prefix = "fast.family.ali.pay", name = "enabled", havingValue = "true")
+@ConditionalOnProperty(prefix = CommonStant.PROPERTIS_PREFIX + "ali.pay", name = "enabled", havingValue = "true")
 @EnableConfigurationProperties({AlipayProperties.class})
 public class AlipayAutoConfiguration {
 

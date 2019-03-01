@@ -1,8 +1,7 @@
-package com.fast.family.mvc.filter.cors;
+package com.fast.family.commons.filter;
 
 import com.fast.family.commons.CommonProperties;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.servlet.FilterChain;

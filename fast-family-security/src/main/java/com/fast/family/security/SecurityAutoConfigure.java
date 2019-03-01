@@ -1,5 +1,6 @@
 package com.fast.family.security;
 
+import com.fast.family.commons.constant.CommonStant;
 import com.fast.family.security.handler.success.DefaultAuthenticationSuccessHandler;
 import com.fast.family.security.handler.success.ExtendAuthenticationSuccessHandler;
 import com.fast.family.security.validate.code.ImMemoryValidateCodeRepository;
@@ -20,10 +21,10 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @EnableConfigurationProperties({SecurityProperties.class})
-@ConditionalOnProperty(prefix = "fast.family.security", name = "enabled", havingValue = "true")
+@ConditionalOnProperty(prefix = CommonStant.PROPERTIS_PREFIX + "security", name = "enabled", havingValue = "true")
 public class SecurityAutoConfigure {
 
-    public static final String PREFIX = "fast.family.security.validate.code";
+    private static final String PROPERTIS_PREFIX_SECURITY_CODE = CommonStant.PROPERTIS_PREFIX + "security.validate.code";
 
 
     @Bean
@@ -33,7 +34,7 @@ public class SecurityAutoConfigure {
 
     @Configuration
     @ConditionalOnClass(SecurityProperties.class)
-    @ConditionalOnProperty(prefix = PREFIX, name = "repository", havingValue = "imMemory")
+    @ConditionalOnProperty(prefix = PROPERTIS_PREFIX_SECURITY_CODE, name = "repository", havingValue = "imMemory")
     public static class ImMemoryValidateCodeRepositoryAutoConfigure {
 
         @Bean
@@ -45,7 +46,7 @@ public class SecurityAutoConfigure {
 
     @Configuration
     @ConditionalOnClass(SecurityProperties.class)
-    @ConditionalOnProperty(prefix = PREFIX, name = "repository", havingValue = "redis")
+    @ConditionalOnProperty(prefix = PROPERTIS_PREFIX_SECURITY_CODE, name = "repository", havingValue = "redis")
     public static class RedisValidateCodeRepositoryAutoConfigure {
 
         public ValidateCodeRepository redisValidateCodeRepository() {
@@ -57,7 +58,7 @@ public class SecurityAutoConfigure {
 
     @Configuration
     @ConditionalOnClass(SmsValidateCodeProperties.class)
-    @ConditionalOnProperty(prefix = PREFIX, name = "sms", havingValue = "true", matchIfMissing = true)
+    @ConditionalOnProperty(prefix = PROPERTIS_PREFIX_SECURITY_CODE, name = "sms", havingValue = "true", matchIfMissing = true)
     @EnableConfigurationProperties({SmsValidateCodeProperties.class})
     public static class SmsValidateCodeGeneratorAutoConfigure {
 

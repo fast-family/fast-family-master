@@ -1,6 +1,7 @@
 package com.fast.family.third.poarty.mp;
 
 
+import com.fast.family.commons.constant.CommonStant;
 import lombok.extern.slf4j.Slf4j;
 import me.chanjar.weixin.mp.api.WxMpConfigStorage;
 import me.chanjar.weixin.mp.api.WxMpInMemoryConfigStorage;
@@ -22,7 +23,7 @@ import org.springframework.context.annotation.Configuration;
 @Slf4j
 @Configuration
 @ConditionalOnClass(WxMpService.class)
-@ConditionalOnProperty(prefix = "fast.family.wechat.mp", name = "enabled", havingValue = "true")
+@ConditionalOnProperty(prefix = CommonStant.PROPERTIS_PREFIX + "wechat.mp", name = "enabled", havingValue = "true")
 @EnableConfigurationProperties(WechatMpProperties.class)
 public class WechatMpAutoConfiguration {
 

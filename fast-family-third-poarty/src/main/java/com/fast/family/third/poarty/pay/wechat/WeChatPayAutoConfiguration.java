@@ -1,5 +1,6 @@
 package com.fast.family.third.poarty.pay.wechat;
 
+import com.fast.family.commons.constant.CommonStant;
 import com.github.binarywang.wxpay.config.WxPayConfig;
 import com.github.binarywang.wxpay.service.WxPayService;
 import com.github.binarywang.wxpay.service.impl.WxPayServiceImpl;
@@ -18,7 +19,7 @@ import org.springframework.context.annotation.Configuration;
 @Slf4j
 @Configuration
 @ConditionalOnClass(WxPayService.class)
-@ConditionalOnProperty(prefix = "fast.family.wechat.pay", name = "enabled", havingValue = "true")
+@ConditionalOnProperty(prefix = CommonStant.PROPERTIS_PREFIX + "wechat.pay", name = "enabled", havingValue = "true")
 @EnableConfigurationProperties(WeChatPayProperties.class)
 public class WeChatPayAutoConfiguration {
 

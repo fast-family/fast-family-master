@@ -1,6 +1,7 @@
 package com.fast.family.mvc;
 
 
+import com.fast.family.commons.constant.CommonStant;
 import com.fast.family.mvc.filter.log.AccessLogFilter;
 import com.fast.family.mvc.generic.entity.IDProperties;
 import com.fast.family.mvc.generic.entity.SnowflakeIdGenerator;
@@ -19,6 +20,7 @@ import javax.servlet.Filter;
 @EnableConfigurationProperties({SpringMvcProperties.class, IDProperties.class})
 public class SpringMvcAutoConfigure {
 
+    private static final String PROPERTIS_PREFIX_MVC = CommonStant.PROPERTIS_PREFIX + "mvc.";
 
     @Bean
     public SnowflakeIdGenerator snowflakeIdGenerator(IDProperties idProperties){
@@ -26,7 +28,7 @@ public class SpringMvcAutoConfigure {
     }
 
     @Bean
-    @ConditionalOnProperty(prefix = "fast.family.mvc.accessLog",name = "enabled",havingValue = "true")
+    @ConditionalOnProperty(prefix = PROPERTIS_PREFIX_MVC + "accessLog",name = "enabled",havingValue = "true")
     public Filter accessLogFilter(){
         return new AccessLogFilter();
     }
@@ -34,7 +36,7 @@ public class SpringMvcAutoConfigure {
 
     @Configuration
     @ConditionalOnClass(RedissonClient.class)
-    @ConditionalOnProperty(prefix = "fast.family.mvc.ldempotent",name = "enabled",havingValue = "true")
+    @ConditionalOnProperty(prefix = PROPERTIS_PREFIX_MVC + "ldempotent",name = "enabled",havingValue = "true")
     static class LdempotentAutoConfigure{
 
         @Bean

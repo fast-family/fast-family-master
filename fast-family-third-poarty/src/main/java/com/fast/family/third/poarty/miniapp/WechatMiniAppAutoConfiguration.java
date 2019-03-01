@@ -5,6 +5,7 @@ import cn.binarywang.wx.miniapp.api.WxMaService;
 import cn.binarywang.wx.miniapp.api.impl.WxMaServiceImpl;
 import cn.binarywang.wx.miniapp.config.WxMaConfig;
 import cn.binarywang.wx.miniapp.config.WxMaInMemoryConfig;
+import com.fast.family.commons.constant.CommonStant;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -22,7 +23,7 @@ import java.util.Optional;
  */
 @Slf4j
 @Configuration
-@ConditionalOnProperty(prefix = "fast.family.wechat.miniapp", name = "enabled", havingValue = "true")
+@ConditionalOnProperty(prefix = CommonStant.PROPERTIS_PREFIX + "wechat.miniapp", name = "enabled", havingValue = "true")
 @EnableConfigurationProperties(WechatMiniAppProperties.class)
 public class WechatMiniAppAutoConfiguration {
 
