@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.github.fast-family</groupId>
+        <artifactId>fast-family</artifactId>
+        <version>0.1.0</version>
+    </parent>
+
+    <artifactId>fast-family-core</artifactId>
+    <version>0.1.0</version>
+    <name>fast-family-core</name>
+    <packaging>pom</packaging>
+    <description>Demo project for Spring Boot</description>
+
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
+
+
+    <modules>
+        <module>fast-family-core-mq</module>
+        <module>fast-family-core-mvc</module>
+        <module>fast-family-core-swagger</module>
+        <module>fast-family-core-redis</module>
+        <module>fast-family-core-security</module>
+        <module>fast-family-core-tomcat</module>
+    </modules>
+
+</project>
