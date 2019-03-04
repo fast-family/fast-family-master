@@ -3,6 +3,7 @@ package com.fast.family.security.handler.failure;
 import com.fast.family.commons.utils.GsonUtils;
 import com.fast.family.commons.utils.WebUtils;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.AuthenticationException;
@@ -20,9 +21,11 @@ import java.io.IOException;
 public class CustomAuthenticationFailureHandler extends SimpleUrlAuthenticationFailureHandler {
 
 
+    @Autowired
+    private ExtendAuthenticationFailureHandler extendAuthenticationFailureHandler;
+
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
-        WebUtils.writeJson(response, GsonUtils.toJson(
-                ResponseEntity.status(HttpStatus.UNAUTHORIZED).build(), ResponseEntity.class).getBytes());
+        extendAuthenticationFailureHandler.customAuthenticationFailureResult(request,response,exception);
     }
 }

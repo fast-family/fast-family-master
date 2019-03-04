@@ -3,6 +3,7 @@ package com.fast.family.security.handler.logout;
 import com.fast.family.commons.utils.GsonUtils;
 import com.fast.family.commons.utils.WebUtils;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -19,11 +20,12 @@ import java.io.IOException;
 @Component("customLogoutSuccessHandler")
 public class CustomLogoutSuccessHandler extends SimpleUrlLogoutSuccessHandler {
 
+    @Autowired
+    private ExtendLogoutSuccessHandler extendLogoutSuccessHandler;
+
     @Override
     public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response,
                                 Authentication authentication) throws IOException, ServletException {
-
-        WebUtils.writeJson(response, GsonUtils.toJson(
-                ResponseEntity.status(HttpStatus.OK).build(), ResponseEntity.class).getBytes());
+        extendLogoutSuccessHandler.customOnLogoutSuccessResult(request,response,authentication);
     }
 }

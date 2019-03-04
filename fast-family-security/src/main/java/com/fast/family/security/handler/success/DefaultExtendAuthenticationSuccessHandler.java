@@ -14,7 +14,7 @@ import java.io.IOException;
 
 @Component
 @Slf4j
-public class DefaultAuthenticationSuccessHandler implements ExtendAuthenticationSuccessHandler {
+public class DefaultExtendAuthenticationSuccessHandler implements ExtendAuthenticationSuccessHandler {
 
 
     @Autowired

@@ -27,6 +27,10 @@ public class Response<T> {
         return ok(ResponseCode.SUCCESS.getCode(),ResponseCode.SUCCESS.getMessage(),data);
     }
 
+    public static <T>Response<T> ok(int code,String message){
+        return ok(code,message,null);
+    }
+
     public static <T>Response<T> ok(int code,String message,T data){
         Response response = new Response();
         response.setCode(code);

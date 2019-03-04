@@ -9,7 +9,6 @@ import me.chanjar.weixin.mp.api.WxMpService;
 import me.chanjar.weixin.mp.api.impl.WxMpServiceOkHttpImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -23,18 +22,17 @@ import org.springframework.context.annotation.Configuration;
 @Slf4j
 @Configuration
 @ConditionalOnClass(WxMpService.class)
-@ConditionalOnProperty(prefix = CommonStant.PROPERTIS_PREFIX + "wechat.mp", name = "enabled", havingValue = "true")
 @EnableConfigurationProperties(WechatMpProperties.class)
 public class WechatMpAutoConfiguration {
 
     @Configuration
-    public class MemoryWechatMqAutoConfiguration {
+    @ConditionalOnProperty(prefix = CommonStant.PROPERTIS_PREFIX + "wechat.mp.storage",name = "InMemory",havingValue = "true")
+    public class InMemoryWechatMqAutoConfiguration {
 
         @Autowired
         private WechatMpProperties wechatMpProperties;
 
         @Bean
-        @ConditionalOnMissingBean
         public WxMpConfigStorage wxMpConfigStorage() {
             WxMpInMemoryConfigStorage memoryConfigStorage = new WxMpInMemoryConfigStorage();
             memoryConfigStorage.setAccessToken(wechatMpProperties.getToken());
@@ -45,7 +43,6 @@ public class WechatMpAutoConfiguration {
         }
 
         @Bean
-        @ConditionalOnMissingBean
         public WxMpService wxMpService() {
             WxMpService wxMpService = new WxMpServiceOkHttpImpl();
             wxMpService.setWxMpConfigStorage(wxMpConfigStorage());

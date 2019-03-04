@@ -1,7 +1,11 @@
 package com.fast.family.security;
 
 import com.fast.family.commons.constant.CommonStant;
-import com.fast.family.security.handler.success.DefaultAuthenticationSuccessHandler;
+import com.fast.family.security.handler.failure.DefaultExtendAuthenticationFailureHandler;
+import com.fast.family.security.handler.failure.ExtendAuthenticationFailureHandler;
+import com.fast.family.security.handler.logout.DefaultExtendLogoutSuccessHandler;
+import com.fast.family.security.handler.logout.ExtendLogoutSuccessHandler;
+import com.fast.family.security.handler.success.DefaultExtendAuthenticationSuccessHandler;
 import com.fast.family.security.handler.success.ExtendAuthenticationSuccessHandler;
 import com.fast.family.security.validate.code.ImMemoryValidateCodeRepository;
 import com.fast.family.security.validate.code.RedisValidateCodeRepository;
@@ -29,7 +33,17 @@ public class SecurityAutoConfigure {
 
     @Bean
     public ExtendAuthenticationSuccessHandler extendAuthenticationSuccessHandler() {
-        return new DefaultAuthenticationSuccessHandler();
+        return new DefaultExtendAuthenticationSuccessHandler();
+    }
+
+    @Bean
+    public ExtendAuthenticationFailureHandler extendAuthenticationFailureHandler(){
+        return new DefaultExtendAuthenticationFailureHandler();
+    }
+
+    @Bean
+    public ExtendLogoutSuccessHandler extendLogoutSuccessHandler(){
+        return new DefaultExtendLogoutSuccessHandler();
     }
 
     @Configuration
