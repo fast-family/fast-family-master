@@ -7,18 +7,18 @@ package com.fast.family.datasource.context;
 public class DataSourceContextHolder {
 
 
-    private static final ThreadLocal<String> threadLocal = new ThreadLocal<>();
+    private static final ThreadLocal<String> THREAD_LOCAL = new ThreadLocal<>();
 
 
     public static void add(String name) {
-        threadLocal.set(name);
+        THREAD_LOCAL.set(name);
     }
 
     public static String get() {
-        return threadLocal.get();
+        return THREAD_LOCAL.get();
     }
 
     public static void clear() {
-        threadLocal.remove();
+        THREAD_LOCAL.remove();
     }
 }

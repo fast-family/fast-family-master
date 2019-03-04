@@ -10,14 +10,14 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class DynamicDataSourceCacheUtils {
 
-    private static final Map<String, DataSource> params = new ConcurrentHashMap<>();
+    private static final Map<String, DataSource> DATA_SOURCE_MAP = new ConcurrentHashMap<>();
 
 
     public static void put(String key, DataSource dataSource) {
-        params.put(key, dataSource);
+        DATA_SOURCE_MAP.put(key, dataSource);
     }
 
     public static DataSource get(String key) {
-        return params.get(key);
+        return DATA_SOURCE_MAP.get(key);
     }
 }
