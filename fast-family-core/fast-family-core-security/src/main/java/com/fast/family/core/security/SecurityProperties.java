@@ -1,4 +1,4 @@
-package com.fast.family.security;
+package com.fast.family.core.security;
 
 import lombok.Data;
 import lombok.Getter;

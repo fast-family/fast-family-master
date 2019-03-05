@@ -1,4 +1,4 @@
-package com.fast.family.core.security.handler;
+package com.fast.family.core.security.handler.failure;
 
 import org.springframework.security.core.AuthenticationException;
 

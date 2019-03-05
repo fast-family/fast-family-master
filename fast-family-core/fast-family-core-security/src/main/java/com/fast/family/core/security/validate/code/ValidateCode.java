@@ -1,4 +1,4 @@
-package com.fast.family.security.validate.code;
+package com.fast.family.core.security.validate.code;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

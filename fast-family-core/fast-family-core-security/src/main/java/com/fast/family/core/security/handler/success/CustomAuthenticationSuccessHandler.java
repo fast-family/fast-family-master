@@ -1,4 +1,4 @@
-package com.fast.family.security.handler.success;
+package com.fast.family.core.security.handler.success;
 
 import org.apache.commons.codec.binary.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;

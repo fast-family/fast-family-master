@@ -1,4 +1,4 @@
-package com.fast.family.security.handler.success;
+package com.fast.family.core.security.handler.success;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;

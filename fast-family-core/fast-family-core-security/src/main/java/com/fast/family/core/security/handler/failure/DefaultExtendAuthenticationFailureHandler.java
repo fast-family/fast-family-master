@@ -1,4 +1,4 @@
-package com.fast.family.core.security.handler;
+package com.fast.family.core.security.handler.failure;
 
 import com.fast.family.commons.json.Response;
 import com.fast.family.commons.json.ResponseCode;
@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Slf4j
-public class DefaultExtendAuthenticationFailureHandler implements ExtendAuthenticationFailureHandler{
+public class DefaultExtendAuthenticationFailureHandler implements ExtendAuthenticationFailureHandler {
 
     @Override
     public void customAuthenticationFailureResult(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception)

@@ -1,4 +1,4 @@
-package com.fast.family.security.handler.logout;
+package com.fast.family.core.security.handler.logout;
 
 import org.springframework.security.core.Authentication;
 

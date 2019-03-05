@@ -1,4 +1,4 @@
-package com.fast.family.security;
+package com.fast.family.core.security;
 
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.web.util.matcher.OrRequestMatcher;

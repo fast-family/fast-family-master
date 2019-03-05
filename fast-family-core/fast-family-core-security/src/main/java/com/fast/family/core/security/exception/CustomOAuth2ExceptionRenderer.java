@@ -1,4 +1,4 @@
-package com.fast.family.security.exception;
+package com.fast.family.core.security.exception;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.oauth2.provider.error.DefaultOAuth2ExceptionRenderer;

@@ -1,7 +1,8 @@
-package com.fast.family.security.jwt;
+package com.fast.family.core.security.jwt;
 
-import com.fast.family.security.SecurityConstants;
-import com.fast.family.security.SecurityProperties;
+
+import com.fast.family.core.security.SecurityConstants;
+import com.fast.family.core.security.SecurityProperties;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.extern.slf4j.Slf4j;

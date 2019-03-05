@@ -1,4 +1,4 @@
-package com.fast.family.security.auth.mobile;
+package com.fast.family.core.security.auth.mobile;
 
 import lombok.Getter;
 import lombok.Setter;

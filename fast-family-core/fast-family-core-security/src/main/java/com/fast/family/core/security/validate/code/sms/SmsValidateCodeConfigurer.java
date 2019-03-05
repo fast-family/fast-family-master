@@ -1,4 +1,4 @@
-package com.fast.family.security.validate.code.sms;
+package com.fast.family.core.security.validate.code.sms;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.config.annotation.SecurityConfigurerAdapter;

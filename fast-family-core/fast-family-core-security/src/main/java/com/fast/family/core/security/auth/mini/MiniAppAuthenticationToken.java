@@ -1,6 +1,7 @@
-package com.fast.family.security.auth.mini;
+package com.fast.family.core.security.auth.mini;
 
-import com.fast.family.security.auth.BaseAuthenticationToken;
+
+import com.fast.family.core.security.auth.BaseAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
 
 import java.util.Collection;

@@ -1,7 +1,7 @@
-package com.fast.family.security.auth.wechat;
+package com.fast.family.core.security.auth.wechat;
 
 import com.fast.family.commons.utils.WebUtils;
-import com.fast.family.security.SecurityConstants;
+import com.fast.family.core.security.SecurityConstants;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;

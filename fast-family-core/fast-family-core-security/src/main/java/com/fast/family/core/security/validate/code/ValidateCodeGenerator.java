@@ -1,4 +1,4 @@
-package com.fast.family.security.validate.code;
+package com.fast.family.core.security.validate.code;
 
 /**
  * @author 张顺

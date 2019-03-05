@@ -5,7 +5,7 @@
 
     >
     <artifactId>fast-family-third-poarty</artifactId>
-    <version>${revision}</version>
+    <version>0.1.0</version>
     <packaging>jar</packaging>
 
     <name>fast-family-third-poarty</name>
@@ -14,7 +14,7 @@
     <parent>
         <groupId>com.github.fast-family</groupId>
         <artifactId>fast-family</artifactId>
-        <version>${revision}</version>
+        <version>0.1.0</version>
     </parent>
 
     <properties>

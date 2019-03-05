@@ -1,4 +1,4 @@
-package com.fast.family.security.auth.mini;
+package com.fast.family.core.security.auth.mini;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationManager;

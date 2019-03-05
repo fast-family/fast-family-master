@@ -1,12 +1,10 @@
-package com.fast.family.security.handler.logout;
+package com.fast.family.core.security.handler.logout;
 
 import com.fast.family.commons.json.Response;
 import com.fast.family.commons.json.ResponseCode;
 import com.fast.family.commons.utils.GsonUtils;
 import com.fast.family.commons.utils.WebUtils;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 
 import javax.servlet.ServletException;

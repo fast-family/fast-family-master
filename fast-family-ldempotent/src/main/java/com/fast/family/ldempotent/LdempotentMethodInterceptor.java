@@ -32,16 +32,12 @@ public class LdempotentMethodInterceptor implements MethodInterceptor {
 
     @Override
     public Object invoke(MethodInvocation invocation) throws Throwable {
-        Method method = invocation.getMethod();
-        LdempotentAnnotation annotation = method.getAnnotation(LdempotentAnnotation.class);
-        if (annotation != null){
-            String ldempotentToken = Optional.ofNullable(WebUtils.getHttpServletRequest().getHeader(commonProperties.getLdempotent().getLdempotentHeaderName()))
-                    .orElseThrow(() -> new LdempotentException(ResponseCode.LDEMPOTENT_ERROR.getCode(),ResponseCode.LDEMPOTENT_ERROR.getMessage()));
-            RMapCache<String,String> rMapCache = redissonClient.getMapCache(commonProperties.getLdempotent().getLdempotentKey());
-            if (rMapCache.put(commonProperties.getLdempotent().getLdempotentPrefix() + ldempotentToken,ldempotentToken,
-                    commonProperties.getLdempotent().getTtl(), TimeUnit.MINUTES) != null){
-                throw new LdempotentException(ResponseCode.LDEMPOTENT_ERROR.getCode(),ResponseCode.LDEMPOTENT_ERROR.getMessage());
-            }
+        String ldempotentToken = Optional.ofNullable(WebUtils.getHttpServletRequest().getHeader(commonProperties.getLdempotent().getLdempotentHeaderName()))
+                .orElseThrow(() -> new LdempotentException(ResponseCode.LDEMPOTENT_ERROR.getCode(),ResponseCode.LDEMPOTENT_ERROR.getMessage()));
+        RMapCache<String,String> rMapCache = redissonClient.getMapCache(commonProperties.getLdempotent().getLdempotentKey());
+        if (rMapCache.put(commonProperties.getLdempotent().getLdempotentPrefix() + ldempotentToken,ldempotentToken,
+                commonProperties.getLdempotent().getTtl(), TimeUnit.MINUTES) != null){
+            throw new LdempotentException(ResponseCode.LDEMPOTENT_ERROR.getCode(),ResponseCode.LDEMPOTENT_ERROR.getMessage());
         }
         return invocation.proceed();
     }

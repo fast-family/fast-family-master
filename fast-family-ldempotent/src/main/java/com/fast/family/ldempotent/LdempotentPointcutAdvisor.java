@@ -15,11 +15,7 @@ public class LdempotentPointcutAdvisor extends StaticMethodMatcherPointcutAdviso
 
     @Override
     public boolean matches(Method method, Class<?> targetClass) {
-        LdempotentAnnotation annotation = method.getAnnotation(LdempotentAnnotation.class);
-        if (annotation != null) {
             return true;
-        }
-        return false;
     }
 
 }
