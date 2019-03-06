@@ -8,6 +8,6 @@ import org.aopalliance.intercept.MethodInvocation;
  */
 public interface LockDelegate {
 
-    Object invoke(MethodInvocation invocation);
+    Object invoke(MethodInvocation invocation) throws Throwable;
 
 }

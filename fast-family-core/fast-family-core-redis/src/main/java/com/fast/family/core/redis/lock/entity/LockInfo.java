@@ -1,5 +1,6 @@
 package com.fast.family.core.redis.lock.entity;
 
+import com.fast.family.core.redis.lock.annotation.FairLock;
 import com.fast.family.core.redis.lock.annotation.ReentrantLock;
 import com.fast.family.core.redis.lock.annotation.ReadLock;
 import com.fast.family.core.redis.lock.annotation.WriteLock;
@@ -20,28 +21,30 @@ public class LockInfo {
 
     private boolean async;
 
-    private boolean fair;
 
-
-    public LockInfo converterLock(ReentrantLock lock){
+    public LockInfo converterFairLock(FairLock lock){
         return createLockInfo(lock.lockName(),lock.lockTime(),lock.waitTime()
-                ,lock.async(),lock.fair());
+                ,lock.async());
     }
 
-    public LockInfo converterReadLock(ReadLock readLock){
-        return createLockInfo(readLock.lockName(),readLock.lockTime(),readLock.waitTime()
-                ,readLock.async(),readLock.fair());
+    public LockInfo converterReentrantLock(ReentrantLock lock){
+        return createLockInfo(lock.lockName(),lock.lockTime(),lock.waitTime()
+                ,lock.async());
     }
 
-    public LockInfo converterWriteLock(WriteLock writeLock){
-        return createLockInfo(writeLock.lockName(),writeLock.lockTime(),writeLock.waitTime()
-                ,writeLock.async(),writeLock.fair());
+    public LockInfo converterReadLock(ReadLock lock){
+        return createLockInfo(lock.lockName(),lock.lockTime(),lock.waitTime()
+                ,lock.async());
+    }
+
+    public LockInfo converterWriteLock(WriteLock lock){
+        return createLockInfo(lock.lockName(),lock.lockTime(),lock.waitTime()
+                ,lock.async());
     }
 
     private LockInfo createLockInfo(String lockName,long lockTime,long waitTime
-                        ,boolean async,boolean fair){
+                        ,boolean async){
         this.setAsync(async);
-        this.setFair(fair);
         this.setLockName(lockName);
         this.setLockTime(lockTime);
         this.setWaitTime(waitTime);

@@ -1,4 +1,4 @@
-package com.fast.family.core.redis.lock.adapter;
+package com.fast.family.core.redis.lock.strategy;
 
 import com.fast.family.core.redis.lock.entity.LockInfo;
 import org.redisson.api.RLock;
@@ -7,9 +7,9 @@ import org.redisson.api.RLock;
  * @author 张顺
  * @version 1.0
  */
-public interface LockAdapter {
+public interface LockStrategy {
 
-    RLock tryLock(LockInfo lockInfo);
+    RLock tryLock(LockInfo lockInfo) throws InterruptedException;
 
     void unlock(RLock lock);
 
