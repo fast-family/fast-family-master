@@ -6,6 +6,7 @@ import com.fast.family.core.redis.lock.annotation.ReadLock;
 import com.fast.family.core.redis.lock.annotation.WriteLock;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.aop.support.StaticMethodMatcherPointcut;
+import org.springframework.aop.support.StaticMethodMatcherPointcutAdvisor;
 
 import java.lang.reflect.Method;
 
@@ -14,7 +15,7 @@ import java.lang.reflect.Method;
  * @version 1.0
  */
 @Slf4j
-public class LockPointcutAdvisor extends StaticMethodMatcherPointcut {
+public class LockPointcutAdvisor extends StaticMethodMatcherPointcutAdvisor {
 
     @Override
     public boolean matches(Method method, Class<?> targetClass) {

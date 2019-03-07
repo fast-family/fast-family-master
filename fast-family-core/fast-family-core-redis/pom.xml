@@ -47,6 +47,11 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>com.github.fast-family</groupId>
+            <artifactId>fast-family-commons</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>

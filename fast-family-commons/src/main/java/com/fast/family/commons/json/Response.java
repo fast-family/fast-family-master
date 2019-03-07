@@ -1,5 +1,7 @@
 package com.fast.family.commons.json;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonView;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,13 +13,24 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Response<T> {
 
+    @JsonView(ResponseView.class)
     private String message;
 
+    @JsonView(ResponseView.class)
     private int code;
 
+    @JsonView(ResponseView.class)
     private T data;
+
+    @JsonView(ResponseView.class)
+    private Long timestamp;
+
+    interface ResponseView{
+
+    }
 
     public static <T>Response<T> ok(){
         return ok(ResponseCode.SUCCESS.getCode(),ResponseCode.SUCCESS.getMessage(),null);
