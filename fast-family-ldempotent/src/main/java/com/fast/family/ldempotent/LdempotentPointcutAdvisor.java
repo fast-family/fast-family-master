@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.aop.support.StaticMethodMatcherPointcutAdvisor;
 
 import java.lang.reflect.Method;
+import java.util.Optional;
 
 /**
  * @author 张顺
@@ -15,7 +16,7 @@ public class LdempotentPointcutAdvisor extends StaticMethodMatcherPointcutAdviso
 
     @Override
     public boolean matches(Method method, Class<?> targetClass) {
-            return true;
+        return Optional.ofNullable(method.getAnnotation(Ldempotent.class)).isPresent();
     }
 
 }
