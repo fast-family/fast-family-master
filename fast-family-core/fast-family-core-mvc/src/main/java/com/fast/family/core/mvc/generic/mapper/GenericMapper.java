@@ -1,8 +1,9 @@
 package com.fast.family.core.mvc.generic.mapper;
 
-import com.fast.family.mvc.generic.entity.GenericEntity;
-import tk.mybatis.mapper.common.Mapper;
-import tk.mybatis.mapper.common.MySqlMapper;
+
+
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.fast.family.core.mvc.generic.entity.GenericEntity;
 
 import java.io.Serializable;
 
@@ -11,5 +12,5 @@ import java.io.Serializable;
  * @version 1.0
  */
 public interface GenericMapper<T extends GenericEntity, PK extends Serializable> extends
-        Mapper<T>, MySqlMapper<T> {
+        BaseMapper<T> {
 }

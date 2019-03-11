@@ -1,7 +1,7 @@
 package com.fast.family.core.mvc.generic.controller;
 
 import com.fast.family.commons.json.Response;
-import com.fast.family.mvc.generic.entity.GenericEntity;
+import com.fast.family.core.mvc.generic.entity.GenericEntity;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,14 +20,14 @@ public interface InsertController<T extends GenericEntity, PK extends Serializab
     @ApiOperation("新增")
     @PostMapping("/insert")
     default Response insert(@RequestBody T t) {
-        this.getService().insert(t);
+        this.getService().save(t);
         return Response.ok();
     }
 
     @ApiOperation("批量新增")
     @PostMapping("/insert/batch")
     default Response insertBatch(@RequestBody List<T> list) {
-        this.getService().insertBatch(list);
+        this.getService().saveBatch(list);
         return Response.ok();
     }
 }

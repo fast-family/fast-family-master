@@ -1,7 +1,7 @@
 package com.fast.family.core.mvc.generic.controller;
 
 import com.fast.family.commons.json.Response;
-import com.fast.family.mvc.generic.entity.GenericEntity;
+import com.fast.family.core.mvc.generic.entity.GenericEntity;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,7 +26,7 @@ public interface UpdateController<T extends GenericEntity, PK extends Serializab
     @ApiOperation("批量更新")
     @PostMapping("/update/batch")
     default Response updateBatch(@RequestBody List<T> list) {
-        this.getService().updateBatch(list);
+        this.getService().updateBatchById(list);
         return Response.ok();
     }
 }

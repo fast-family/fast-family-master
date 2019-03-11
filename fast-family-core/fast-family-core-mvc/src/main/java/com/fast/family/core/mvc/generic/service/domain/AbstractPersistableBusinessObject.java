@@ -2,7 +2,7 @@ package com.fast.family.core.mvc.generic.service.domain;
 
 import com.fast.family.commons.utils.BeanUtils;
 import com.fast.family.commons.utils.ReflectionUtils;
-import com.fast.family.mvc.generic.entity.GenericEntity;
+import com.fast.family.core.mvc.generic.entity.GenericEntity;
 
 
 public abstract class AbstractPersistableBusinessObject<T extends GenericEntity>

@@ -27,8 +27,6 @@
         <revision>0.1.0</revision>
         <io.jsonwebtoken.version>0.7.0</io.jsonwebtoken.version>
         <mybatis.version>1.3.2</mybatis.version>
-        <pagehelper.version>1.2.7</pagehelper.version>
-        <tk.mapper.version>2.0.4</tk.mapper.version>
         <springfox.swagger2.verion>2.7.0</springfox.swagger2.verion>
         <springfox.swagger.ui.version>2.7.0</springfox.swagger.ui.version>
         <servlet.version>3.1.0</servlet.version>
@@ -42,6 +40,7 @@
         <lombok.version>1.16.20</lombok.version>
         <vavr.version>0.9.2</vavr.version>
         <redisson.version>3.10.3</redisson.version>
+        <mybatis.plus.version>3.1.0</mybatis.plus.version>
         <spring.version>5.0.9.RELEASE</spring.version>
         <spring.boot.version>2.0.5.RELEASE</spring.boot.version>
         <spring-cloud.version>Finchley.SR2</spring-cloud.version>
@@ -82,15 +81,9 @@
             </dependency>
 
             <dependency>
-                <groupId>com.github.pagehelper</groupId>
-                <artifactId>pagehelper-spring-boot-starter</artifactId>
-                <version>${pagehelper.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>tk.mybatis</groupId>
-                <artifactId>mapper-spring-boot-starter</artifactId>
-                <version>${tk.mapper.version}</version>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis.plus.version}</version>
             </dependency>
 
             <dependency>
@@ -293,7 +286,7 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-alibaba-dependencies</artifactId>
-                <version>0.2.0.RELEASE</version>
+                <version>0.2.1.RELEASE</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>

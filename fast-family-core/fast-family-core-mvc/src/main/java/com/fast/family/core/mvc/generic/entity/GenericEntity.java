@@ -2,8 +2,6 @@ package com.fast.family.core.mvc.generic.entity;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
 import java.io.Serializable;
 
 /**
@@ -13,9 +11,7 @@ import java.io.Serializable;
 @Data
 public abstract class GenericEntity<PK extends Serializable> {
 
-    @Id
-//    @KeySql(genId = GlobalIDGenerator.class)
-    @Column(name = "id")
+
     private PK id;
 
 }

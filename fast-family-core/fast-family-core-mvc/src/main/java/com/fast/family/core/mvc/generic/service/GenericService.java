@@ -1,6 +1,8 @@
 package com.fast.family.core.mvc.generic.service;
 
-import com.fast.family.mvc.generic.entity.GenericEntity;
+
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.fast.family.core.mvc.generic.entity.GenericEntity;
 
 import java.io.Serializable;
 
@@ -9,5 +11,5 @@ import java.io.Serializable;
  * @version 1.0
  */
 public interface GenericService<T extends GenericEntity, PK extends Serializable>
-        extends SimpleCrudService<T, PK> {
+        extends IService<T> {
 }
