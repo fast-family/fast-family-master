@@ -1,13 +1,14 @@
 package com.fast.family.third.poarty.sms.ali;
 
+import com.alibaba.fastjson.JSONObject;
+import com.aliyuncs.CommonRequest;
 import com.aliyuncs.DefaultAcsClient;
 import com.aliyuncs.IAcsClient;
-import com.aliyuncs.dysmsapi.model.v20170525.SendSmsRequest;
 import com.aliyuncs.exceptions.ClientException;
 import com.aliyuncs.http.MethodType;
 import com.aliyuncs.profile.DefaultProfile;
 import com.aliyuncs.profile.IClientProfile;
-import com.fast.family.commons.utils.GsonUtils;
+import com.fast.family.commons.exception.AliSmsException;
 import com.fast.family.third.poarty.sms.AbstractSmsTemplate;
 
 
@@ -38,14 +39,19 @@ public abstract class AbstractAliSmsTemplate<T extends AliSmsEntity>
     }
 
     @Override
-    public SendSmsRequest getAliSmsRequest(T t) {
-        SendSmsRequest request = new SendSmsRequest();
+    public CommonRequest getAliSmsRequest(T t) {
+        CommonRequest request = new CommonRequest();
+        request.setAction("SendSms");
+        request.setVersion("2017-05-25");
         request.setMethod(MethodType.POST);
-        request.setPhoneNumbers(t.getMobile());
-        request.setSignName(t.getSignName());
-        request.setTemplateCode(t.getTemplateCode());
-        request.setTemplateParam(GsonUtils.toJson(t, t.getClass()));
-        request.setOutId(t.getOutId());
+        request.setDomain(aliSmsProperties.getDomain());
+        request.setProduct(aliSmsProperties.getProduce());
+        request.setEndpointType(aliSmsProperties.getEndPointName());
+        request.putQueryParameter("PhoneNumbers", t.getMobile());
+        request.putQueryParameter("TemplateCode", t.getTemplateCode());
+        request.putQueryParameter("TemplateParam", JSONObject.toJSONString(t.getParams()));
+        request.putQueryParameter("SignName", t.getSignName());
+        request.putQueryParameter("OutId", t.getOutId());
         return request;
     }
 }
