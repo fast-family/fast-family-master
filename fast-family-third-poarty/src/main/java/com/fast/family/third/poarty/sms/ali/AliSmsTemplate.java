@@ -1,7 +1,7 @@
 package com.fast.family.third.poarty.sms.ali;
 
+import com.aliyuncs.CommonRequest;
 import com.aliyuncs.IAcsClient;
-import com.aliyuncs.dysmsapi.model.v20170525.SendSmsRequest;
 
 /**
  * @author 张顺
@@ -13,11 +13,11 @@ public interface AliSmsTemplate<T extends AliSmsEntity> {
         return null;
     }
 
-    ;
 
-    default SendSmsRequest getAliSmsRequest(T t) {
+
+    default CommonRequest getAliSmsRequest(T t) {
         return null;
     }
 
-    ;
+
 }

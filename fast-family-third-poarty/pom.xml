@@ -29,8 +29,8 @@
         <fastjson.version>1.2.54</fastjson.version>
         <aliyun-oss-version>2.5.0</aliyun-oss-version>
         <ali.pay.version>3.4.49.ALL</ali.pay.version>
-        <aliyun.java.sdk.core.version>3.5.0</aliyun.java.sdk.core.version>
-        <aliyun.java.sdk.dysmsapi.version>1.0.0</aliyun.java.sdk.dysmsapi.version>
+        <aliyun.java.sdk.core.version>4.0.6</aliyun.java.sdk.core.version>
+        <!--<aliyun.java.sdk.dysmsapi.version>1.0.0</aliyun.java.sdk.dysmsapi.version>-->
     </properties>
 
     <dependencies>
@@ -89,11 +89,11 @@
             <version>${weixin-java-mp.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.github.1991wangliang</groupId>
-            <artifactId>aliyun-java-sdk-dysmsapi</artifactId>
-            <version>${aliyun.java.sdk.dysmsapi.version}</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.github.1991wangliang</groupId>-->
+            <!--<artifactId>aliyun-java-sdk-dysmsapi</artifactId>-->
+            <!--<version>${aliyun.java.sdk.dysmsapi.version}</version>-->
+        <!--</dependency>-->
 
         <!-- aliyun-java-sdk-core -->
         <dependency>

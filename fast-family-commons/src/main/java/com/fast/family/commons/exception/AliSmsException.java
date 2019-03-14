@@ -1,6 +1,4 @@
-package com.fast.family.third.poarty.sms.ali;
-
-import com.fast.family.commons.exception.BaseException;
+package com.fast.family.commons.exception;
 
 /**
  * @author 张顺

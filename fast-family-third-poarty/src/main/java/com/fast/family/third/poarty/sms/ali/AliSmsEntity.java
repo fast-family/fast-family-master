@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Map;
+
 /**
  * @author 张顺
  * @version 1.0
@@ -19,4 +21,7 @@ public class AliSmsEntity extends SmsEntity {
     private String signName;
 
     private String outId;
+
+    private Map<String, Object> params;
+
 }
