@@ -1,4 +1,4 @@
-package com.fast.family.core.security.password;
+package com.fast.family.security.password;
 
 import org.springframework.security.crypto.codec.Hex;
 import org.springframework.security.crypto.password.PasswordEncoder;

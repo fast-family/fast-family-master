@@ -1,4 +1,4 @@
-package com.fast.family.core.mvc.filter;
+package com.fast.family.mvc.filter;
 
 import lombok.Data;
 

@@ -1,6 +1,6 @@
-package com.fast.family.core.redis.lock.aop;
+package com.fast.family.redis.lock.aop;
 
-import com.fast.family.core.redis.lock.delegate.LockDelegate;
+import com.fast.family.redis.lock.delegate.LockDelegate;
 import lombok.extern.slf4j.Slf4j;
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;

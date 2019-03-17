@@ -1,9 +1,9 @@
-package com.fast.family.core.mvc.filter;
+package com.fast.family.mvc.filter;
 
 
 import com.fast.family.commons.utils.GsonUtils;
 import com.fast.family.commons.utils.WebUtils;
-import com.fast.family.core.mvc.SpringMvcProperties;
+import com.fast.family.mvc.SpringMvcProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.server.ServletServerHttpRequest;
 import org.springframework.http.server.ServletServerHttpResponse;

@@ -1,10 +1,9 @@
-package com.fast.family.core.mvc.generic.controller;
+package com.fast.family.mvc.generic.controller;
 
-import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.fast.family.commons.json.Response;
-import com.fast.family.core.mvc.generic.entity.GenericEntity;
+import com.fast.family.mvc.generic.entity.GenericEntity;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;

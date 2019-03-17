@@ -1,11 +1,10 @@
-package com.fast.family.core.security.auth.mini;
+package com.fast.family.security.auth.mini;
 
 import cn.binarywang.wx.miniapp.api.WxMaService;
 import cn.binarywang.wx.miniapp.bean.WxMaJscode2SessionResult;
 import com.fast.family.commons.utils.WebUtils;
 import com.fast.family.core.security.SecurityConstants;
 import com.fast.family.core.security.SecurityProperties;
-
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;

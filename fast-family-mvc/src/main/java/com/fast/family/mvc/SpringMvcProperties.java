@@ -1,5 +1,6 @@
-package com.fast.family.core.mvc;
+package com.fast.family.mvc;
 
+import com.fast.family.commons.constant.CommonStant;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
@@ -8,7 +9,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @version 1.0
  */
 @Data
-@ConfigurationProperties(prefix = "fast.family.mvc")
+@ConfigurationProperties(prefix = CommonStant.PROPERTIS_PREFIX + "mvc")
 public class SpringMvcProperties {
 
     private boolean isIncludeRequest = true;

@@ -1,4 +1,4 @@
-package com.fast.family.core.security;
+package com.fast.family.security;
 
 /**
  * @author 张顺

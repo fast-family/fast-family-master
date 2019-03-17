@@ -1,4 +1,4 @@
-package com.fast.family.core.tomcat;
+package com.fast.family.tomcat;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

@@ -1,4 +1,4 @@
-package com.fast.family.core.mvc.generic.dto;
+package com.fast.family.mvc.generic.dto;
 
 import lombok.Data;
 

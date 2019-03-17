@@ -1,14 +1,11 @@
-package com.fast.family.core.mvc;
+package com.fast.family.mvc;
 
 
 import com.fast.family.commons.constant.CommonStant;
-import com.fast.family.mvc.filter.log.AccessLogFilter;
+import com.fast.family.mvc.filter.AccessLogFilter;
 import com.fast.family.mvc.generic.entity.IDProperties;
 import com.fast.family.mvc.generic.entity.SnowflakeIdGenerator;
-import com.fast.family.mvc.ldempotent.LdempotentMethodInterceptor;
-import com.fast.family.mvc.ldempotent.LdempotentPointcutAdvisor;
-import org.redisson.api.RedissonClient;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -34,24 +31,6 @@ public class SpringMvcAutoConfigure {
     }
 
 
-    @Configuration
-    @ConditionalOnClass(RedissonClient.class)
-    @ConditionalOnProperty(prefix = PROPERTIS_PREFIX_MVC + "ldempotent",name = "enabled",havingValue = "true")
-    static class LdempotentAutoConfigure{
 
-        @Bean
-        public LdempotentMethodInterceptor ldempotentMethodInterceptor(RedissonClient redissonClient){
-            return new LdempotentMethodInterceptor(redissonClient);
-        }
-
-        @Bean
-        public LdempotentPointcutAdvisor ldempotentPointcutAdvisor(LdempotentMethodInterceptor ldempotentMethodInterceptor){
-            LdempotentPointcutAdvisor ldempotentPointcutAdvisor =
-                    new LdempotentPointcutAdvisor();
-            ldempotentPointcutAdvisor.setAdvice(ldempotentMethodInterceptor);
-            return ldempotentPointcutAdvisor;
-        }
-
-    }
 
 }

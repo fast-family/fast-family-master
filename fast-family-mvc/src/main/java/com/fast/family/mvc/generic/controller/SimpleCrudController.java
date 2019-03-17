@@ -1,7 +1,7 @@
-package com.fast.family.core.mvc.generic.controller;
+package com.fast.family.mvc.generic.controller;
 
 
-import com.fast.family.core.mvc.generic.entity.GenericEntity;
+import com.fast.family.mvc.generic.entity.GenericEntity;
 
 import java.io.Serializable;
 

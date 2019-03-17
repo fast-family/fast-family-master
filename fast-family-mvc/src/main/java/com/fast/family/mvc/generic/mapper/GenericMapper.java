@@ -1,9 +1,9 @@
-package com.fast.family.core.mvc.generic.mapper;
+package com.fast.family.mvc.generic.mapper;
 
 
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.fast.family.core.mvc.generic.entity.GenericEntity;
+import com.fast.family.mvc.generic.entity.GenericEntity;
 
 import java.io.Serializable;
 

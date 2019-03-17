@@ -1,4 +1,4 @@
-package com.fast.family.core.mvc.generic.entity;
+package com.fast.family.mvc.generic.entity;
 
 import lombok.extern.slf4j.Slf4j;
 

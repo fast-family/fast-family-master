@@ -1,4 +1,4 @@
-package com.fast.family.core.swagger;
+package com.fast.family.swagger;
 
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;

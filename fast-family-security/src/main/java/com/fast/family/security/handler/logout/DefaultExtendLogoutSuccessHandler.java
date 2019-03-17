@@ -1,4 +1,4 @@
-package com.fast.family.core.security.handler.logout;
+package com.fast.family.security.handler.logout;
 
 import com.fast.family.commons.json.Response;
 import com.fast.family.commons.json.ResponseCode;

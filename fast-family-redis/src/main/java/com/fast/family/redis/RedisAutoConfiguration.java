@@ -17,7 +17,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @ConditionalOnClass(RedissonClient.class)
-public class RedisConfiguration {
+public class RedisAutoConfiguration {
 
 
 

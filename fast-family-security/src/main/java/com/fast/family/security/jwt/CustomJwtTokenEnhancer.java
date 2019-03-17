@@ -1,4 +1,4 @@
-package com.fast.family.core.security.jwt;
+package com.fast.family.security.jwt;
 
 
 import com.fast.family.core.security.SecurityConstants;

@@ -1,9 +1,9 @@
-package com.fast.family.core.mvc.generic.service.impl;
+package com.fast.family.mvc.generic.service.impl;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.fast.family.core.mvc.generic.entity.GenericEntity;
-import com.fast.family.core.mvc.generic.service.GenericService;
+import com.fast.family.mvc.generic.entity.GenericEntity;
+import com.fast.family.mvc.generic.service.GenericService;
 import org.springframework.stereotype.Service;
 
 import java.io.Serializable;

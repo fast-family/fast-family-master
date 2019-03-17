@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.fast.family.core.mvc.SpringMvcAutoConfigure
+  com.fast.family.mvc.SpringMvcAutoConfigure

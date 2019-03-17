@@ -1,4 +1,4 @@
-package com.fast.family.core.tomcat;
+package com.fast.family.tomcat;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.catalina.startup.Tomcat;

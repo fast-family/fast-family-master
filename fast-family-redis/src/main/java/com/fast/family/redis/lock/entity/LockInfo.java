@@ -1,9 +1,9 @@
-package com.fast.family.core.redis.lock.entity;
+package com.fast.family.redis.lock.entity;
 
-import com.fast.family.core.redis.lock.annotation.FairLock;
-import com.fast.family.core.redis.lock.annotation.ReentrantLock;
-import com.fast.family.core.redis.lock.annotation.ReadLock;
-import com.fast.family.core.redis.lock.annotation.WriteLock;
+import com.fast.family.redis.lock.annotation.FairLock;
+import com.fast.family.redis.lock.annotation.ReadLock;
+import com.fast.family.redis.lock.annotation.ReentrantLock;
+import com.fast.family.redis.lock.annotation.WriteLock;
 import lombok.Data;
 
 /**

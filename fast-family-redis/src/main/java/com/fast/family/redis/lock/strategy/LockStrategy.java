@@ -1,6 +1,6 @@
-package com.fast.family.core.redis.lock.strategy;
+package com.fast.family.redis.lock.strategy;
 
-import com.fast.family.core.redis.lock.entity.LockInfo;
+import com.fast.family.redis.lock.entity.LockInfo;
 import org.redisson.api.RLock;
 
 /**

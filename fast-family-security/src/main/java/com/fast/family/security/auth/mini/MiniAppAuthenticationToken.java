@@ -1,4 +1,4 @@
-package com.fast.family.core.security.auth.mini;
+package com.fast.family.security.auth.mini;
 
 
 import com.fast.family.core.security.auth.BaseAuthenticationToken;

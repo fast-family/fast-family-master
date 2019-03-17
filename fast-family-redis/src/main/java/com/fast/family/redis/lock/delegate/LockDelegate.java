@@ -1,4 +1,4 @@
-package com.fast.family.core.redis.lock.delegate;
+package com.fast.family.redis.lock.delegate;
 
 import org.aopalliance.intercept.MethodInvocation;
 

@@ -49,12 +49,17 @@
     <modules>
         <module>fast-family-generator</module>
         <module>fast-family-commons</module>
-        <module>fast-family-core</module>
         <module>fast-family-ldempotent</module>
         <module>fast-family-datasource</module>
         <module>fast-family-log</module>
         <module>fast-family-third-poarty</module>
-        <module>fast-family-utils</module>
+        <module>fast-family-tomcat</module>
+        <module>fast-family-cache</module>
+        <module>fast-family-mvc</module>
+        <module>fast-family-security</module>
+        <module>fast-family-swagger</module>
+        <module>fast-family-office</module>
+        <module>fast-family-redis</module>
     </modules>
 
 
@@ -63,15 +68,27 @@
         <dependencies>
 
             <dependency>
-                <groupId>org.redisson</groupId>
-                <artifactId>redisson</artifactId>
-                <version>${redisson.version}</version>
+                <groupId>com.github.fast-family</groupId>
+                <artifactId>fast-family-commons</artifactId>
+                <version>${revision}</version>
             </dependency>
 
             <dependency>
                 <groupId>com.github.fast-family</groupId>
-                <artifactId>fast-family-commons</artifactId>
-                <version>0.1.0</version>
+                <artifactId>fast-family-tomcat</artifactId>
+                <version>${revision}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.fast-family</groupId>
+                <artifactId>fast-family-swagger</artifactId>
+                <version>${revision}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson</artifactId>
+                <version>${redisson.version}</version>
             </dependency>
 
             <dependency>

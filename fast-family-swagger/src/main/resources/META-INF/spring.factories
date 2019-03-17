@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.fast.family.core.swagger.Swagger2AutoConfigure
+  com.fast.family.swagger.Swagger2AutoConfigure

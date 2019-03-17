@@ -1,4 +1,4 @@
-package com.fast.family.core.security;
+package com.fast.family.security;
 
 import com.fast.family.commons.constant.CommonStant;
 import com.fast.family.core.security.handler.failure.DefaultExtendAuthenticationFailureHandler;

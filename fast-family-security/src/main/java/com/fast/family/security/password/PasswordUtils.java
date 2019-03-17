@@ -1,4 +1,4 @@
-package com.fast.family.core.security.password;
+package com.fast.family.security.password;
 
 import com.fast.family.commons.exception.NoAuthException;
 import org.apache.commons.codec.digest.DigestUtils;

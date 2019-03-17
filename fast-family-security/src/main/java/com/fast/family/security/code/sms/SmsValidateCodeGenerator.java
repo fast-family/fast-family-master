@@ -1,4 +1,4 @@
-package com.fast.family.core.security.validate.code.sms;
+package com.fast.family.security.code.sms;
 
 import com.fast.family.commons.utils.DateTimeUtils;
 import com.fast.family.commons.utils.RandomUtils;

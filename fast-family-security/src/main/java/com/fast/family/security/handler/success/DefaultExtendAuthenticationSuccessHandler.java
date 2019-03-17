@@ -1,4 +1,4 @@
-package com.fast.family.core.security.handler.success;
+package com.fast.family.security.handler.success;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;

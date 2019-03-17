@@ -1,4 +1,4 @@
-package com.fast.family.core.mvc.generic.service.domain;
+package com.fast.family.mvc.generic.service.domain;
 
 public interface BusinessObject {
 }

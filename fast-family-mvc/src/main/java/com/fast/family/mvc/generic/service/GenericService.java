@@ -1,8 +1,8 @@
-package com.fast.family.core.mvc.generic.service;
+package com.fast.family.mvc.generic.service;
 
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.fast.family.core.mvc.generic.entity.GenericEntity;
+import com.fast.family.mvc.generic.entity.GenericEntity;
 
 import java.io.Serializable;
 

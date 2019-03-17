@@ -1,4 +1,4 @@
-package com.fast.family.core.redis.lock.annotation;
+package com.fast.family.redis.lock.annotation;
 
 import java.lang.annotation.*;
 

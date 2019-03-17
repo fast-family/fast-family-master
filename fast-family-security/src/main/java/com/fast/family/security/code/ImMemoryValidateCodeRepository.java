@@ -1,4 +1,4 @@
-package com.fast.family.core.security.validate.code;
+package com.fast.family.security.code;
 
 import lombok.extern.slf4j.Slf4j;
 

@@ -1,4 +1,4 @@
-package com.fast.family.core.security.auth.mobile;
+package com.fast.family.security.auth.mobile;
 
 import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;

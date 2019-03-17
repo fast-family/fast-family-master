@@ -1,11 +1,10 @@
-package com.fast.family.core.redis.lock.aop;
+package com.fast.family.redis.lock.aop;
 
-import com.fast.family.core.redis.lock.annotation.FairLock;
-import com.fast.family.core.redis.lock.annotation.ReentrantLock;
-import com.fast.family.core.redis.lock.annotation.ReadLock;
-import com.fast.family.core.redis.lock.annotation.WriteLock;
+import com.fast.family.redis.lock.annotation.FairLock;
+import com.fast.family.redis.lock.annotation.ReadLock;
+import com.fast.family.redis.lock.annotation.ReentrantLock;
+import com.fast.family.redis.lock.annotation.WriteLock;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.aop.support.StaticMethodMatcherPointcut;
 import org.springframework.aop.support.StaticMethodMatcherPointcutAdvisor;
 
 import java.lang.reflect.Method;

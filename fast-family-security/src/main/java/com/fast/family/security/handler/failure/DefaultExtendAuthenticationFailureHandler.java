@@ -1,4 +1,4 @@
-package com.fast.family.core.security.handler.failure;
+package com.fast.family.security.handler.failure;
 
 import com.fast.family.commons.json.Response;
 import com.fast.family.commons.json.ResponseCode;

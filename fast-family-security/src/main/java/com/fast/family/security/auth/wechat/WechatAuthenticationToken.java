@@ -1,4 +1,4 @@
-package com.fast.family.core.security.auth.wechat;
+package com.fast.family.security.auth.wechat;
 
 import com.fast.family.core.security.auth.BaseAuthenticationToken;
 import lombok.extern.slf4j.Slf4j;

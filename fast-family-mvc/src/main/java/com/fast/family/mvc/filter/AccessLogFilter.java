@@ -1,4 +1,4 @@
-package com.fast.family.core.mvc.filter;
+package com.fast.family.mvc.filter;
 
 import com.fast.family.commons.utils.WebUtils;
 import com.fast.family.mvc.SpringMvcProperties;

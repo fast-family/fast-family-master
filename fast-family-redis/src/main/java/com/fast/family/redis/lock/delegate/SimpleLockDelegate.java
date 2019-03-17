@@ -1,11 +1,11 @@
-package com.fast.family.core.redis.lock.delegate;
+package com.fast.family.redis.lock.delegate;
 
-import com.fast.family.core.redis.lock.strategy.*;
-import com.fast.family.core.redis.lock.annotation.FairLock;
-import com.fast.family.core.redis.lock.annotation.ReadLock;
-import com.fast.family.core.redis.lock.annotation.ReentrantLock;
-import com.fast.family.core.redis.lock.annotation.WriteLock;
-import com.fast.family.core.redis.lock.entity.LockInfo;
+import com.fast.family.redis.lock.annotation.FairLock;
+import com.fast.family.redis.lock.annotation.ReadLock;
+import com.fast.family.redis.lock.annotation.ReentrantLock;
+import com.fast.family.redis.lock.annotation.WriteLock;
+import com.fast.family.redis.lock.entity.LockInfo;
+import com.fast.family.redis.lock.strategy.*;
 import io.vavr.API;
 import lombok.extern.slf4j.Slf4j;
 import org.aopalliance.intercept.MethodInvocation;

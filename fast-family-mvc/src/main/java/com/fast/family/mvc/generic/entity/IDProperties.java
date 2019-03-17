@@ -1,4 +1,4 @@
-package com.fast.family.core.mvc.generic.entity;
+package com.fast.family.mvc.generic.entity;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
