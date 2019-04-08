@@ -2,6 +2,7 @@ package com.fast.family.mvc.generic.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.fast.family.commons.json.Response;
 import com.fast.family.mvc.generic.entity.GenericEntity;
 import io.swagger.annotations.ApiOperation;
@@ -20,8 +21,9 @@ public interface SelectController<T extends GenericEntity, PK extends Serializab
 
     @ApiOperation("分页查询")
     @GetMapping("/search")
-    default Response<IPage<T>> search(T t, IPage pageble) {
-        return Response.ok(this.getService().pageMaps(pageble, new QueryWrapper<>()));
+    default Response<IPage<T>> search(T t, Page pageble) {
+        IPage page = this.getService().page(pageble, new QueryWrapper<>());
+        return Response.ok(page);
     }
 
     @ApiOperation("查询(主键)")
